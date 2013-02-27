@@ -1,0 +1,64 @@
+
+/* ==========================================================================
+   Loethen's custom styles
+   ========================================================================== */
+
+/* ==============
+	header
+   ================*/
+.container-narrow{
+	max-width: 700px;
+	margin: 0 auto;
+}
+.header-bg{
+	height: 60px;
+	background: url(../img/logo.png) no-repeat center;
+}
+.logo{
+	text-indent: -9999px;
+	width: 210px;
+	height: 60px;
+	display: block;
+}
+
+.header-wrap .nav{
+	margin-top: 10px;
+}
+.header-wrap .nav > li > a{
+	color: #fff;
+	text-shadow:none;
+}
+
+/* ==============
+	container
+   ================*/
+.container-margin{
+	margin-top: 20px;
+}
+
+/* ==============
+	signin/signup
+   ================*/
+.form-signin,.form-signup {
+	max-width: 300px;
+	padding: 19px 29px 29px;
+	margin: 0 auto 20px;
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+	box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+
+
+
+
+
+
+
+
+
