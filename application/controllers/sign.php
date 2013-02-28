@@ -38,7 +38,7 @@ class Sign extends CI_Controller {
 	public function signin(){
 		$this->form_validation->set_rules('email','Email','trim|required|valid_email');
 		$this->form_validation->set_rules('password','密码','trim|required');
-		if($this->form_validation->run==false){
+		if($this->form_validation->run()==false){
 			self::signin_form();
 		}else{
 			$email = $this->input->post('email',true);
@@ -49,7 +49,16 @@ class Sign extends CI_Controller {
 				$password = md5($password.'imergou007');
 				$row = $query->row();
 				if($row->password === $password){
-					echo '登录成功';
+					$uid = $row->uid;
+					$email = $row->email;
+					$arr = explode('@', $email);
+					$ergousess = array(
+							'username' => $arr[0],
+							'email' => $email,
+							'log_in' => true 
+						);
+					$this->session->set_userdata($ergousess);
+					redirect('home');
 				}else{
 					echo "登录失败";
 				}
