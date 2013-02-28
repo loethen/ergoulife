@@ -32,22 +32,22 @@
             <div class="header-bg">
                 <div class="header-wrap container-narrow">
                     <a class="logo pull-left" href="<?=site_url()?>">ergoulife</a>
-                    <div class="pull-right">
+                    <ul class="pull-right nav nav-pills">
                         <?php if($this->session->userdata('log_in')): ?>
-                        <div class='dropdown'>
-                            <a class='dropdown-toggle btn btn-inverse' href='#' data-toggle='dropdown' data-target='#'>
+                        <li class='dropdown'>
+                            <a class='dropdown-toggle' role='button' href='#' data-toggle='dropdown' data-target='#'>
                                 <?= $this->session->userdata('username')?>
                                 <span class="caret"></span>
                             </a>
                             <ul class='dropdown-menu'>
                                 <li><a href="<?=site_url('sign/logout'); ?>">登出</a></li>
                             </ul>
-                        </div>
+                        </li>
                         <?php else: ?>
-                        <a href="<?=site_url('sign/signin_form') ?>">登录</a>
-                        <a href="<?=site_url('sign/signup_form') ?>">注册</a>
+                        <li><a role="button" href="<?=site_url('sign/signin_form') ?>">登录</a></li>
+                        <li><a role="button" href="<?=site_url('sign/signup_form') ?>">注册</a></li>
                         <?php endif; ?>
-                    </div>
+                    </ul>
                 </div>
             </div>
         </div>

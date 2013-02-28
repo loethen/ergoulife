@@ -4,8 +4,14 @@
 	<?php echo validation_errors(); ?>
 </div>
 <?php endif; ?>
+<?php if(!empty($error)): ?>
+<div class="alert alert-error">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<?=$error?>
+</div>
+<?php endif; ?>
 <?php echo form_open('sign/signin',array('class'=>'form-signin')); ?>
-        <h3 class="form-heading">请注册</h3>
+        <h3 class="form-heading">请登录</h3>
         <div class="group">
         	<label>Email</label>
         	<input name='email' type="text" class="input-block-level" placeholder="Email address" value="<?=set_value('email'); ?>">

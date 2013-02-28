@@ -60,12 +60,21 @@ class Sign extends CI_Controller {
 					$this->session->set_userdata($ergousess);
 					redirect('home');
 				}else{
-					echo "登录失败";
+					$this->load->view('include/header',array('error'=>'密码错误，请重试'));
+					$this->load->view('sign/signin');
+					$this->load->view('include/footer');
 				}
 			}else{
-				echo "登录失败";
+				$this->load->view('include/header',array('error'=>'用户不存在，注册新用户试试吧'));
+				$this->load->view('sign/signin');
+				$this->load->view('include/footer');
 			}
 		}
 		
+	}
+
+	public function logout(){
+		$this->session->sess_destroy();
+		redirect('home');
 	}
 }
