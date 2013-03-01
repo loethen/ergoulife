@@ -4,7 +4,6 @@ class Sign extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->library('form_validation');
-		$this->load->helper('url');
 	}
 	public function signup_form()
 	{
@@ -58,6 +57,9 @@ class Sign extends CI_Controller {
 							'log_in' => true 
 						);
 					$this->session->set_userdata($ergousess);
+					if($uid == 1){
+						$this->session->set_userdata('admin',true);
+					}
 					redirect('home');
 				}else{
 					$this->load->view('include/header',array('error'=>'密码错误，请重试'));
