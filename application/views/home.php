@@ -1,8 +1,97 @@
 <!-- Main hero unit for a primary marketing message or call to action -->
-<div class="hero-unit">
-    <h1>Hello, world!</h1>
-    <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-    <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+<div class="da-thumbs-bg">
+    <ul id="da-thumbs" class="da-thumbs clearfix">
+        <li>
+            <a href="">
+                <img src="http://localhost/ergoulife/img/p.jpg" />
+                <div><span>Menu by Simon Jensen</span></div>
+            </a>
+        </li>
+        <li>
+            <a href="quarium">
+                <img src="http://localhost/ergoulife/img/p.jpg" />
+                <div><span>TN Aquarium by </span></div>
+            </a>
+        </li>
+        <li>
+            <a href="rabs">
+                <img src="http://localhost/ergoulife/img/p.jpg" />
+                <div><span>Mr. Crabs by</span></div>
+            </a>
+        </li>
+        <li>
+            <a href="ery-of-Mo-2-Mo-logo">
+                <img src="http://localhost/ergoulife/img/p.jpg" />
+                <div><span>Gallery of Mo</span></div>
+            </a>
+        </li>
+        <li>    
+            <a href="Cream-nom-nom">
+                <img src="http://localhost/ergoulife/img/p.jpg" />
+                <div><span>Ice Cream</span></div>
+            </a>
+        </li>
+        <li>
+            <a href="use">
+                <img src="http://localhost/ergoulife/img/p.jpg" />
+                <div><span>My Muse by Zachary Horst</span></div>
+            </a>
+        </li>
+        <li>
+            <a href="lie-Justin-Cleaning">
+                <img src="http://localhost/ergoulife/img/p.jpg" />
+                <div><span>百利</span></div>
+            </a>
+        </li>
+        <li>
+            <a href="Preview">
+                <img src="http://localhost/ergoulife/img/p.jpg" />
+                <div><span>皇家</span></div>
+            </a>
+        </li>
+        <li>
+            <a href="wall-Map">
+                <img src="http://localhost/ergoulife/img/p.jpg" />
+                <div><span>now</span></div>
+            </a>
+        </li>
+        <li>
+            <a href="l-AD-logo">
+                <img src="http://localhost/ergoulife/img/p.jpg" />
+                <div><span>伟嘉</span></div>
+            </a>
+        </li>
+        <li>
+            <a href="-Those-Planes">
+                <img src="http://localhost/ergoulife/img/p.jpg" />
+                <div><span>propure</span></div>
+            </a>
+        </li>
+        <li>
+            <a href="orse">
+                <img src="http://localhost/ergoulife/img/p.jpg" />
+                <div><span>三个字</span></div>
+            </a>
+        </li>
+        <li>
+            <a href="orse">
+                <img src="http://localhost/ergoulife/img/p.jpg" />
+                <div><span>Seahorse by Trevor Basset</span></div>
+            </a>
+        </li>
+        <li>
+            <a href="orse">
+                <img src="http://localhost/ergoulife/img/p.jpg" />
+                <div><span>Seahorse by Trevor Basset</span></div>
+            </a>
+        </li>
+        <li>
+            <a href="orse">
+                <img src="http://localhost/ergoulife/img/p.jpg" />
+                <div><span>Seahorse by Trevor Basset</span></div>
+            </a>
+        </li>
+    </ul>
 </div>
 
 <!-- Example row of columns -->
