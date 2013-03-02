@@ -1,3 +1,4 @@
+<?php if($this->session->userdata('admin')==true) : ?>
 <div class='bs-docs-example'>
 <table class="table table-hover">
 	<thead>
@@ -30,3 +31,4 @@
 <div class='pagination pagination-right pagination-large'>
 <?=$page_output; ?>
 </div>
+<?php endif; ?>

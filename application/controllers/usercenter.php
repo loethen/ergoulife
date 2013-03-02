@@ -99,10 +99,15 @@ class Usercenter extends CI_Controller {
 		}
 
 		$res = $this->uc->brand_query($page,$per_page);
-		$this->load->view('include/header',array('res'=>$res,'page_output'=>$page_output));
-		$this->load->view('usercenter/top_menu');
-		$this->load->view('usercenter/manage_brand');
-		$this->load->view('include/footer');
+		if($this->session->userdata('admin')==true){
+			$this->load->view('include/header',array('res'=>$res,'page_output'=>$page_output));
+			$this->load->view('usercenter/top_menu');
+			$this->load->view('usercenter/manage_brand');
+			$this->load->view('include/footer');
+		}else{
+			redirect('sign/signin');
+		}
+		
 	}
 	public function delete_brand(){
 
