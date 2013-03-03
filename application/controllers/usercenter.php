@@ -6,6 +6,7 @@ class Usercenter extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('form');
 		$this->load->library('form_validation');
+		$this->load->model('uc');
 	}
 	public function index(){
 		if($this->session->userdata('log_in')==true){
@@ -52,7 +53,6 @@ class Usercenter extends CI_Controller {
 				$this->load->library('image_lib', $config);
 				$this->image_lib->initialize($config);
 
-				$this->load->model('uc'); 
 				if($this->image_lib->resize()){
 					$enname = $this->input->post('enbrand',true);
 					$cnname = $this->input->post('cnbrand',true);
@@ -73,7 +73,6 @@ class Usercenter extends CI_Controller {
 		}
 	}
 	public function manage_brand($page=0){
-		$this->load->model('uc');
 		$url = site_url();
 		$per_page = 10;
 		$page_nums = $this->uc->brand_num();
@@ -109,7 +108,8 @@ class Usercenter extends CI_Controller {
 		}
 		
 	}
-	public function delete_brand(){
-
+	public function delete_brand($id){
+		$this->uc->brand_delete($id);
+		echo 'success';
 	}
 }

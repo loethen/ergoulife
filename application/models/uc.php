@@ -27,7 +27,7 @@ class Uc extends CI_Model {
 		}
 	}
 	public function brand_query($start,$len){
-		$sql = "select enname,cnname,img,field,description from brand order by id desc limit $start,$len";
+		$sql = "select * from brand order by id desc limit $start,$len";
 		$query = $this->db->query($sql);
 		$result = $query->result();
 		$this->db->close();
@@ -37,5 +37,15 @@ class Uc extends CI_Model {
 		$sql = "select * from brand";
 		$query = $this->db->query($sql);
 		return $query->num_rows();
+	}
+	public function brand_delete($id){
+		$sql = "select * from brand where id=$id";
+		$query = $this->db->query($sql);
+		if($query->num_rows>0){
+			$sql = "delete from brand where id=$id";
+			$this->db->query($sql);
+			$this->db->close();
+			return true;
+		}
 	}
 }

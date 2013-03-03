@@ -1,5 +1,5 @@
 <?php if($this->session->userdata('admin')==true) : ?>
-<div class='bs-docs-example'>
+<div class='manage-table'>
 <table class="table table-hover">
 	<thead>
 		<tr>
@@ -20,7 +20,7 @@
 			<td><?=$row->field?></td>
 			<td><?=$row->description?></td>
 			<td>
-				<a href="#">删</a>
+				<a data-id="<?=$row->id?>" href="#">删</a>
 				<a href="#">改</a>
 			</td>
 		</tr>
