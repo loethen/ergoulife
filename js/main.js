@@ -1,5 +1,8 @@
 (function($){
-	$(' #da-thumbs > li ').each( function() { $(this).hoverdir(); } );
+	$(' #da-thumbs > li ').each( function() { 
+		$(this).hoverdir(); 
+		$(this).find('a').popover();
+	} );
 
 	$('.manage-table table').on('click','a',function(event){
 		var that = event.target;
@@ -17,4 +20,5 @@
 			})
 		}
 	})
+
 })(window.jQuery)
