@@ -85,14 +85,16 @@ h3.form-heading{
 	首页缩略图
    ================*/
 .da-thumbs-bg{
-	background: #e6e7e7;
+	background: #eee;
+	border-radius: 5px;
+	box-shadow: 1px 1px 12px #939393;
 }
 .da-thumbs {
 	list-style: none;
-	width: 700px;
+	width: 680px;
 	position: relative;
 	margin: 20px auto;
-	padding: 0;
+	padding: 10px;
 }
 .da-thumbs li {
 	float: left;

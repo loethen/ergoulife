@@ -47,8 +47,8 @@ class Usercenter extends CI_Controller {
 				$config['source_image'] = $data['full_path'];
 				$config['maintain_ratio'] = TRUE;
 				$config['master_dim'] = 'width';
-				$config['width'] = 120;
-				$config['height'] = 60;
+				$config['width'] = 150;
+				$config['height'] = 120;
 
 				$this->load->library('image_lib', $config);
 				$this->image_lib->initialize($config);
