@@ -100,6 +100,10 @@ h3.form-heading{
 	border-radius: 8px 0 0 8px;
 	top: 10px;
 	font-weight: 100;
+	cursor: pointer;
+}
+.da-thumbs-bg h1:hover{
+	opacity: .8;
 }
 .da-thumbs {
 	list-style: none;
