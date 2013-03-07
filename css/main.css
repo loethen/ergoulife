@@ -13,7 +13,6 @@
 .header-bg{
 	height: 60px;
 	background: url(../img/logo.png) no-repeat center;
-	border-bottom: 3px solid #d9d9d9;
 }
 .logo{
 	text-indent: -9999px;
@@ -87,7 +86,20 @@ h3.form-heading{
 .da-thumbs-bg{
 	background: #eee;
 	border-radius: 5px;
-	box-shadow: 1px 1px 12px #939393;
+	box-shadow: 3px 3px #b5b4b4;
+	position: relative;
+}
+.da-thumbs-bg h1{
+	position: absolute;
+	width: 16px;
+	left: -36px;
+	font-size: 16px;
+	background: #999;
+	padding: 10px;
+	color: #fff;
+	border-radius: 8px 0 0 8px;
+	top: 10px;
+	font-weight: 100;
 }
 .da-thumbs {
 	list-style: none;
