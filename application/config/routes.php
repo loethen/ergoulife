@@ -40,7 +40,7 @@
 
 $route['default_controller'] = "home";
 $route['404_override'] = '';
-
+$route['subject/(:num)'] = "subject/index";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

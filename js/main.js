@@ -7,7 +7,7 @@
 		var that = event.target;
 		that=$(that);
 		var id = that.data('id');
-		var url = $site_url + '/usercenter/delete_brand/'+id;
+		var url = site_url + '/usercenter/delete_brand/'+id;
 		if(confirm('确定删除吗？')){
 			$.get(url,function(data){
 				if(data=='success'){
@@ -20,4 +20,9 @@
 		}
 	})
 
+	$('.star').raty({
+		path: base_url+'img',
+		hints:['很差','较差','还行','推荐','力荐']
+	});
+	$('.star img').tooltip();
 })(window.jQuery)
