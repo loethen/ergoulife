@@ -10,38 +10,7 @@
 	max-width: 700px;
 	margin: 0 auto;
 }
-.header-bg{
-	height: 60px;
-	background: url(../img/logo.png) no-repeat center;
-}
-.logo{
-	text-indent: -9999px;
-	width: 210px;
-	height: 60px;
-	display: block;
-}
 
-.header-wrap .nav{
-	margin-top: 15px;
-}
-
-.header-wrap .dropdown{
-	color: #4f4f4f;
-}
-.nav .dropdown-toggle{
-	color: #fff;
-	padding: 10px 15px;
-}
-.navbar .nav > li > a {
-	text-shadow: none;
-	background: #fff;
-}
-.navbar .nav > li > a:hover{
-	background: #eee;
-}
-.navbar .nav .dropdown-toggle .caret {
-	margin-top: 6px;
-}
 /* ==============
 	container
    ================*/
@@ -84,10 +53,11 @@ h3.form-heading{
 	首页缩略图
    ================*/
 .da-thumbs-bg{
-	background: #eee;
-	border-radius: 5px;
-	box-shadow: 3px 3px #b5b4b4;
+	background: #f8f8f8;
+	border-radius: 2px;
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 	position: relative;
+	border: 1px solid #d4d4d4;
 }
 .da-thumbs-bg h1{
 	position: absolute;
@@ -131,7 +101,7 @@ h3.form-heading{
 .da-thumbs li a div {
 	position: absolute;
 	background: #333;
-	background: rgba(75,75,75,0.7);
+	background: rgba(75,75,75,0.5);
 	width: 100%;
 	height: 100%;
 
@@ -154,4 +124,22 @@ h3.form-heading{
 /* ==============
 	品牌详情页
    ================*/
+.brand-show{
+	background: #fff;
+	border: 15px solid #f0f0f0;
+	padding: 20px 0 20px 85px;
+}
+.bg-gray{
+	background: #f0f0f0;
+	margin-top: 20px;
+	padding: 15px;
+	color: #888;
+}
+.rate{
+	background: #2ab3ea;
+	color: #fff;
+	padding: 15px;
+}
+
+
 
