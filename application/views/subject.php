@@ -16,6 +16,10 @@
 			<p>如果你用过这个品牌的东西，请投出你神圣的一票，让其他的猫奴作为参考。</p>
 			<div class='star'></div>
 		</div>
+
+		<div id="uyan_frame"></div>
+		<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1752502" async=""></script>
+
 	</div>
 </div>
 
