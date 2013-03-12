@@ -26,7 +26,10 @@
 		click:function(score,evt){
 			$.getJSON(site_url+'/sign/is_login',function(data){
 				if(data.is_login){
-					$.post(site_url+'/rate/update_rate',{id:$('#brand-head').data('id'),score:score},function(data){
+					var href = window.location.href;
+					var arr = href.split('/');
+					var id = arr.pop();
+					$.post(site_url+'/rate/update_rate',{id:id,score:score},function(data){
 						console.log(data)
 						if(!!data){
 							alert('投票成功');

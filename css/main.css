@@ -143,10 +143,45 @@ h3.form-heading{
 }
 .rate-bar .progress{
 	width: 100px;
-	margin-left: 20px;
+	margin-bottom: 5px;
+	height: 14px;
 }
 .rate-bar em{
 	margin-left: 10px;
+	color: #999;
+}
+.rate-bar span{
+	width: 80px;
+	background-image: url(../img/bigstars.gif);
+	background-repeat: no-repeat;
+	text-indent: -999px;
+	height: 14px;
+}
+.aver-rate{
+	line-height: 100px;
+	font-size: 36px;
+	font-weight: bolder;
+	color: #f97855;
+	padding: 0 10px 0 18px;
+	border-left: 1px solid #c1dcfc;
+}
+.rate small{
+	color: #f97855;
+}
+.star1{
+	background-position: 0 -112px;
+}
+.star2{
+	background-position: 0 -84px;
+}
+.star3{
+	background-position: 0 -56px;
+}
+.star4{
+	background-position: 0 -28px;
+}
+.star5{
+	background-position: 0 0;
 }
 /* =================================================================================
     ColorBox Core Style:

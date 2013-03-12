@@ -9,10 +9,22 @@ class Subject_query extends CI_Model {
 	public function subject_query($id){
 		$sql = "select * from brand where id=$id";
 		$query = $this->db->query($sql);
+		$this->db->close();
 		if($query->num_rows()>0){
 			return $query->result();
 		}else{
 			show_error('抱歉，没有相关结果');
+		}
+	}
+	public function rate_query($id){
+		$sql = "select * from brand_rate where brandid=$id";
+		$query = $this->db->query($sql);
+		$this->db->close();
+		if($query->num_rows()>0){
+			return $query->result();
+		}else{
+			$arr = array(0=>array('star5'=>0,'star4'=>0,'star3'=>0,'star2'=>0,'star1'=>0));
+			return json_decode(json_encode ($arr), FALSE);
 		}
 	}
 }
