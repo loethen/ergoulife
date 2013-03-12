@@ -1,19 +1,8 @@
-<?php if(validation_errors()): ?>
-<div class="alert alert-error">
-	<button type="button" class="close" data-dismiss="alert">&times;</button>
-	<?php echo validation_errors(); ?>
-</div>
-<?php endif; ?>
-<?php if(!empty($error)): ?>
-<div class="alert alert-error">
-	<button type="button" class="close" data-dismiss="alert">&times;</button>
-	<?=$error?>
-</div>
-<?php endif; ?>
 <?php echo form_open('sign/signin',array('class'=>'form-signin')); ?>
-        <h3 class="form-heading">请登录</h3>
+        <h3 class="form-heading">快速登录</h3>
         <div class="group">
         	<label>Email</label>
+        	<input type="hidden" name="cur_url" value="<?=$cur_url?>">
         	<input name='email' type="text" class="input-block-level" placeholder="Email address" value="<?=set_value('email'); ?>">
         	<label>密码</label>
         	<input name='password' type="password" class="input-block-level" placeholder="Password">

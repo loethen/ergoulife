@@ -22,7 +22,27 @@
 
 	$('.star').raty({
 		path: base_url+'img',
-		hints:['很差','较差','还行','推荐','力荐']
+		hints:['很差','较差','还行','推荐','力荐'],
+		click:function(score,evt){
+			$.getJSON(site_url+'/sign/is_login',function(data){
+				if(data.is_login){
+					$.post(site_url+'/rate/update_rate',{id:$('#brand-head').data('id'),score:score},function(data){
+						console.log(data)
+						if(!!data){
+							alert('投票成功');
+						}else{
+							alert(data)
+						}
+					})
+				}else{
+					$.colorbox({
+						href:site_url+'/sign/quick_sign',
+						width:'400px',
+						data:{cur_url:window.location.href}
+					})
+				}
+			})
+		}
 	});
 	$('.star img').tooltip();
 })(window.jQuery)

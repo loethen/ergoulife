@@ -60,6 +60,10 @@ class Sign extends CI_Controller {
 					if($uid == 1){
 						$this->session->set_userdata('admin',true);
 					}
+					$cur_url=$this->input->post('cur_url',true);
+					if(!empty($cur_url)){
+						redirect($cur_url);
+					}
 					redirect('home');
 				}else{
 					$this->load->view('include/header',array('error'=>'密码错误，请重试'));
@@ -78,5 +82,15 @@ class Sign extends CI_Controller {
 	public function logout(){
 		$this->session->sess_destroy();
 		redirect('home');
+	}
+	public function is_login(){
+		$arr = array('is_login'=>$this->session->userdata('log_in'));
+		$this->output
+    	->set_content_type('application/json')
+    	->set_output(json_encode($arr));
+	}
+	public function quick_sign(){
+		$cur_url = $this->input->post('cur_url');
+		$this->load->view('sign/quick_signin',array('cur_url'=>$cur_url));
 	}
 }
