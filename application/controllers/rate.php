@@ -15,12 +15,12 @@ class Rate extends CI_Controller {
 			show_error('数据错误');
 			exit;
 		};
-		$res = $this->rate_model->upd_rate($id,$score);
+		$res = $this->rate_model->upd_rate($uid,$id,$score);
 		$query = $this->rate_model->upd_user_brand($uid,$id,$score);
 		if($query==='FALSE'){
 			show_error('未能更新评分');
 		}
-		if($res){
+		if($res===TRUE){
 			$this->output
     		->set_content_type('application/json')
     		->set_output(json_encode(array('success' => true)));

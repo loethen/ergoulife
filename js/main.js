@@ -18,7 +18,7 @@
 				if(data=='success'){
 					that.parent().parent().remove();
 				}else{
-					alert('删除出错，请重试');
+					autoClose('删除出错，请重试');
 				}
 				return false;
 			})
@@ -38,7 +38,10 @@
 					var id = arr.pop();
 					$.post(site_url+'/rate/update_rate',{id:id,score:score},function(data){
 						if(!!data){
-							alert('投票成功');
+							autoClose('投票成功',function(){
+								location.href = location.href;
+							});
+							
 						}else{
 							alert(data)
 						}
@@ -81,7 +84,19 @@
 		})
 	})
 		
-
+	function autoClose(msg,cb){
+		$.colorbox({
+			html:msg,
+			transition:'none',
+			width:'200px',
+			height:'150px',
+			top:'20%',
+			onCleanup:cb
+		});
+		setTimeout(function(){
+			$.colorbox.close()
+		},500)
+	}
 	function twoDecimal(str){
 		var f_x = parseFloat(str);
 		return isNaN(f_x) ? aler('非数字项') : Math.round(f_x*10)/10;

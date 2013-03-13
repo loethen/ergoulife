@@ -59,6 +59,9 @@ class Usercenter extends CI_Controller {
 					$img = $data['file_name'];
 					$area = $this->input->post('area',true);
 					$desc = $this->input->post('description',true);
+
+					$this->load->helper('string');
+					$desc = quotes_to_entities($desc);
 					$result = $this->uc->brand_insert($enname,$cnname,$img,$area,$desc);
 					if(!$result){
 						$error = array('error'=>'该品牌已经存在');
