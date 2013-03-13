@@ -8,17 +8,20 @@ class Rate extends CI_Controller {
 	public function update_rate()
 	{
 
-		$id = $this->input->post('id');
+		$bid = $this->input->post('id');
 		$score = $this->input->post('score');
 		$uid = $this->session->userdata('uid');
-		if(is_numeric($score)===false || is_numeric($id)===false){
+		if(is_numeric($score)===false || is_numeric($bid)===false){
 			show_error('数据错误');
 			exit;
 		};
-		$res = $this->rate_model->upd_rate($uid,$id,$score);
-		$query = $this->rate_model->upd_user_brand($uid,$id,$score);
-		if($query==='FALSE'){
-			show_error('未能更新评分');
+		$this->db->trans_start();
+		$res = $this->rate_model->upd_rate($uid,$bid,$score);
+		$res1 = $this->rate_model->upd_user_brand($uid,$bid,$score);
+		$this->db->trans_complete();
+		if ($this->db->trans_status() === FALSE)
+		{
+		    show_error('更新分数出错');
 		}
 		if($res===TRUE){
 			$this->output

@@ -62,14 +62,7 @@ class Sign extends CI_Controller {
 
 
 					// 友言登陆
-					$uname = $arr[0];
-					$uface = "http://v2.uyan.cc/code/images/duface.png";
-					$ulink = "ergoulife.com";
-					$expire = "3600";
-
-					$desstr = file_get_contents("http://api.uyan.cc?mode=des&uid=$uid&uname=".urlencode($uname)."&email=".urlencode($email)."&uface=".urlencode($uface)."&ulink=".urlencode($ulink)."&expire=$expire&key=".urlencode($key));
-
-					setcookie('syncuyan', $desstr, time() + 3600, '/', 'ergoulife.com'); 
+					
 					// 友言登陆结束
 
 					if($uid == 1){
@@ -96,7 +89,7 @@ class Sign extends CI_Controller {
 
 	public function logout(){
 		$this->session->sess_destroy();
-		setcookie('syncuyan', 'logout', time() + 3600, '/', 'ergoulife.com');
+		
 		redirect('home');
 	}
 	public function is_login(){

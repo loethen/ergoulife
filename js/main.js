@@ -37,6 +37,7 @@
 					var arr = href.split('/');
 					var id = arr.pop();
 					$.post(site_url+'/rate/update_rate',{id:id,score:score},function(data){
+						console.log(data)
 						if(!!data){
 							autoClose('投票成功',function(){
 								location.href = location.href;
