@@ -45,7 +45,8 @@ class Sign extends CI_Controller {
 			$this->load->model('user');
 			$query = $this->user->login($email,$password);
 			if($query->num_rows()>0){
-				$password = md5($password.'imergou007');
+				$key = "imergou007";
+				$password = md5($password.$key);
 				$row = $query->row();
 				if($row->password === $password){
 					$uid = $row->uid;
@@ -58,6 +59,19 @@ class Sign extends CI_Controller {
 							'log_in' => true 
 						);
 					$this->session->set_userdata($ergousess);
+
+
+					// 友言登陆
+					$uname = $arr[0];
+					$uface = "http://v2.uyan.cc/code/images/duface.png";
+					$ulink = "ergoulife.com";
+					$expire = "3600";
+
+					$desstr = file_get_contents("http://api.uyan.cc?mode=des&uid=$uid&uname=".urlencode($uname)."&email=".urlencode($email)."&uface=".urlencode($uface)."&ulink=".urlencode($ulink)."&expire=$expire&key=".urlencode($key));
+
+					setcookie('syncuyan', $desstr, time() + 3600, '/', 'ergoulife.com'); 
+					// 友言登陆结束
+
 					if($uid == 1){
 						$this->session->set_userdata('admin',true);
 					}
@@ -82,6 +96,7 @@ class Sign extends CI_Controller {
 
 	public function logout(){
 		$this->session->sess_destroy();
+		setcookie('syncuyan', 'logout', time() + 3600, '/', 'ergoulife.com');
 		redirect('home');
 	}
 	public function is_login(){
