@@ -159,11 +159,19 @@ h3.form-heading{
 }
 .aver-rate{
 	line-height: 100px;
-	font-size: 36px;
+	font-size: 32px;
 	font-weight: bolder;
 	color: #f97855;
-	padding: 0 10px 0 18px;
+	padding: 0 0 0 10px;
 	border-left: 1px solid #c1dcfc;
+}
+#avg{
+	width: 80px;
+	display: block;
+	text-align: center;
+}
+#avg small{
+	font-size: 14px;
 }
 .rate small{
 	color: #f97855;

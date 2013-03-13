@@ -11,7 +11,7 @@ class Subject_query extends CI_Model {
 		$query = $this->db->query($sql);
 		$this->db->close();
 		if($query->num_rows()>0){
-			return $query->result();
+			return $query->row();
 		}else{
 			show_error('抱歉，没有相关结果');
 		}
@@ -21,7 +21,7 @@ class Subject_query extends CI_Model {
 		$query = $this->db->query($sql);
 		$this->db->close();
 		if($query->num_rows()>0){
-			return $query->result();
+			return $query->row();
 		}else{
 			$arr = array(0=>array('star5'=>0,'star4'=>0,'star3'=>0,'star2'=>0,'star1'=>0));
 			return json_decode(json_encode ($arr), FALSE);

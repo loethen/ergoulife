@@ -39,5 +39,31 @@ class Rate_model extends CI_Model {
 			$query = $this->db->query($sql);
 			return $query;
 		}
+		$this->db->close();
+	}
+
+	public function have_rate($uid,$bid){
+		$sql = "select * from user_brand where uid='$uid' and bid='$bid'";
+		$query = $this->db->query($sql);
+		$this->db->close();
+		if($query->num_rows()>0){
+			$row = $query->row();
+			$rate = $row->rate;
+		}else{
+			$rate = 0;
+		}
+		return $rate;
+	}
+
+	public function upd_user_brand($uid,$bid,$score){
+		$sql = "select * from user_brand where uid='$uid' and bid='$bid'";
+		$query = $this->db->query($sql);
+		if($query->num_rows()>0){
+			$sql = "update user_brand set rate='$score' where uid='$uid' and bid='$bid'";
+		}else{
+			$sql = "insert into user_brand (uid,bid,rate) values ('$uid','$bid','$score')";
+		}
+		$query = $this->db->query($sql);
+		return $query;
 	}
 }

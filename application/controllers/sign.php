@@ -54,6 +54,7 @@ class Sign extends CI_Controller {
 					$ergousess = array(
 							'username' => $arr[0],
 							'email' => $email,
+							'uid' => $uid,
 							'log_in' => true 
 						);
 					$this->session->set_userdata($ergousess);
