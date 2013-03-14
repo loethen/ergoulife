@@ -63,9 +63,16 @@
 				</div>
 			</div>
 		</div>
-
-		<div id="uyan_frame"></div>
-		<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1752502" async=""></script>
-
+		<div class=" comment">
+			<span class="label label-comment">我要评论</span>
+			<?php echo form_open('subject/comment',array('class'=>'')); ?>
+			<h4>「我来回应」</h4>
+        	<div class="clearfix">
+	        	<textarea name="comment-content" id="comment-content" rows="3"></textarea>
+	        	<button class="btn btn-small pull-right" type="submit">发表</button>
+        	</div>
+			</form>
+		</div>
+		
 	</div>
 </div>

@@ -60,11 +60,6 @@ class Sign extends CI_Controller {
 						);
 					$this->session->set_userdata($ergousess);
 
-
-					// 友言登陆
-					
-					// 友言登陆结束
-
 					if($uid == 1){
 						$this->session->set_userdata('admin',true);
 					}
@@ -89,7 +84,6 @@ class Sign extends CI_Controller {
 
 	public function logout(){
 		$this->session->sess_destroy();
-		
 		redirect('home');
 	}
 	public function is_login(){

@@ -192,6 +192,21 @@ h3.form-heading{
 .star5{
 	background-position: 0 0;
 }
+
+/* =================================================================================
+    评论模块.
+====================================================================================*/
+.label-comment{
+	cursor: pointer;
+}
+#comment-content{
+	width: 311px;
+	margin-left: 15px;
+}
+.comment h4{
+	color: #89b5ff;
+	font-weight: 100;
+}
 /* =================================================================================
     ColorBox Core Style:
     The following CSS is consistent between example themes and should not be altered.

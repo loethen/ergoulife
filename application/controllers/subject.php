@@ -3,6 +3,7 @@
 class Subject extends CI_Controller {
 	function __construct(){
 		parent::__construct();
+		$this->load->helper('form');
 		$this->load->model('subject_query');
 		$this->load->model('rate_model');
 	}
