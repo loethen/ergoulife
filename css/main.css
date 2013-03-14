@@ -77,9 +77,9 @@ h3.form-heading{
 }
 .da-thumbs {
 	list-style: none;
-	width: 680px;
+	max-width: 680px;
 	position: relative;
-	margin: 20px auto;
+	margin: 10px auto;
 	padding: 10px;
 }
 .da-thumbs li {
@@ -151,11 +151,12 @@ h3.form-heading{
 	color: #999;
 }
 .rate-bar span{
-	width: 80px;
+	width: 83px;
 	background-image: url(../img/bigstars.gif);
 	background-repeat: no-repeat;
 	text-indent: -999px;
 	height: 14px;
+	margin-right: 5px;
 }
 .aver-rate{
 	line-height: 100px;
@@ -177,16 +178,16 @@ h3.form-heading{
 	color: #f97855;
 }
 .star1{
-	background-position: 0 -112px;
-}
-.star2{
-	background-position: 0 -84px;
-}
-.star3{
 	background-position: 0 -56px;
 }
-.star4{
+.star2{
+	background-position: 0 -42px;
+}
+.star3{
 	background-position: 0 -28px;
+}
+.star4{
+	background-position: 0 -14px;
 }
 .star5{
 	background-position: 0 0;

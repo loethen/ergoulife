@@ -29,6 +29,7 @@
 	============*/
 	$('.star').raty({
 		path: base_url+'img',
+		width:120,
 		hints:['很差','较差','还行','推荐','力荐'],
 		click:function(score,evt){
 			$.getJSON(site_url+'/sign/is_login',function(data){
