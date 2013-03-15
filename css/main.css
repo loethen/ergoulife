@@ -10,7 +10,25 @@
 	max-width: 700px;
 	margin: 0 auto;
 }
+.fix{
+	position: fixed;
 
+}
+.tip{
+	display: none;
+	top: 1px;
+	left: 45%;
+	z-index: 1031;
+}
+.tip-inner{
+	color: #fff;
+	background: #009dba;
+	padding: 9px 10px;
+}
+#tipclose{
+	margin-left: 5px;
+	cursor: pointer;
+}
 /* ==============
 	container
    ================*/
@@ -204,8 +222,12 @@ h3.form-heading{
 	margin-left: 15px;
 }
 .comment h4{
-	color: #89b5ff;
+	color: #08c;
 	font-weight: 100;
+}
+.error-border{
+	border: 1px solid red;
+	box-shadow: red 0px 0px 3px;
 }
 /* =================================================================================
     ColorBox Core Style:

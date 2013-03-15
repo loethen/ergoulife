@@ -24,9 +24,9 @@
 			})
 		}
 	})
-	/*============
-	品牌详情页
-	============*/
+	/*===================
+	品牌详情页 评分计算
+	===================*/
 	$('.star').raty({
 		path: base_url+'img',
 		width:120,
@@ -40,7 +40,7 @@
 					$.post(site_url+'/rate/update_rate',{id:id,score:score},function(data){
 						console.log(data)
 						if(!!data){
-							autoClose('投票成功',function(){
+							tipAutoHide('投票成功!',function(){
 								location.href = location.href;
 							});
 							
@@ -49,10 +49,7 @@
 						}
 					})
 				}else{
-					$.colorbox({
-						href:site_url+'/sign/quick_sign',
-						data:{cur_url:window.location.href}
-					})
+					quickSign();
 				}
 			})
 		},
@@ -85,23 +82,50 @@
 			}
 		})
 	})
-		
-	function autoClose(msg,cb){
+	/*===================
+		评论
+	===================*/
+	$('#iwantcomment').click(function(){
+		quickSign();
+	})
+	$('#comment-form').submit(function(){
+		if(($('#comment-content').val() == '')){
+			$('#comment-content').addClass('error-border');
+			return false;
+		}
+		return true;
+	})
+
+
+
+	/*===================
+	工具函数
+	===================*/
+	function quickSign(){
 		$.colorbox({
-			html:msg,
-			transition:'none',
-			width:'200px',
-			height:'150px',
-			top:'20%',
-			onCleanup:cb
-		});
-		setTimeout(function(){
-			$.colorbox.close()
-		},500)
+			href:site_url+'/sign/quick_sign',
+			data:{cur_url:window.location.href}
+		})
 	}
 	function twoDecimal(str){
 		var f_x = parseFloat(str);
 		return isNaN(f_x) ? aler('非数字项') : Math.round(f_x*10)/10;
 	}
+	function tip(msg){
+		$('#toptip').find('span').html(msg)
+					.end().show();
+		$('#tipclose').click(function(){
+			$('#toptip').hide();
+		})
+	}
+	function tipAutoHide(msg,cb){
+		tip(msg);
+		setTimeout(function(){
+			$('#toptip').fadeOut(function(){
+				cb && cb();
+			});
+		},1000)
+	}
+
 })(window.jQuery)
 

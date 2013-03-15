@@ -24,11 +24,17 @@
     </head>
     <body>
         <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+            <p class="chromeframe">你正在使用一个 <strong>过时</strong> 的浏览器. 请 <a href="http://browsehappy.com/">点击这里</a>更新浏览器 或者 <a href="http://www.google.com/chromeframe/?redirect=true">点击这里</a> 试试google chrome</p>
         <![endif]-->
 
         <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
-
+    <div id="toptip" class="fix tip">
+        <div class="tip-inner">
+            <i class="icon-flag icon-white"></i>
+            <span>正在加载...</span>
+            <em id="tipclose">x</em>
+        </div>
+    </div>
     <div class="container-narrow">
         <div class="navbar navbar-fixed-top" style="margin: -1px -1px 0;">
           <div class="navbar-inner">

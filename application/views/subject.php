@@ -63,16 +63,28 @@
 				</div>
 			</div>
 		</div>
+		<?php foreach($comment as $ct): ?>
+		<p><?=$ct->content?></p>
+
+		<?php endforeach; ?>
+		<?php if($this->session->userdata('log_in')): ?>
 		<div class=" comment">
-			<span class="label label-comment">我要评论</span>
-			<?php echo form_open('subject/comment',array('class'=>'')); ?>
-			<h4>「我来回应」</h4>
-        	<div class="clearfix">
-	        	<textarea name="comment-content" id="comment-content" rows="3"></textarea>
-	        	<button class="btn btn-small pull-right" type="submit">发表</button>
-        	</div>
+			<?php echo form_open('subject/comment',array('id'=>'comment-form')); ?>
+				<h4>「有什么想说的？」</h4>
+				<div style='display:none'>
+					<input type="hidden" name='sid' value='<?=$this->uri->segment(2)?>'>
+				</div>
+	        	<div class="clearfix">
+		        	<textarea name="comment-content" id="comment-content" rows="3"></textarea>
+		        	<button class="btn btn-small pull-right" type="submit">发表</button>
+	        	</div>
 			</form>
+		</div>	
+		<?php else: ?>	
+		<div class="rate">
+			<a id="iwantcomment" href='javascript:;'>我要评论</a>
 		</div>
-		
+		<?php endif; ?>
+		<div id="last"></div>
 	</div>
 </div>

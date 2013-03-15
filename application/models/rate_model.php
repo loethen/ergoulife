@@ -5,7 +5,17 @@ class Rate_model extends CI_Model {
 		parent::__construct();
 		$this->load->database();
 	}
-
+	public function rate_query($id){
+		$sql = "select * from brand_rate where brandid=$id";
+		$query = $this->db->query($sql);
+		$this->db->close();
+		if($query->num_rows()>0){
+			return $query->row();
+		}else{
+			$arr = array('star5'=>0,'star4'=>0,'star3'=>0,'star2'=>0,'star1'=>0);
+			return json_decode(json_encode ($arr), FALSE);
+		}
+	}
 	public function upd_rate($uid,$bid,$score){
 		$sql = "SELECT * from brand_rate where brandid='$bid'";
 		$query = $this->db->query($sql);
