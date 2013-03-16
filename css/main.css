@@ -6,6 +6,9 @@
 /* ==============
 	header
    ================*/
+#wrap > .container-narrow {
+	padding-top: 60px;
+} 
 .container-narrow{
 	max-width: 700px;
 	margin: 0 auto;
@@ -29,11 +32,54 @@
 	margin-left: 5px;
 	cursor: pointer;
 }
+
+/* ==============
+	footer
+   ================*/
+/* Sticky footer styles
+-------------------------------------------------- */
+html,
+body {
+height: 100%;
+/* The html and body elements cannot have any padding or margin. */
+}
+/* Wrapper for page content to push down footer */
+#wrap {
+min-height: 100%;
+height: auto !important;
+height: 100%;
+/* Negative indent footer by it's height */
+margin: 0 auto -60px;
+}
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+height: 60px;
+}
+#footer {
+background-color: #f5f5f5;
+}
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+#footer {
+margin-left: -20px;
+margin-right: -20px;
+padding-left: 20px;
+padding-right: 20px;
+}
+}
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container .credit {
+margin: 20px 0;
+} 
 /* ==============
 	container
    ================*/
 .container-margin{
-	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 /* ==============
@@ -95,10 +141,10 @@ h3.form-heading{
 }
 .da-thumbs {
 	list-style: none;
-	max-width: 680px;
+	max-width: 700px;
 	position: relative;
 	margin: 10px auto;
-	padding: 10px;
+	padding: 9px;
 }
 .da-thumbs li {
 	float: left;
@@ -145,10 +191,10 @@ h3.form-heading{
 .brand-show{
 	background: #fff;
 	border: 15px solid #f0f0f0;
-	padding: 20px 0 20px 85px;
+	padding: 10px;
 }
 .bg-gray{
-	background: #f0f0f0;
+	background: #f4f4f4;
 	margin-top: 20px;
 	padding: 15px;
 	color: #666;

@@ -2,10 +2,14 @@
 <div class='row-fluid'>
 	<div class='span6'>
 		<div class='brand-show'>
-			<img src="<?=base_url().'/uploads/'.$brand->img?>">
+			<img src="<?=base_url().'uploads/'.$brand->img?>">
 		</div>
 		<div class="bg-gray">
-			<h4>品牌简介</h4>
+			<h4>简介</h4>
+			<p><?=$brand->description; ?></p>
+		</div>
+		<div class="bg-gray">
+			<h4>相关</h4>
 			<p><?=$brand->description; ?></p>
 		</div>
 	</div>
@@ -14,35 +18,35 @@
 			<div class="rate-wrap pull-left">
 				<div class="rate-bar clearfix">
 					<span class='star5 pull-left'>5星</span>
-					<div class="progress progress-info pull-left">
+					<div class="progress progress-striped pull-left">
 						<div class="bar" style="width: 1%"></div>
 					</div>
 					<em class='pull-left' data-star='5'><?=$rate->star5; ?></em>
 				</div>
 				<div class="rate-bar clearfix">
 					<span class='star4 pull-left'>4星</span>
-					<div class="progress progress-info pull-left">
+					<div class="progress progress-striped pull-left">
 						<div class="bar" style="width: 1%"></div>
 					</div>
 					<em class='pull-left' data-star='4'><?=$rate->star4; ?></em>
 				</div>
 				<div class="rate-bar clearfix">
 					<span class='star3 pull-left'>3星</span>
-					<div class="progress progress-info pull-left">
+					<div class="progress progress-striped pull-left">
 						<div class="bar" style="width: 1%"></div>
 					</div>
 					<em class='pull-left' data-star='3'><?=$rate->star3; ?></em>
 				</div>
 				<div class="rate-bar clearfix">
 					<span class='star2 pull-left'>2星</span>
-					<div class="progress progress-info pull-left">
+					<div class="progress progress-striped pull-left">
 						<div class="bar" style="width: 1%"></div>
 					</div>
 					<em class='pull-left' data-star='2'><?=$rate->star2; ?></em>
 				</div>
 				<div class="rate-bar clearfix">
 					<span class='star1 pull-left'>1星</span>
-					<div class="progress progress-info pull-left">
+					<div class="progress progress-striped pull-left">
 						<div class="bar" style="width: 1%"></div>
 					</div>
 					<em class='pull-left' data-star='1'><?=$rate->star1; ?></em>

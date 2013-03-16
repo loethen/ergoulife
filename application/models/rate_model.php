@@ -42,7 +42,7 @@ class Rate_model extends CI_Model {
 
 			$this->db->trans_start();
 			if($query->num_rows()>0){
-				$this->db->query("UPDATE brand_rate SET brandid=$bid,$star=$star+1");
+				$this->db->query("UPDATE brand_rate SET $star=$star+1 where brandid=$bid");
 			}else{
 				$this->db->query("INSERT INTO brand_rate (brandid,$star) VALUES ('$bid',$star+1)");
 			}

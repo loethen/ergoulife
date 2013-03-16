@@ -10,12 +10,6 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>">
-        <style>
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }
-        </style>
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap-responsive.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/main.css'); ?>">
 
@@ -35,31 +29,32 @@
             <em id="tipclose">x</em>
         </div>
     </div>
-    <div class="container-narrow">
-        <div class="navbar navbar-fixed-top" style="margin: -1px -1px 0;">
-          <div class="navbar-inner">
-            <div class="container">
-              <a class="brand" href="<?=site_url() ?>">Ergoulife</a>
-              <ul class="nav pull-right">
-                <?php if($this->session->userdata('log_in')): ?>
-                <li class='dropdown'>
-                    <a class='dropdown-toggle' href='#' data-toggle='dropdown' data-target='#'>
-                        <?= $this->session->userdata('username')?>
-                        <span class="caret"></span>
-                    </a>
-                    <ul class='dropdown-menu'>
-                        <li><a href="<?=site_url('usercenter'); ?>">用户中心</a></li>
-                        <li class="divider"></li>
-                        <li><a href="<?=site_url('sign/logout'); ?>">登出</a></li>
-                    </ul>
-                </li>
-                <?php else: ?>
-                <li><a href="<?=site_url('sign/signin_form') ?>">登录</a></li>
-                <li class="divider-vertical"></li>
-                <li><a href="<?=site_url('sign/signup_form') ?>">注册</a></li>
-                <?php endif; ?>
-              </ul>
+    <div id="wrap">
+        <div class="container-narrow">
+            <div class="navbar navbar-fixed-top" style="margin: -1px -1px 0;">
+              <div class="navbar-inner">
+                <div class="container">
+                  <a class="brand" href="<?=site_url() ?>">Ergoulife</a>
+                  <ul class="nav pull-right">
+                    <?php if($this->session->userdata('log_in')): ?>
+                    <li class='dropdown'>
+                        <a class='dropdown-toggle' href='#' data-toggle='dropdown' data-target='#'>
+                            <?= $this->session->userdata('username')?>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class='dropdown-menu'>
+                            <li><a href="<?=site_url('usercenter'); ?>">用户中心</a></li>
+                            <li class="divider"></li>
+                            <li><a href="<?=site_url('sign/logout'); ?>">登出</a></li>
+                        </ul>
+                    </li>
+                    <?php else: ?>
+                    <li><a href="<?=site_url('sign/signin_form') ?>">登录</a></li>
+                    <li class="divider-vertical"></li>
+                    <li><a href="<?=site_url('sign/signup_form') ?>">注册</a></li>
+                    <?php endif; ?>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="container-narrow container-margin">
+            <div class="container-narrow container-margin">

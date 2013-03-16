@@ -44,14 +44,31 @@ class Usercenter extends CI_Controller {
 				self::brand_page($error);
 			}else{
 				$data = $this->upload->data();
+				$config = array();
 				$config['source_image'] = $data['full_path'];
-				$config['maintain_ratio'] = TRUE;
+				$config['new_image'] = './uploads/';
 				$config['master_dim'] = 'width';
-				$config['width'] = 150;
-				$config['height'] = 120;
-
+				$config['width'] = 300;
+				$config['height'] = 300;
+				
 				$this->load->library('image_lib', $config);
 				$this->image_lib->initialize($config);
+				$this->image_lib->resize();
+				$this->image_lib->display_errors();
+
+				$this->image_lib->clear();
+				
+				$config = array();
+
+				$config['source_image'] = $data['full_path'];
+				$config['new_image'] = './uploads/thumb/';
+				$config['master_dim'] = 'width';
+				$config['width'] = 150;
+				$config['height'] = 150;
+				$config['create_thumb'] = false;
+				$this->image_lib->initialize($config);
+				$this->image_lib->resize();
+				$this->image_lib->display_errors();
 
 				if($this->image_lib->resize()){
 					$enname = $this->input->post('enbrand',true);
