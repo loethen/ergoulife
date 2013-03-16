@@ -17,29 +17,43 @@ class Rate_model extends CI_Model {
 		}
 	}
 	public function upd_rate($uid,$bid,$score){
-		$sql = "SELECT * from brand_rate where brandid='$bid'";
+		$sql = "SELECT * from user_brand where uid='$uid' AND bid='$bid'";
 		$query = $this->db->query($sql);
 		$star = 'star'.$score;
 		if($query->num_rows()>0){
 			$rate = self::have_rate($uid,$bid);
 			$s = 'star'.$rate;
+
 			$this->db->trans_start();
 			$this->db->query("UPDATE brand_rate set $s = $s-1 where brandid = '$bid'");
 			$this->db->query("UPDATE brand_rate set $star = $star+1 where brandid = '$bid'");
+			$this->db->query("UPDATE user_brand SET rate='$score' where uid='$uid' and bid='$bid'");
 			$this->db->trans_complete();
-			if ($this->db->trans_status() === FALSE)
+
+			if ($this->db->trans_status() === FALSE) 
 			{
 			    show_error('更新分数出错');
 			}else{
 				return TRUE;
 			}
 		}else{
-			$sql = "INSERT INTO brand_rate (brandid,$star) VALUES ($bid,$star+1)";
-			$query = $this->db->query($sql);
-			if($query){
-				return TRUE;
+			$this->db->trans_start();
+			$query = $this->db->query("SELECT * FROM brand_rate where brandid = '$bid'");
+
+			$this->db->trans_start();
+			if($query->num_rows()>0){
+				$this->db->query("UPDATE brand_rate SET brandid=$bid,$star=$star+1");
 			}else{
-				show_error('插入评分出错');
+				$this->db->query("INSERT INTO brand_rate (brandid,$star) VALUES ('$bid',$star+1)");
+			}
+			$this->db->query("INSERT INTO user_brand (uid,bid,rate) VALUES ('$uid','$bid','$score')");
+			$this->db->trans_complete();
+
+			if ($this->db->trans_status() === FALSE) 
+			{
+			    show_error('更新分数出错');
+			}else{
+				return TRUE;
 			}
 		}
 	}
@@ -55,16 +69,5 @@ class Rate_model extends CI_Model {
 			$rate = 0;
 		}
 		return $rate;
-	}
-
-	public function upd_user_brand($uid,$bid,$score){
-		$sql = "SELECT * FROM user_brand where uid='$uid' and bid='$bid'";
-		$query = $this->db->query($sql);
-		if($query->num_rows()>0){
-			$query = $this->db->query("UPDATE user_brand SET rate='$score' where uid='$uid' and bid='$bid'");
-		}else{
-			$query = $this->db->query("INSERT INTO user_brand SET uid='$uid',bid='$bid',rate='$score'");
-		}
-		return $query;
 	}
 }

@@ -229,6 +229,15 @@ h3.form-heading{
 	border: 1px solid red;
 	box-shadow: red 0px 0px 3px;
 }
+.comment-page{
+	padding: 15px;
+}
+.comment-page p{
+	color:#444;
+}
+blockquote small a{
+	margin-right: 8px;
+}
 /* =================================================================================
     ColorBox Core Style:
     The following CSS is consistent between example themes and should not be altered.

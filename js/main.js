@@ -95,7 +95,11 @@
 		}
 		return true;
 	})
-
+	$('.comment-page blockquote').hover(function(){
+		$(this).css('background-color','#dfeeff');
+	},function(){
+		$(this).css('background-color','#fff')
+	});
 
 
 	/*===================

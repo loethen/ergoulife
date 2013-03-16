@@ -63,10 +63,22 @@
 				</div>
 			</div>
 		</div>
-		<?php foreach($comment as $ct): ?>
-		<p><?=$ct->content?></p>
-
-		<?php endforeach; ?>
+		<?php if($comment): ?>
+		<div class='comment-page'>
+			<?php $i=0; foreach($comment as $ct): $i++; ?>
+			<div class="clearfix">
+				<blockquote class="<?php echo ($i%2==0)?'pull-right':''; ?>">
+				  <p><?=$ct->content?></p>
+				  <small><a href="#"><?=$ct->username?></a><cite title="发表时间"><?=$ct->created;?></cite></small>
+				</blockquote>
+			</div>
+			<?php endforeach; ?>
+		</div>
+		<?php else: ?>
+		<div class="rate">
+			暂无评论
+		</div>
+		<?php endif; ?>
 		<?php if($this->session->userdata('log_in')): ?>
 		<div class=" comment">
 			<?php echo form_open('subject/comment',array('id'=>'comment-form')); ?>
