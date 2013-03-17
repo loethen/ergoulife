@@ -11,13 +11,33 @@ class Subject extends CI_Controller {
 	public function index(){
 		$id = $this->uri->segment(2);
 		$uid = $this->session->userdata('uid');
+		$arr = array();
 
-		$brand = $this->subject_query->subject_query($id);
 		$rate = $this->rate_model->rate_query($id);
 		$init_rate = $this->rate_model->have_rate($uid,$id);
-
 		$comment = $this->comment_model->show_comment($id);
-		$this->load->view('include/header',array('brand'=>$brand,'rate'=>$rate,'init_rate'=>$init_rate,'comment'=>$comment));
+		$brand = $this->subject_query->subject_query($id);
+		if($this->subject_query->is_brand($id)){
+			$owner = $this->subject_query->owner_query($id);  //products in brand
+			$arr = array('brand'=>$brand,
+						 'owner'=>$owner,
+						 'rate'=>$rate,
+						 'init_rate'=>$init_rate,
+						 'comment'=>$comment
+						 );
+		}else{
+			$inowner = $this->subject_query->subject_query($brand->owner); //brandname for this product
+			$brandname = $inowner->cnname;
+			$brandid = $inowner->id;
+			$arr = array('brand'=>$brand,
+						 'brandname'=>array($brandname,$brandid),
+						 'rate'=>$rate,
+						 'init_rate'=>$init_rate,
+						 'comment'=>$comment
+						 );
+		}
+
+		$this->load->view('include/header',$arr);
 		$this->load->view('subject');
 		$this->load->view('include/footer');
 	}

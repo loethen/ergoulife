@@ -8,10 +8,19 @@
 			<h4>简介</h4>
 			<p><?=$brand->description; ?></p>
 		</div>
+	<?php if(isset($owner)): ?> 
 		<div class="bg-gray">
 			<h4>相关</h4>
-			<p><?=$brand->description; ?></p>
+		<?php foreach($owner as $row): ?>
+			<a data-toggle="popover" data-trigger="hover" data-placement="right" data-content="<?=$row->description;?>" title="<?=$row->cnname;?>" href="<?=site_url().'/subject/'.$row->id;?>"><img width='100px' src="<?=base_url().'uploads/thumb/'.$row->img?>"></a>
+		<?php endforeach; ?>
 		</div>
+	<?php endif;?>
+	<?php if(isset($brandname)): ?> 
+		<div class="bg-gray">
+			所属品牌:  <a href="<?=$brandname[1]?>"><?=$brandname[0]?></a>
+		</div>
+	<?php endif;?>
 	</div>
 	<div class='span6'>
 		<div class="rate clearfix">

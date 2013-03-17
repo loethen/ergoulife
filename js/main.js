@@ -2,6 +2,9 @@
 	/*============
 	首页hover
 	============*/
+	$('.brand').hover(function(){
+		$(this).find('i').show();
+	})
 	$(' #da-thumbs > li ').each( function() { 
 		$(this).hoverdir(); 
 	} );
@@ -82,6 +85,7 @@
 			}
 		})
 	})
+	$("a[data-toggle=popover]").popover();
 	/*===================
 		评论
 	===================*/

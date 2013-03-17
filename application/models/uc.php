@@ -15,15 +15,19 @@ class Uc extends CI_Model {
 			return true;
 		}
 	}
-	public function brand_insert($enname,$cnname,$img,$area,$desc){
+	public function brand_insert($enname=NULL,$cnname=NULL,$img=NULL,$area=NULL,$desc=NULL,$owner=NULL){
 		$enname = quotes_to_entities($enname);
-		if(self::exist($enname)==true){
-			$sql = "insert into brand (enname,cnname,img,field,description) VALUES ('$enname','$cnname','$img','$area','$desc')";
+		if(self::exist($enname)){
+			if(is_null($owner)){
+				$sql = "INSERT INTO brand SET enname='$enname',cnname='$cnname',img='$img',field='$area',description='$desc'";
+			}else{
+				$sql= "INSERT INTO brand (cnname,img,description,owner) VALUES ('$cnname','$img','$desc','$owner')";
+			}
 			$this->db->query($sql);
 			$this->db->close();
 			return true;
 		}else{
-			return false;
+			show_error('该品牌已经存在');
 		}
 	}
 	public function brand_query($start,$len){
@@ -47,5 +51,9 @@ class Uc extends CI_Model {
 			$this->db->close();
 			return true;
 		}
+	}
+	public function product_query(){
+		$query = $this->db->query("SELECT id,cnname FROM brand where owner IS NULL");
+		return $query->result();
 	}
 }

@@ -7,24 +7,21 @@ class Usercenter extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->model('uc');
+		$this->load->library('image_lib');
+		if(!$this->session->userdata('log_in')){
+			redirect('sign/signin');
+		}
 	}
 	public function index(){
-		if($this->session->userdata('log_in')==true){
-			$error = array('error'=>'');
-			self::brand_page($error);
-		}else{
-			redirect('sign/signin');
-		}	
+		self::brand_page();
 	}
-	public function brand_page($error){
-		$this->load->view('include/header',$error);
+	public function brand_page(){
+		$this->load->view('include/header');
 		$this->load->view('usercenter/top_menu');
 		$this->load->view('usercenter/index');
 		$this->load->view('include/footer');
 	}
 	public function add_brand(){
-		$this->load->library('image_lib');
-
 		$this->form_validation->set_rules('enbrand','品牌名称(英文)','required');
 		$this->form_validation->set_rules('cnbrand','品牌名称(中文)','required');
 		$this->form_validation->set_rules('area','产地','required');
@@ -84,7 +81,7 @@ class Usercenter extends CI_Controller {
 						$error = array('error'=>'该品牌已经存在');
 						self::brand_page($error);
 					}else{
-						echo "success";
+						redirect('usercenter');
 					}
 				}else{
 					 echo $this->image_lib->display_errors();
@@ -131,5 +128,78 @@ class Usercenter extends CI_Controller {
 	public function delete_brand($id){
 		$this->uc->brand_delete($id);
 		echo 'success';
+	}
+	public function product_page(){
+		$arr = $this->uc->product_query();
+		$this->load->view('include/header',array('res'=>$arr));
+		$this->load->view('usercenter/top_menu');
+		$this->load->view('usercenter/add_product');
+		$this->load->view('include/footer');
+	}
+	public function add_product(){
+		$this->form_validation->set_rules('pname','产品名称','required');
+		$this->form_validation->set_rules('owner','所属品牌','required');
+		$this->form_validation->set_rules('description','品牌描述','required');
+		if($this->form_validation->run()==false){
+			self::product_page();
+		}else{
+			$config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size'] = '200';
+			$config['max_width'] = '1024';
+			$config['max_height'] = '768';
+			$config['encrypt_name'] = TRUE;
+			$this->load->library('upload',$config);
+			if(!$this->upload->do_upload('imgfile')){
+				$error = array('error'=>$this->upload->display_errors());
+				self::product_page($error);
+			}else{
+				$data = $this->upload->data();
+				$config = array();
+				$config['source_image'] = $data['full_path'];
+				$config['new_image'] = './uploads/';
+				$config['master_dim'] = 'width';
+				$config['width'] = 300;
+				$config['height'] = 300;
+				
+				$this->load->library('image_lib', $config);
+				$this->image_lib->initialize($config);
+				$this->image_lib->resize();
+				$this->image_lib->display_errors();
+
+				$this->image_lib->clear();
+				
+				$config = array();
+
+				$config['source_image'] = $data['full_path'];
+				$config['new_image'] = './uploads/thumb/';
+				$config['master_dim'] = 'width';
+				$config['width'] = 150;
+				$config['height'] = 150;
+				$config['create_thumb'] = false;
+				$this->image_lib->initialize($config);
+				$this->image_lib->resize();
+				$this->image_lib->display_errors();
+
+				if($this->image_lib->resize()){
+					$pname = $this->input->post('pname',true);
+					$owner = $this->input->post('owner',true);
+					$img = $data['file_name'];
+					$desc = $this->input->post('description',true);
+
+					$this->load->helper('string');
+					$desc = quotes_to_entities($desc);
+					$result = $this->uc->brand_insert('',$pname,$img,'',$desc,$owner);
+					if(!$result){
+						$error = array('error'=>'该产品已经存在');
+						self::product_page($error);
+					}else{
+						redirect('usercenter/product_page');
+					}
+				}else{
+					 echo $this->image_lib->display_errors();
+				};
+			}
+		}
 	}
 }
