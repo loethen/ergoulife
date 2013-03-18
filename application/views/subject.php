@@ -28,35 +28,35 @@
 				<div class="rate-bar clearfix">
 					<span class='star5 pull-left'>5星</span>
 					<div class="progress progress-striped pull-left">
-						<div class="bar" style="width: 1%"></div>
+						<div class="bar" style="width: 0"></div>
 					</div>
 					<em class='pull-left' data-star='5'><?=$rate->star5; ?></em>
 				</div>
 				<div class="rate-bar clearfix">
 					<span class='star4 pull-left'>4星</span>
 					<div class="progress progress-striped pull-left">
-						<div class="bar" style="width: 1%"></div>
+						<div class="bar" style="width: 0"></div>
 					</div>
 					<em class='pull-left' data-star='4'><?=$rate->star4; ?></em>
 				</div>
 				<div class="rate-bar clearfix">
 					<span class='star3 pull-left'>3星</span>
 					<div class="progress progress-striped pull-left">
-						<div class="bar" style="width: 1%"></div>
+						<div class="bar" style="width: 0"></div>
 					</div>
 					<em class='pull-left' data-star='3'><?=$rate->star3; ?></em>
 				</div>
 				<div class="rate-bar clearfix">
 					<span class='star2 pull-left'>2星</span>
 					<div class="progress progress-striped pull-left">
-						<div class="bar" style="width: 1%"></div>
+						<div class="bar" style="width: 0"></div>
 					</div>
 					<em class='pull-left' data-star='2'><?=$rate->star2; ?></em>
 				</div>
 				<div class="rate-bar clearfix">
 					<span class='star1 pull-left'>1星</span>
 					<div class="progress progress-striped pull-left">
-						<div class="bar" style="width: 1%"></div>
+						<div class="bar" style="width: 0"></div>
 					</div>
 					<em class='pull-left' data-star='1'><?=$rate->star1; ?></em>
 				</div>	

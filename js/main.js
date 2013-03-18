@@ -78,7 +78,7 @@
 			var bar = $(this).find('.bar'),
 				num = $(this).find('em').text();
 			if(peopsum==0){
-				bar.width('1%');
+				bar.width('0');
 			}else{
 				var w = Math.round(num/peopsum*100);
 				bar.width(w+'%');

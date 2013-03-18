@@ -212,30 +212,35 @@ h3.form-heading{
 	padding: 15px;
 	margin-bottom: 20px;
 }
+.rate-bar{
+	height: 20px;
+	line-height: 20px;
+}
 .rate-bar .progress{
 	width: 100px;
-	margin-bottom: 5px;
+	margin:3px 0 5px 0;
 	height: 14px;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
 }
 .rate-bar em{
 	margin-left: 10px;
 	color: #999;
 }
 .rate-bar span{
-	width: 83px;
-	background-image: url(../img/bigstars.png);
-	background-repeat: no-repeat;
-	text-indent: -999px;
-	height: 14px;
-	margin-right: 5px;
+	height: 20px;
+	margin-right: 10px;
+	color: #f97855;
+	font-size: 12px;
 }
 .aver-rate{
 	line-height: 100px;
 	font-size: 32px;
 	font-weight: bolder;
 	color: #f97855;
-	padding: 0 0 0 10px;
-	border-left: 1px solid #c1dcfc;
+	padding: 3px 20px;
+	background: #f7f7f7;
 }
 #avg{
 	width: 80px;
