@@ -1,4 +1,4 @@
-<h1 id="brand-head" data-id="<?=$brand->id?>"><?=$brand->cnname?> <?=$brand->enname?></h1>
+<h1 id="brand-head" data-id="<?=$brand->id?>"><?=$brand->cnname?></h1>
 <div class='row-fluid'>
 	<div class='span6'>
 		<div class='brand-show'>
@@ -9,10 +9,15 @@
 			<p><?=$brand->description; ?></p>
 		</div>
 	<?php if(isset($owner)): ?> 
-		<div class="bg-gray">
+		<div class="bg-gray relate-product clearfix">
 			<h4>相关</h4>
-		<?php foreach($owner as $row): ?>
-			<a data-toggle="popover" data-trigger="hover" data-placement="right" data-content="<?=$row->description;?>" title="<?=$row->cnname;?>" href="<?=site_url().'/subject/'.$row->id;?>"><img width='100px' src="<?=base_url().'uploads/thumb/'.$row->img?>"></a>
+		<?php $i=0; foreach($owner as $row): $i++;?>
+			<a data-toggle="popover" data-trigger="hover" data-placement="right" data-content="<?=$row->description;?>" title="<?=$row->cnname;?>" href="<?=site_url().'/subject/'.$row->id;?>">
+				<img width='80px' class='img-polaroid' src="<?=base_url().'uploads/thumb/'.$row->img?>">
+			</a>
+		<?php if($i%3==0): ?>
+			<div class="clear"></div>
+		<?php endif; ?>
 		<?php endforeach; ?>
 		</div>
 	<?php endif;?>
@@ -63,13 +68,14 @@
 			</div>
 			<div class="aver-rate pull-right">
 				<span id="avg">5星</span>
+				<small>平均(最高五星)</small>
 			</div>
 		</div>
 		<div class="rate">
-			<p>如果你用过这个品牌的东西，请投出你神圣的一票，让其他的猫奴作为参考。</p>
+			<p>喜欢这个品牌（商品）吗？欢迎给它打分</p>
 			<div class="row-fluid">
-				<div class="span4">
-					<small>给该品牌打分:</small>
+				<div class="span2">
+					<small>评分:</small>
 				</div>
 				<div class="span5">
 					<div class='star' data-score="<?=$init_rate?>"></div>
@@ -95,7 +101,9 @@
 		<?php if($this->session->userdata('log_in')): ?>
 		<div class=" comment">
 			<?php echo form_open('subject/comment',array('id'=>'comment-form')); ?>
-				<h4>「有什么想说的？」</h4>
+				<h4>
+					<i class="icon-comment"></i>
+					「对猫奴们来说，你的评论是很重要的参考」</h4>
 				<div style='display:none'>
 					<input type="hidden" name='sid' value='<?=$this->uri->segment(2)?>'>
 				</div>

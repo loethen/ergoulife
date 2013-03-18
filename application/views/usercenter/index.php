@@ -13,15 +13,9 @@
 
 <?php echo form_open('usercenter/add_brand',array('enctype'=>'multipart/form-data','class'=>'form-horizontal'));?>
   <div class="control-group">
-    <label class="control-label" for="inputEnBrand">品牌名称(英文)</label>
+    <label class="control-label" for="inputBrand">品牌名称</label>
     <div class="controls">
-      <input type="text" name="enbrand" id="inputEnBrand" placeholder="English Name" value="<?= set_value('enbrand'); ?>">
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="inputBrand">品牌名称(中文)</label>
-    <div class="controls">
-      <input type="text" name="cnbrand" id="inputCnBrand" placeholder="chinese Name" value="<?= set_value('cnbrand'); ?>">
+      <input type="text" name="cnbrand" id="inputCnBrand" placeholder="Name" value="<?= set_value('cnbrand'); ?>">
     </div>
   </div>
   <div class="control-group">

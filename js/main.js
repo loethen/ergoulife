@@ -71,7 +71,7 @@
 			starsum += em.data('star')*em.text();
 			peopsum += parseInt(em.text());
 		})
-		peopsum==0 ? avg = "<small>抢沙发！</small>" : avg = twoDecimal(starsum/peopsum)+'星';
+		peopsum==0 ? avg = "<em>(>^ω^<)喵</em>" : avg = twoDecimal(starsum/peopsum)+'星';
 		$('#avg').html(avg);
 
 		$('.rate-bar').each(function(){
