@@ -15,7 +15,7 @@
   <div class="control-group">
     <label class="control-label" for="inputEnBrand">分类名称</label>
     <div class="controls">
-      <input type="text" name="category" id="inputCategory" placeholder="Category name" value="<?= set_value('category'); ?>">
+      <input type="text" name="category" id="inputCategory" placeholder="Category name">
     </div>
   </div>
   <div class="control-group">

@@ -18,5 +18,8 @@
   <li class="<?=($current==='category_page')?'active':''?>">
     <a href="<?=site_url('usercenter/category_page'); ?>">添加分类</a>
   </li>
+  <li class="<?=($current==='category_manage')?'active':''?>">
+    <a href="<?=site_url('usercenter/category_manage'); ?>">分类管理</a>
+  </li>
 </ul>
 <?php endif; ?>

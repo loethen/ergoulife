@@ -16,13 +16,14 @@ class Usercenter extends CI_Controller {
 		self::brand_page();
 	}
 	public function brand_page(){
-		$this->load->view('include/header');
+		$res = $this->uc->cate_query();
+		$this->load->view('include/header',array('res'=>$res));
 		$this->load->view('usercenter/top_menu');
 		$this->load->view('usercenter/index');
 		$this->load->view('include/footer');
 	}
 	public function add_brand(){
-		$this->form_validation->set_rules('cnbrand','品牌名称(中文)','required');
+		$this->form_validation->set_rules('cnbrand','品牌名称','required|is_unique[brand.cnname]');
 		$this->form_validation->set_rules('area','产地','required');
 		$this->form_validation->set_rules('description','品牌描述','required');
 		if($this->form_validation->run()==false){
@@ -68,19 +69,15 @@ class Usercenter extends CI_Controller {
 
 				if($this->image_lib->resize()){
 					$cnname = $this->input->post('cnbrand',true);
+					$catid = $this->input->post('category',true);
 					$img = $data['file_name'];
 					$area = $this->input->post('area',true);
 					$desc = $this->input->post('description',true);
 
 					$this->load->helper('string');
 					$desc = quotes_to_entities($desc);
-					$result = $this->uc->brand_insert($cnname,$img,$area,$desc);
-					if(!$result){
-						$error = array('error'=>'该品牌已经存在');
-						self::brand_page($error);
-					}else{
-						redirect('usercenter');
-					}
+					$result = $this->uc->brand_insert($cnname,$img,$area,$desc,'',$catid);
+					redirect('usercenter');
 				}else{
 					 echo $this->image_lib->display_errors();
 				};
@@ -187,7 +184,7 @@ class Usercenter extends CI_Controller {
 
 					$this->load->helper('string');
 					$desc = quotes_to_entities($desc);
-					$result = $this->uc->brand_insert('',$pname,$img,'',$desc,$owner);
+					$result = $this->uc->brand_insert($pname,$img,'',$desc,$owner);
 					if(!$result){
 						$error = array('error'=>'该产品已经存在');
 						self::product_page($error);
@@ -205,5 +202,60 @@ class Usercenter extends CI_Controller {
 		$this->load->view('usercenter/top_menu');
 		$this->load->view('usercenter/add_category');
 		$this->load->view('include/footer');		
+	}
+	public function add_category(){
+		$this->form_validation->set_rules('category','分类名称','required|is_unique[category.cate_name]');
+		if($this->form_validation->run()==FALSE){
+			show_error('分类已经存在');
+			exit;
+		}
+		$cate_name = $this->input->post('category');
+		$query = $this->uc->cate_insert($cate_name);
+		if($query){
+			self::category_page();
+		}else{
+			show_error('插入分类出错');
+			die();
+		}
+	}
+	public function category_manage($page=0){
+		$url = site_url();
+		$per_page = 10;
+		$page_nums = $this->uc->cate_num();
+		$page_output = null;
+		if($page_nums>1){
+			$this->load->library('pagination');
+			$config['base_url'] = $url.'/usercenter/category_manage/';
+			$config['total_rows'] = $page_nums;
+			$config['per_page'] = 10; 
+			$config['full_tag_open'] = "<ul>";
+			$config['full_tag_close'] = "</ul>";
+			$config['prev_tag_open'] = '<li>';
+			$config['prev_tag_close'] = '</li>';
+			$config['next_tag_open'] = '<li>';
+			$config['next_tag_close'] = '</li>';
+			$config['cur_tag_open'] = '<li class="disabled"><a>';
+			$config['cur_tag_close'] = '</a></li>';
+			$config['num_tag_open'] = '<li>';
+			$config['num_tag_close'] = '</li>';
+			$per_page = $config['per_page'];
+			$this->pagination->initialize($config);
+			$page_output = $this->pagination->create_links();
+		}
+
+		$res = $this->uc->cate_query($page,$per_page);
+		if($this->session->userdata('admin')==true){
+			$this->load->view('include/header',array('res'=>$res,'page_output'=>$page_output));
+			$this->load->view('usercenter/top_menu');
+			$this->load->view('usercenter/category_manage');
+			$this->load->view('include/footer');
+		}else{
+			redirect('sign/signin');
+		}
+		
+	}
+	public function delete_cate($id){
+		$this->uc->cate_delete($id);
+		echo 'success';
 	}
 }

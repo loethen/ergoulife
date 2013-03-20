@@ -6,29 +6,16 @@ class Uc extends CI_Model {
 		$this->load->database();
 		$this->load->helper('string');
 	}
-	public function exist($cnname){
-		$sql = "select * from brand where cnname = '$cnname'";
-		$query = $this->db->query($sql);
-		if($query->num_rows()>0){
-			return false;
+	public function brand_insert($cnname,$img,$area,$desc,$owner,$catid){
+		$cnname = quotes_to_entities($cnname);
+		if(empty($owner)){
+			$sql = "INSERT INTO brand (cnname,img,field,description,catid) VALUES ('$cnname','$img','$area','$desc','$catid')";
 		}else{
-			return true;
+			$sql= "INSERT INTO brand (cnname,img,description,owner) VALUES ('$cnname','$img','$desc','$owner')";
 		}
-	}
-	public function brand_insert($cnname=NULL,$img=NULL,$area=NULL,$desc=NULL,$owner=NULL){
-		$enname = quotes_to_entities($enname);
-		if(self::exist($cnname)){
-			if(is_null($owner)){
-				$sql = "INSERT INTO brand SET cnname='$cnname',img='$img',field='$area',description='$desc'";
-			}else{
-				$sql= "INSERT INTO brand (cnname,img,description,owner) VALUES ('$cnname','$img','$desc','$owner')";
-			}
-			$this->db->query($sql);
-			$this->db->close();
-			return true;
-		}else{
-			show_error('该品牌已经存在');
-		}
+		$this->db->query($sql);
+		$this->db->close();
+		return true;
 	}
 	public function brand_query($start,$len){
 		$sql = "SELECT * from brand WHERE owner is null order by id desc limit $start,$len";
@@ -54,6 +41,37 @@ class Uc extends CI_Model {
 	}
 	public function product_query(){
 		$query = $this->db->query("SELECT id,cnname FROM brand where owner IS NULL");
+		$this->db->close();
 		return $query->result();
+	}
+	public function cate_insert($cate_name){
+		$query = $this->db->query("INSERT INTO category SET cate_name='$cate_name'");
+		return $query;
+	}
+	public function cate_num(){
+		$sql = "select * from category";
+		$query = $this->db->query($sql);
+		return $query->num_rows();
+	}
+	public function cate_query($start=null,$len=null){
+		if(is_null($start) & is_null($len)){
+			$sql = "SELECT * from category";
+		}else{
+			$sql = "SELECT * from category order by id asc limit $start,$len";
+		}
+		$query = $this->db->query($sql);
+		$result = $query->result();
+		$this->db->close();
+		return $result;
+	}
+	public function cate_delete($id){
+		$sql = "select * from category where id=$id";
+		$query = $this->db->query($sql);
+		if($query->num_rows>0){
+			$sql = "delete from category where id=$id";
+			$this->db->query($sql);
+			$this->db->close();
+			return true;
+		}
 	}
 }

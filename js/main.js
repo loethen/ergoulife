@@ -8,25 +8,7 @@
 	$(' #da-thumbs > li ').each( function() { 
 		$(this).hoverdir(); 
 	} );
-	/*============
-	后台品牌管理
-	============*/
-	$('.manage-table table').on('click','a',function(event){
-		var that = event.target;
-		that=$(that);
-		var id = that.data('id');
-		var url = site_url + '/usercenter/delete_brand/'+id;
-		if(confirm('确定删除吗？')){
-			$.get(url,function(data){
-				if(data=='success'){
-					that.parent().parent().remove();
-				}else{
-					autoClose('删除出错，请重试');
-				}
-				return false;
-			})
-		}
-	})
+
 	/*===================
 	品牌详情页 评分计算
 	===================*/
@@ -104,6 +86,45 @@
 	},function(){
 		$(this).css('background-color','#fff')
 	});
+	/*============
+	后台品牌管理
+	============*/
+	$('.manage-table table').on('click','a',function(event){
+		var that = event.target;
+		that=$(that);
+		var id = that.data('id');
+		var url = site_url + '/usercenter/delete_brand/'+id;
+		if(confirm('确定删除吗？')){
+			$.get(url,function(data){
+				if(data=='success'){
+					that.parent().parent().remove();
+				}else{
+					autoClose('删除出错，请重试');
+				}
+				return false;
+			})
+		}
+	})
+	/*============
+	后台分类管理
+	============*/
+	$('.cate-table table').on('click','a',function(event){
+		var that = event.target;
+		that=$(that);
+		var id = that.data('id');
+		var url = site_url + '/usercenter/delete_cate/'+id;
+		if(confirm('确定删除吗？')){
+			$.get(url,function(data){
+				if(data=='success'){
+					that.parent().parent().remove();
+				}else{
+					autoClose('删除出错，请重试');
+				} 
+				return false;
+			})
+		}
+	})
+
 
 
 	/*===================

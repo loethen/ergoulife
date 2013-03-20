@@ -25,6 +25,16 @@
     </div>
   </div>
   <div class="control-group">
+    <label class="control-label" for="inputArea">分类</label>
+    <div class="controls">
+      <select name="category" id="inputCate">
+      <?php foreach($res as $row): ?>
+        <option value="<?=$row->id?>"><?=$row->cate_name?></option>
+      <?php endforeach;?>
+      </select>
+    </div>
+  </div>
+  <div class="control-group">
     <label class="control-label" for="inputArea">产地</label>
     <div class="controls">
       <input type="text" name="area" id="inputArea" placeholder="area" value="<?= set_value('area'); ?>">
