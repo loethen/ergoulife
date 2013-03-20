@@ -2,7 +2,7 @@
 /* ==========================================================================
    Loethen's custom styles
    ========================================================================== */
-
+.clear{clear:both;}
 /* ==============
 	header
    ================*/
@@ -206,6 +206,17 @@ h3.form-heading{
 	padding: 15px;
 	color: #666;
 }
+.relate-product a{
+	display: block;
+	text-indent: center;
+	float: left;
+	margin-bottom: 5px;
+	width: 103px;
+}
+.relate-product a img{
+	margin: 0 auto;
+	display: block;
+}
 .rate{
 	background: #dfeeff;
 	color: #444;
@@ -235,24 +246,47 @@ h3.form-heading{
 	font-size: 12px;
 }
 .aver-rate{
+<<<<<<< HEAD
 	height: 100px;
 	width: 120px;
 	color: #f97855;
 	padding: 3px 0;
 	background: #f7f7f7;
+=======
+	color: #f97855;
+	margin-top: 4px;
+	background: #E8F6FF;
+	height: 100px;
+	width: 130px;
+	text-align: center;
+>>>>>>> cb01d8c8f944a574042b20d7cd7637a2ed9eb2cc
 }
 .avg-text{
 	font-size: 12px;
 	color: #666;
 }
 #avg{
+<<<<<<< HEAD
+=======
+	line-height: 70px;
+	display: block;
+	font-size: 32px;
+>>>>>>> cb01d8c8f944a574042b20d7cd7637a2ed9eb2cc
 	text-align: center;
 }
-#avg small{
-	font-size: 14px;
+#avg em{
+	font-size: 18px;
+}
+.rate .aver-rate small{
+	color: #999;
+	display: block;
 }
 .rate small{
 	color: #f97855;
+}
+.star{
+	margin-left: -20px;
+    margin-top: -2px;
 }
 .star1{
 	background-position: 0 -56px;
@@ -277,11 +311,10 @@ h3.form-heading{
 	cursor: pointer;
 }
 #comment-content{
-	width: 311px;
-	margin-left: 15px;
+	width: 323px;
 }
 .comment h4{
-	color: #08c;
+	font-size: 14px;
 	font-weight: 100;
 }
 .error-border{

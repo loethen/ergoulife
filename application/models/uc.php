@@ -6,8 +6,8 @@ class Uc extends CI_Model {
 		$this->load->database();
 		$this->load->helper('string');
 	}
-	public function exist($enname){
-		$sql = "select * from brand where enname = '$enname'";
+	public function exist($cnname){
+		$sql = "select * from brand where cnname = '$cnname'";
 		$query = $this->db->query($sql);
 		if($query->num_rows()>0){
 			return false;
@@ -15,11 +15,11 @@ class Uc extends CI_Model {
 			return true;
 		}
 	}
-	public function brand_insert($enname=NULL,$cnname=NULL,$img=NULL,$area=NULL,$desc=NULL,$owner=NULL){
+	public function brand_insert($cnname=NULL,$img=NULL,$area=NULL,$desc=NULL,$owner=NULL){
 		$enname = quotes_to_entities($enname);
-		if(self::exist($enname)){
+		if(self::exist($cnname)){
 			if(is_null($owner)){
-				$sql = "INSERT INTO brand SET enname='$enname',cnname='$cnname',img='$img',field='$area',description='$desc'";
+				$sql = "INSERT INTO brand SET cnname='$cnname',img='$img',field='$area',description='$desc'";
 			}else{
 				$sql= "INSERT INTO brand (cnname,img,description,owner) VALUES ('$cnname','$img','$desc','$owner')";
 			}
@@ -31,7 +31,7 @@ class Uc extends CI_Model {
 		}
 	}
 	public function brand_query($start,$len){
-		$sql = "select * from brand order by id desc limit $start,$len";
+		$sql = "SELECT * from brand WHERE owner is null order by id desc limit $start,$len";
 		$query = $this->db->query($sql);
 		$result = $query->result();
 		$this->db->close();

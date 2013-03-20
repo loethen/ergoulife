@@ -22,7 +22,6 @@ class Usercenter extends CI_Controller {
 		$this->load->view('include/footer');
 	}
 	public function add_brand(){
-		$this->form_validation->set_rules('enbrand','品牌名称(英文)','required');
 		$this->form_validation->set_rules('cnbrand','品牌名称(中文)','required');
 		$this->form_validation->set_rules('area','产地','required');
 		$this->form_validation->set_rules('description','品牌描述','required');
@@ -68,7 +67,6 @@ class Usercenter extends CI_Controller {
 				$this->image_lib->display_errors();
 
 				if($this->image_lib->resize()){
-					$enname = $this->input->post('enbrand',true);
 					$cnname = $this->input->post('cnbrand',true);
 					$img = $data['file_name'];
 					$area = $this->input->post('area',true);
@@ -76,7 +74,7 @@ class Usercenter extends CI_Controller {
 
 					$this->load->helper('string');
 					$desc = quotes_to_entities($desc);
-					$result = $this->uc->brand_insert($enname,$cnname,$img,$area,$desc);
+					$result = $this->uc->brand_insert($cnname,$img,$area,$desc);
 					if(!$result){
 						$error = array('error'=>'该品牌已经存在');
 						self::brand_page($error);
@@ -201,5 +199,11 @@ class Usercenter extends CI_Controller {
 				};
 			}
 		}
+	}
+	public function category_page(){
+		$this->load->view('include/header');
+		$this->load->view('usercenter/top_menu');
+		$this->load->view('usercenter/add_category');
+		$this->load->view('include/footer');		
 	}
 }
