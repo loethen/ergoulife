@@ -37,6 +37,7 @@ class Usercenter extends CI_Controller {
 			$config['encrypt_name'] = TRUE;
 			$this->load->library('upload',$config);
 			if(!$this->upload->do_upload('imgfile')){
+				show_error('上传图片出错');
 				$error = array('error'=>$this->upload->display_errors());
 				self::brand_page($error);
 			}else{
@@ -184,7 +185,7 @@ class Usercenter extends CI_Controller {
 
 					$this->load->helper('string');
 					$desc = quotes_to_entities($desc);
-					$result = $this->uc->brand_insert($pname,$img,'',$desc,$owner);
+					$result = $this->uc->brand_insert($pname,$img,'',$desc,$owner,'');
 					if(!$result){
 						$error = array('error'=>'该产品已经存在');
 						self::product_page($error);

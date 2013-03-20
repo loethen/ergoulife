@@ -13,9 +13,14 @@ class Uc extends CI_Model {
 		}else{
 			$sql= "INSERT INTO brand (cnname,img,description,owner) VALUES ('$cnname','$img','$desc','$owner')";
 		}
-		$this->db->query($sql);
+		$query = $this->db->query($sql);
+		if($query){
+			return true;
+		}else{
+			show_error('插入数据库出错');
+		}
 		$this->db->close();
-		return true;
+		
 	}
 	public function brand_query($start,$len){
 		$sql = "SELECT * from brand WHERE owner is null order by id desc limit $start,$len";
