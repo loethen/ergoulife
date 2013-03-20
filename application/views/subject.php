@@ -62,7 +62,9 @@
 				</div>	
 			</div>
 			<div class="aver-rate pull-right">
-				<span id="avg">5星</span>
+				<div class="avg-text">平均得分</div>
+				<div id="avg">5星</div>
+				<div class="avg-rate"></div>
 			</div>
 		</div>
 		<div class="rate">
