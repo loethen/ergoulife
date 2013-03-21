@@ -125,11 +125,36 @@
 		}
 	})
 
-
+	$('#inputImage').on('change',function(){
+		var url = site_url+'/image/upload';
+		var file = document.getElementById('inputImage').files[0];
+		uploadFile(url,file);
+	})
 
 	/*===================
 	工具函数
 	===================*/
+	function uploadFile(url,file){
+		var formData = new FormData();
+		if(formData){
+			formData.append('imgfile',file);
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST',url,true);
+			xhr.onload = function(e){
+				if(this.status == 200){
+					var resp = $.parseJSON(this.response);
+					console.log(resp)
+					var res = base_url+'uploads/'+resp.file_name;
+					$('#respos').html("<img id='imageCrop' src='"+res+"'>")
+				}else{
+					tip('上传失败');
+				} 
+			}
+			xhr.send(formData);
+		}else{
+			tip('浏览器不支持,请使用chrome或者火狐');
+		}
+	}
 	function quickSign(){
 		$.colorbox({
 			href:site_url+'/sign/quick_sign',

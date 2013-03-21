@@ -25,6 +25,12 @@
     </div>
   </div>
   <div class="control-group">
+    <label class="control-label" for="inputImage"></label>
+    <div class="controls">
+      <div id="respos"></div>
+    </div>
+  </div>
+  <div class="control-group">
     <label class="control-label" for="inputArea">所属品牌</label>
     <div class="controls">
       <select name="owner" id="owner">
