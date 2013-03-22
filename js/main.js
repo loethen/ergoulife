@@ -124,17 +124,47 @@
 			})
 		}
 	})
-
+	/*===图片上传，剪裁===*/
 	$('#inputImage').on('change',function(){
 		var url = site_url+'/image/upload';
 		var file = document.getElementById('inputImage').files[0];
-		uploadFile(url,file);
+		tip('正在上传图片图片...');
+		uploadFile(url,file,function(data){
+			var res = base_url+'uploads/'+data.file_name;
+			$('#respos').html("<img id='imageCrop' src='"+res+"'>");
+			$('#respos').append("<a href='javascript:;' style='margin-top:10px;' class='btn btn-primary' id='cropit'>确认剪裁</a>")
+			$('#imageCrop').Jcrop({
+				setSelect: [10,10,150,150],
+				aspectRatio:1,
+				onChange:showCoords,
+        		onSelect:showCoords
+			});
+			var x,y,w,h;
+			$('#cropit').on('click',function(){
+				var curl = site_url+'/image/crop';
+				var path = './uploads/'+data.file_name;
+				$.post(curl,{src:path,x:x,y:y,w:w,h:h},function(response){
+					if(response=='success'){
+						var src = base_url+'uploads/thumb/'+data.file_name;
+						$('#respos').html("<img id='imageThumb' src='"+src+"'>");
+					}
+				})
+				return false;
+			})
+			function showCoords(c){
+				x = c.x;
+				y = c.y;
+				w = c.w;
+				h = c.h;
+			}
+			tipClose();
+		});
 	})
-
+	
 	/*===================
 	工具函数
 	===================*/
-	function uploadFile(url,file){
+	function uploadFile(url,file,callback){
 		var formData = new FormData();
 		if(formData){
 			formData.append('imgfile',file);
@@ -143,12 +173,10 @@
 			xhr.onload = function(e){
 				if(this.status == 200){
 					var resp = $.parseJSON(this.response);
-					console.log(resp)
-					var res = base_url+'uploads/'+resp.file_name;
-					$('#respos').html("<img id='imageCrop' src='"+res+"'>")
+					callback(resp);
 				}else{
 					tip('上传失败');
-				} 
+				}
 			}
 			xhr.send(formData);
 		}else{
@@ -169,8 +197,11 @@
 		$('#toptip').find('span').html(msg)
 					.end().show();
 		$('#tipclose').click(function(){
-			$('#toptip').hide();
+			tipClose();
 		})
+	}
+	function tipClose(){
+		$('#toptip').hide();
 	}
 	function tipAutoHide(msg,cb){
 		tip(msg);

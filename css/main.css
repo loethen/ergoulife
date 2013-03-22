@@ -126,6 +126,7 @@ h3.form-heading{
 	box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 	position: relative;
 	border: 1px solid #d4d4d4;
+	margin-bottom: 30px;
 }
 .da-thumbs-bg h1{
 	position: absolute;
@@ -246,32 +247,21 @@ h3.form-heading{
 	font-size: 12px;
 }
 .aver-rate{
-<<<<<<< HEAD
-	height: 100px;
-	width: 120px;
-	color: #f97855;
-	padding: 3px 0;
-	background: #f7f7f7;
-=======
 	color: #f97855;
 	margin-top: 4px;
 	background: #E8F6FF;
 	height: 100px;
 	width: 130px;
 	text-align: center;
->>>>>>> cb01d8c8f944a574042b20d7cd7637a2ed9eb2cc
 }
 .avg-text{
 	font-size: 12px;
 	color: #666;
 }
 #avg{
-<<<<<<< HEAD
-=======
 	line-height: 70px;
 	display: block;
 	font-size: 32px;
->>>>>>> cb01d8c8f944a574042b20d7cd7637a2ed9eb2cc
 	text-align: center;
 }
 #avg em{
@@ -303,6 +293,11 @@ h3.form-heading{
 .star5{
 	background-position: 0 0;
 }
+/* =================================================================================
+    图片剪裁.
+====================================================================================*/
+
+
 
 /* =================================================================================
     评论模块.
@@ -395,3 +390,14 @@ blockquote small a{
 .cboxIE #cboxMiddleRight {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
 }
+
+/* Fixes issue here http://code.google.com/p/jcrop/issues/detail?id=1 */
+.jcrop-holder{text-align:left;}
+.jcrop-holder img{max-width: none;}
+.jcrop-vline, .jcrop-hline{font-size:0;	position:absolute; background:white url('../img/Jcrop.gif') top left repeat;}
+.jcrop-vline{height:100%; width:1px !important;}
+.jcrop-hline{width:100%; height:1px !important;}
+.jcrop-handle{font-size:1px; width:7px !important; height:7px !important;	border:1px #eee solid; background-color:#333; *width:9px; *height:9px;}
+.jcrop-tracker{width:100%; height:100%;}
+.custom .jcrop-vline,.custom .jcrop-hline{background:yellow;}
+.custom .jcrop-handle{border-color:black; background-color:#C7BB00; -moz-border-radius:3px; -webkit-border-radius:3px;}

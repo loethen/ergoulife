@@ -12,6 +12,7 @@
 
     <script src="<?php echo base_url('js/vendor/bootstrap.min.js')?>"></script>
     <script src="<?php echo base_url('js/plugins.js')?>"></script>
+    <script src="<?php echo base_url('js/jquery.Jcrop.js')?>"></script>
     <script src="<?php echo base_url('js/main.js')?>"></script>
     </body>
 </html>

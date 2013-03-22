@@ -3,7 +3,7 @@
 <div class="da-thumbs-bg">
     <h1><?=$cate->cate_name?></h1>
     <ul id="da-thumbs" class="da-thumbs clearfix">
-        <?php $cate_id = ($cate->id); 
+        <?php $cate_id = $cate->id; 
         foreach($brand as $row): 
             foreach ($row as $roow) :
                 if($cate_id == $roow->catid):
