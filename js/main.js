@@ -125,6 +125,12 @@
 		}
 	})
 	/*===图片上传，剪裁===*/
+	$('.admin_form').submit(function(){
+		if($('#path').val()==''){
+			tip('你还没上传图片');
+			return false;
+		}
+	})
 	$('#inputImage').on('change',function(){
 		var url = site_url+'/image/upload';
 		var file = document.getElementById('inputImage').files[0];
@@ -143,10 +149,12 @@
 			$('#cropit').on('click',function(){
 				var curl = site_url+'/image/crop';
 				var path = './uploads/'+data.file_name;
-				$.post(curl,{src:path,x:x,y:y,w:w,h:h},function(response){
+				var filename = data.file_name;
+				$.post(curl,{src:path,fname:filename,x:x,y:y,w:w,h:h},function(response){
 					if(response=='success'){
 						var src = base_url+'uploads/thumb/'+data.file_name;
 						$('#respos').html("<img id='imageThumb' src='"+src+"'>");
+						$('#path').val(filename);
 					}
 				})
 				return false;

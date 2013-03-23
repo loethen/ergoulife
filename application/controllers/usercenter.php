@@ -136,65 +136,22 @@ class Usercenter extends CI_Controller {
 		$this->form_validation->set_rules('pname','产品名称','required');
 		$this->form_validation->set_rules('owner','所属品牌','required');
 		$this->form_validation->set_rules('description','品牌描述','required');
+		$this->form_validation->set_rules('path','图片','required');
 		if($this->form_validation->run()==false){
 			self::product_page();
 		}else{
-			$config['upload_path'] = './uploads/';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size'] = '200';
-			$config['max_width'] = '1024';
-			$config['max_height'] = '768';
-			$config['encrypt_name'] = TRUE;
-			$this->load->library('upload',$config);
-			if(!$this->upload->do_upload('imgfile')){
-				$error = array('error'=>$this->upload->display_errors());
+			$pname = $this->input->post('pname',true);
+			$owner = $this->input->post('owner',true);
+			$img = $this->input->post('path',true);
+			$desc = $this->input->post('description',true);
+			$this->load->helper('string');
+			$desc = quotes_to_entities($desc);
+			$result = $this->uc->brand_insert($pname,$img,'',$desc,$owner,'');
+			if(!$result){
+				$error = array('error'=>'该产品已经存在');
 				self::product_page($error);
 			}else{
-				$data = $this->upload->data();
-				$config = array();
-				$config['source_image'] = $data['full_path'];
-				$config['new_image'] = './uploads/';
-				$config['master_dim'] = 'width';
-				$config['width'] = 300;
-				$config['height'] = 300;
-				
-				$this->load->library('image_lib', $config);
-				$this->image_lib->initialize($config);
-				$this->image_lib->resize();
-				$this->image_lib->display_errors();
-
-				$this->image_lib->clear();
-				
-				$config = array();
-
-				$config['source_image'] = $data['full_path'];
-				$config['new_image'] = './uploads/thumb/';
-				$config['master_dim'] = 'width';
-				$config['width'] = 150;
-				$config['height'] = 150;
-				$config['create_thumb'] = false;
-				$this->image_lib->initialize($config);
-				$this->image_lib->resize();
-				$this->image_lib->display_errors();
-
-				if($this->image_lib->resize()){
-					$pname = $this->input->post('pname',true);
-					$owner = $this->input->post('owner',true);
-					$img = $data['file_name'];
-					$desc = $this->input->post('description',true);
-
-					$this->load->helper('string');
-					$desc = quotes_to_entities($desc);
-					$result = $this->uc->brand_insert($pname,$img,'',$desc,$owner,'');
-					if(!$result){
-						$error = array('error'=>'该产品已经存在');
-						self::product_page($error);
-					}else{
-						redirect('usercenter/product_page');
-					}
-				}else{
-					 echo $this->image_lib->display_errors();
-				};
+				redirect('usercenter/product_page');
 			}
 		}
 	}

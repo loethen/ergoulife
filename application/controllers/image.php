@@ -52,10 +52,24 @@ class Image extends CI_Controller {
 		$this->load->library('image_lib', $config);
 		$this->image_lib->initialize($config);
 		if($this->image_lib->crop()){
-			if($config['width']>140){
-				
+			if($config['width']>150){
+				$this->image_lib->clear();
+				$config = array();
+				$config['source_image'] = './uploads/thumb/'.$_POST['fname'];
+				$config['new_image'] = './uploads/thumb';
+				$config['maintain_ratio'] = FALSE;
+				$config['width'] = 150;
+				$config['height'] = 150;
+				$this->image_lib->initialize($config);
+				if($this->image_lib->resize()){
+					echo 'success';
+				}else{
+					return $this->image_lib->display_errors();
+				}
+			}else{
+				echo 'success';
 			}
-			echo 'success';
+			
 		}else{
 			show_error($this->image_lib->display_errors());
 		}
