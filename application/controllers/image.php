@@ -48,9 +48,13 @@ class Image extends CI_Controller {
 		$config['height'] = $_POST['h'];
 		$config['x_axis'] = $_POST['x'];
 		$config['y_axis'] = $_POST['y'];
+		$config['maintain_ratio'] = FALSE;
 		$this->load->library('image_lib', $config);
 		$this->image_lib->initialize($config);
 		if($this->image_lib->crop()){
+			if($config['width']>140){
+				
+			}
 			echo 'success';
 		}else{
 			show_error($this->image_lib->display_errors());
