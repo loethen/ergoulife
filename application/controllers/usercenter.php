@@ -29,60 +29,16 @@ class Usercenter extends CI_Controller {
 		if($this->form_validation->run()==false){
 			self::index();
 		}else{
-			$config['upload_path'] = './uploads/';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size'] = '200';
-			$config['max_width'] = '1024';
-			$config['max_height'] = '768';
-			$config['encrypt_name'] = TRUE;
-			$this->load->library('upload',$config);
-			if(!$this->upload->do_upload('imgfile')){
-				show_error('上传图片出错');
-				$error = array('error'=>$this->upload->display_errors());
-				self::brand_page($error);
-			}else{
-				$data = $this->upload->data();
-				$config = array();
-				$config['source_image'] = $data['full_path'];
-				$config['new_image'] = './uploads/';
-				$config['master_dim'] = 'width';
-				$config['width'] = 300;
-				$config['height'] = 300;
-				
-				$this->load->library('image_lib', $config);
-				$this->image_lib->initialize($config);
-				$this->image_lib->resize();
-				$this->image_lib->display_errors();
+			$cnname = $this->input->post('cnbrand',true);
+			$catid = $this->input->post('category',true);
+			$img = $this->input->post('path',true);
+			$area = $this->input->post('area',true);
+			$desc = $this->input->post('description',true);
 
-				$this->image_lib->clear();
-				
-				$config = array();
-
-				$config['source_image'] = $data['full_path'];
-				$config['new_image'] = './uploads/thumb/';
-				$config['master_dim'] = 'width';
-				$config['width'] = 150;
-				$config['height'] = 150;
-				$config['create_thumb'] = false;
-				$this->image_lib->initialize($config);
-				$this->image_lib->resize();
-				$this->image_lib->display_errors();
-
-				if($this->image_lib->resize()){
-					$cnname = $this->input->post('cnbrand',true);
-					$catid = $this->input->post('category',true);
-					$img = $data['file_name'];
-					$area = $this->input->post('area',true);
-					$desc = $this->input->post('description',true);
-
-					$this->load->helper('string');
-					$desc = quotes_to_entities($desc);
-					$result = $this->uc->brand_insert($cnname,$img,$area,$desc,'',$catid);
-					redirect('usercenter');
-				}else{
-					 echo $this->image_lib->display_errors();
-				};
-			}
+			$this->load->helper('string');
+			$desc = quotes_to_entities($desc);
+			$result = $this->uc->brand_insert($cnname,$img,$area,$desc,'',$catid);
+			redirect('usercenter');
 		}
 	}
 	public function manage_brand($page=0){

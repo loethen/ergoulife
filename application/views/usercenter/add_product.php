@@ -12,7 +12,7 @@
 <?php endif; ?>
 
 <?php echo form_open('usercenter/add_product',array('enctype'=>'multipart/form-data','class'=>'form-horizontal admin_form'));?>
-      <input type="hidden" name='path' id="path">
+  <input type="hidden" name='path' id="path">
   <div class="control-group">
     <label class="control-label" for="inputEnBrand">产品名称</label>
     <div class="controls">

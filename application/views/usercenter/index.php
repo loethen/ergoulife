@@ -11,7 +11,8 @@
 </div>
 <?php endif; ?>
 
-<?php echo form_open('usercenter/add_brand',array('enctype'=>'multipart/form-data','class'=>'form-horizontal'));?>
+<?php echo form_open('usercenter/add_brand',array('enctype'=>'multipart/form-data','class'=>'form-horizontal admin_form'));?>
+  <input type="hidden" name='path' id="path">
   <div class="control-group">
     <label class="control-label" for="inputBrand">品牌名称</label>
     <div class="controls">
@@ -22,6 +23,12 @@
     <label class="control-label" for="inputImage">上传图片</label>
     <div class="controls">
       <input type="file" name='imgfile' id="inputImage" placeholder="Upload">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputImage"></label>
+    <div class="controls">
+      <div id="respos"></div>
     </div>
   </div>
   <div class="control-group">

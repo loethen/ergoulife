@@ -15,7 +15,7 @@
 		<?php foreach($res as $row): $url = base_url(); ?>
 		<tr>
 			<td><?=$row->cnname?></td>
-			<td><img src="<?=$url.'uploads/'.$row->img?>"></td>
+			<td><img src="<?=$url.'uploads/thumb/'.$row->img?>"></td>
 			<td><?=$row->field?></td>
 			<td><?=$row->description?></td>
 			<td><?=$row->catid?></td>
