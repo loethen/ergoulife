@@ -59,7 +59,8 @@ class Image extends CI_Controller {
 				$config['new_image'] = './uploads/thumb';
 				$config['maintain_ratio'] = FALSE;
 				$config['width'] = 150;
-				$config['height'] = 150;
+				$config['height'] = 120;
+				$config['quality'] = 100;
 				$this->image_lib->initialize($config);
 				if($this->image_lib->resize()){
 					echo 'success';
@@ -67,7 +68,20 @@ class Image extends CI_Controller {
 					return $this->image_lib->display_errors();
 				}
 			}else{
-				echo 'success';
+				$this->image_lib->clear();
+				$config = array();
+				$config['source_image'] = './uploads/thumb/'.$_POST['fname'];
+				$config['new_image'] = './uploads/thumb';
+				$config['maintain_ratio'] = FALSE;
+				$config['width'] = 150;
+				$config['height'] = 120;
+				$config['quality'] = 100;
+				$this->image_lib->initialize($config);
+				if($this->image_lib->resize()){
+					echo 'success';
+				}else{
+					return $this->image_lib->display_errors();
+				}
 			}
 			
 		}else{

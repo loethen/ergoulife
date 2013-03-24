@@ -140,8 +140,8 @@
 			$('#respos').html("<img id='imageCrop' src='"+res+"'>");
 			$('#respos').append("<a href='javascript:;' style='margin-top:10px;' class='btn btn-primary' id='cropit'>确认剪裁</a>")
 			$('#imageCrop').Jcrop({
-				setSelect: [10,10,150,150],
-				aspectRatio:1,
+				setSelect: [0,0,150,120],
+				aspectRatio:1.25,
 				onChange:showCoords,
         		onSelect:showCoords
 			});
