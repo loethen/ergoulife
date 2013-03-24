@@ -294,11 +294,32 @@ h3.form-heading{
 	background-position: 0 0;
 }
 /* =================================================================================
-    图片剪裁.
+    账户设置.
 ====================================================================================*/
-
-
-
+.border-gray{
+	background-color: #fff;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #9DA0A4;
+    font-size: 14px;
+    padding: 3px 15px;
+    position: relative;
+    min-height: 200px;
+}
+.border-gray h1{
+	font-size: 14px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background: #F5F5F5;
+	border-right: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+	padding:3px 10px;
+	margin: 0;
+}
+.border-gray .account{
+	margin-top: 50px;
+}
 /* =================================================================================
     评论模块.
 ====================================================================================*/

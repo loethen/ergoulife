@@ -79,4 +79,9 @@ class Uc extends CI_Model {
 			return true;
 		}
 	}
+	public function user_info($uid){
+		$sql = "SELECT * from user where uid = '$uid'";
+		$query = $this->db->query($sql);
+		return $query->row();
+	}
 }

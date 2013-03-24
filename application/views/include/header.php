@@ -43,7 +43,7 @@
                             <span class="caret"></span>
                         </a>
                         <ul class='dropdown-menu'>
-                            <li><a href="<?=site_url('usercenter'); ?>">用户中心</a></li>
+                            <li><a href="<?=site_url('usercenter'); ?>">设置</a></li>
                             <li class="divider"></li>
                             <li><a href="<?=site_url('sign/logout'); ?>">登出</a></li>
                         </ul>

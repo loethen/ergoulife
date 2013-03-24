@@ -13,7 +13,18 @@ class Usercenter extends CI_Controller {
 		}
 	}
 	public function index(){
-		self::brand_page();
+		if($this->session->userdata('admin')==true){
+			self::brand_page();
+		}else{
+			self::user_set();
+		}
+	}
+	public function user_set(){
+		$uid = $this->session->userdata('uid');
+		$res = $this->uc->user_info($uid);
+		$this->load->view('include/header',array('res'=>$res));
+		$this->load->view('usercenter/normal_user');
+		$this->load->view('include/footer');
 	}
 	public function brand_page(){
 		$res = $this->uc->cate_query();
