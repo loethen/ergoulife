@@ -14,7 +14,18 @@
 	var mstatu=1;
 	$('#ergou').sprite({fps: 6, no_of_frames: 3})
 				.mouseover(function(){
-					var ran = random(0,600);
+					var w = $('.container').width()-100;
+					var ran = random(0,w);
+					var l = parseInt($(this).css('left'));
+					console.log(ran,l)
+					if(ran>l){
+						$(this).spState(1);
+					}else{
+						$(this).spState(2);
+					}
+					$(this).animate({
+						left:ran
+					},2000)
 				})
 
 	/*===================
@@ -206,7 +217,7 @@
 		})
 	}
 	function random(min,max){
-		return Math.floor(Math.random()*(max-min+1)+min)
+		return Math.floor(Math.random()*(max-min+1)+min);
 	}
 	function twoDecimal(str){
 		var f_x = parseFloat(str);
