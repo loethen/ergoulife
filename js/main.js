@@ -8,6 +8,14 @@
 	$(' #da-thumbs > li ').each( function() { 
 		$(this).hoverdir(); 
 	} );
+	/*============
+	底部老鼠
+	============*/
+	var mstatu=1;
+	$('#ergou').sprite({fps: 6, no_of_frames: 3})
+				.mouseover(function(){
+					var ran = random(0,600);
+				})
 
 	/*===================
 	品牌详情页 评分计算
@@ -196,6 +204,9 @@
 			href:site_url+'/sign/quick_sign',
 			data:{cur_url:window.location.href}
 		})
+	}
+	function random(min,max){
+		return Math.floor(Math.random()*(max-min+1)+min)
 	}
 	function twoDecimal(str){
 		var f_x = parseFloat(str);
