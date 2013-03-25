@@ -22,8 +22,13 @@
 		  </div>
 		</form>	
 		<hr>
-		<?php echo form_open('usercenter/add_product',array('enctype'=>'multipart/form-data','class'=>'form-horizontal'));?>
+		<?php echo form_open('usercenter/setpw',array('enctype'=>'multipart/form-data','class'=>'form-horizontal'));?>
 		  <legend>修改密码</legend>
+		  <?php if(validation_errors()): ?>
+			<div class="alert alert-error">
+				  <?=validation_errors(); ?>
+			</div>
+		  <?php endif; ?>
 		  <div class="control-group">
 		    <label class="control-label" for="oldPassword">旧密码</label>
 		    <div class="controls">

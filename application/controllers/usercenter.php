@@ -26,6 +26,24 @@ class Usercenter extends CI_Controller {
 		$this->load->view('usercenter/normal_user');
 		$this->load->view('include/footer');
 	}
+	public function setpw(){
+		$this->form_validation->set_rules('oldpw','oldpassword','required');
+		$this->form_validation->set_rules('newpw','newpassword','required|matches[repw]');
+		$this->form_validation->set_rules('repw','repassword','required');
+		if($this->form_validation->run()==false){
+			self::user_set();
+		}else{
+			$oldpw = $this->input->post('oldpw');
+			$uid = $this->session->userdata('uid');
+			$query = $this->db->query("select * from user where uid='$uid'");
+			if($query->num_rows()>0){
+				$row = $query->row();
+				if(md5($oldpw.'imergou007')===$row->password){
+					
+				}
+			}
+		}
+	}
 	public function brand_page(){
 		$res = $this->uc->cate_query();
 		$this->load->view('include/header',array('res'=>$res));
