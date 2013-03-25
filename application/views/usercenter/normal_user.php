@@ -1,18 +1,18 @@
 <div class="border-gray">
 	<h1>账户设置</h1>
 	<div class="account">
-		<?php echo form_open('usercenter/add_product',array('enctype'=>'multipart/form-data','class'=>'form-horizontal'));?>
+		<?php echo form_open('usercenter/set_avatar',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-avatar'));?>
 		  <legend>修改资料</legend>
 		  <div class="control-group">
 		    <label class="control-label" for="inputEmail">邮件地址</label>
 		    <div class="controls">
-		      <input type="text" name="email" id="inputEmail" value="<?=$res->email?>">
+		      <span class="input uneditable-input"><?=$res->email?></span>
 		    </div>
 		  </div>
 		  <div class="control-group">
-		    <label class="control-label" for="inputImage">上传头像</label>
+		    <label class="control-label" for="profile">个人签名</label>
 		    <div class="controls">
-		      <input type="file" name='imgfile' id="inputImage" placeholder="Upload">
+		      <input type="text" name='avadar' id="profile" placeholder="say something">
 		    </div>
 		  </div>
 		  <div class="control-group">
@@ -29,6 +29,14 @@
 				  <?=validation_errors(); ?>
 			</div>
 		  <?php endif; ?>
+		  <?php 
+		  if(isset($success)){
+		  	echo '密码更新成功';
+		  }
+		  if(isset($error)){
+		  	echo $error;
+		  }
+		  ?>
 		  <div class="control-group">
 		    <label class="control-label" for="oldPassword">旧密码</label>
 		    <div class="controls">

@@ -10,6 +10,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>">
+        <!-- <link rel="stylesheet" href="<?php echo base_url('css/flat-ui.css'); ?>"> -->
+
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap-responsive.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/main.css'); ?>">
 

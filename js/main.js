@@ -11,7 +11,6 @@
 	/*============
 	底部老鼠
 	============*/
-	var mstatu=1;
 	$('#ergou').sprite({fps: 6, no_of_frames: 3})
 				.mouseover(function(){
 					var w = $('.container').width()-100;
@@ -143,7 +142,11 @@
 			})
 		}
 	})
-	/*===图片上传，剪裁===*/
+    /*===用户头像图片上传，剪裁===*/
+    $('#inputAvadar').change(function(){
+    	$('.form-avatar').submit();
+    })
+	/*===品牌，产品图片上传，剪裁===*/
 	$('.admin_form').submit(function(){
 		if($('#path').val()==''){
 			tip('你还没上传图片');

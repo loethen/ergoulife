@@ -68,7 +68,7 @@
 			</div>
 			<div class="aver-rate pull-right">
 				<span id="avg">5星</span>
-				<small>平均(最高五星)</small>
+				<small>平均得分(最高五星)</small>
 			</div>
 		</div>
 		<div class="rate">
