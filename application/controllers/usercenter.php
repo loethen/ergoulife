@@ -43,14 +43,14 @@ class Usercenter extends CI_Controller {
 					$pw = md5($this->input->post('newpw').'imergou007');
 					$query = $this->uc->update_pw($pw,$uid);
 					if($query){
-						$this->load->view('include/header',array('res'=>$res,'success'=>'密码更新成功'));
+						$this->load->view('include/header',array('res'=>$row,'success'=>'密码更新成功'));
 						$this->load->view('usercenter/normal_user');
 						$this->load->view('include/footer');
 					}else{
 						show_error('服务器错误，请重试');
 					}
 				}else{
-					$this->load->view('include/header',array('res'=>$query->row(),'error'=>'旧密码不正确'));
+					$this->load->view('include/header',array('res'=>$row,'error'=>'旧密码不正确'));
 					$this->load->view('usercenter/normal_user');
 					$this->load->view('include/footer');
 				}
@@ -68,7 +68,8 @@ class Usercenter extends CI_Controller {
 		  		$uid = $this->session->userdata('uid');
 		  		$query = $this->uc->update_profile($profile,$uid);
 		  		if($query){
-					$this->load->view('include/header',array('res'=>$res,'success'=>'个人签名更新成功'));
+		  			$query = $this->uc->user_info($uid);
+					$this->load->view('include/header',array('res'=>$query->row(),'success'=>'个人签名更新成功'));
 					$this->load->view('usercenter/normal_user');
 					$this->load->view('include/footer');
 				}else{

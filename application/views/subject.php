@@ -1,3 +1,8 @@
+<ul class="breadcrumb">
+  <li><a href="#">Home</a> <span class="divider">/</span></li>
+  <li><a href="#">Library</a> <span class="divider">/</span></li>
+  <li class="active">Data</li>
+</ul>
 <h1 id="brand-head" data-id="<?=$brand->id?>"><?=$brand->cnname?></h1>
 <div class='row-fluid'>
 	<div class='span6'>

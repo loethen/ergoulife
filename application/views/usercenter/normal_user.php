@@ -1,5 +1,6 @@
 <div class="border-gray">
 	<h1>账户设置</h1>
+	<div class='msg-tip'>
 	<?php if(validation_errors()): ?>
 		<div class="alert">
 			<?=validation_errors(); ?>
@@ -13,6 +14,7 @@
 	  	echo $error;
 	  }
 	?>
+	</div>
 	<div class="account">
 		<?php echo form_open('usercenter/set_profile',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-avatar'));?>
 		  <legend>修改资料</legend>
@@ -25,7 +27,7 @@
 		  <div class="control-group">
 		    <label class="control-label" for="profile">个人签名</label>
 		    <div class="controls">
-		      <input type="text" name='avadar' id="profile" placeholder="say something" value="<?=$res->profile?>">
+		      <input type="text" name='profile' id="profile" placeholder="nothing yet..." value="<?=$res->profile?>">
 		    </div>
 		  </div>
 		  <div class="control-group">
