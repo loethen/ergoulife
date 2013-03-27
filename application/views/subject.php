@@ -1,7 +1,12 @@
 <ul class="breadcrumb">
-  <li><a href="#">Home</a> <span class="divider">/</span></li>
-  <li><a href="#">Library</a> <span class="divider">/</span></li>
-  <li class="active">Data</li>
+  <li><a href="<?=site_url() ?>"><i class="icon-home"></i></a> <span class="divider">/</span></li>
+  <li><a href="<?=site_url('allbrand') ?>">所有品牌</a> <span class="divider">/</span></li>
+  <?php if(isset($brandname)): ?>
+  	 <li class="active">
+		<a href="<?=$brandname[1]?>"><?=$brandname[0]?></a><span class="divider">/</span>
+	 </li>
+  <?php endif;?>
+  <li class="active"><?=$brand->cnname?></li>
 </ul>
 <h1 id="brand-head" data-id="<?=$brand->id?>"><?=$brand->cnname?></h1>
 <div class='row-fluid'>
