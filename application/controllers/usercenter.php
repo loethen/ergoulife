@@ -1,7 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Usercenter extends CI_Controller {
-
 	function __construct(){
 		parent::__construct();
 		$this->load->helper('form');
@@ -12,6 +11,7 @@ class Usercenter extends CI_Controller {
 			redirect('sign/signin');
 		}
 	}
+
 	public function index(){
 		if($this->session->userdata('admin')==true){
 			self::brand_page();
@@ -21,8 +21,8 @@ class Usercenter extends CI_Controller {
 	}
 	public function user_set(){
 		$uid = $this->session->userdata('uid');
-		$res = $this->uc->user_info($uid);
-		$this->load->view('include/header',array('res'=>$res));
+		$query = $this->uc->user_info($uid);
+		$this->load->view('include/header',array('res'=>$query->row()));
 		$this->load->view('usercenter/normal_user');
 		$this->load->view('include/footer');
 	}
@@ -35,24 +35,22 @@ class Usercenter extends CI_Controller {
 		}else{
 			$oldpw = $this->input->post('oldpw');
 			$uid = $this->session->userdata('uid');
-			$res = $this->uc->user_info($uid);
-			$this->load->database();
-			$query = $this->db->query("select * from user where uid='$uid'");
+			$query = $this->uc->user_info($uid);
 			if($query->num_rows()>0){
 				$row = $query->row();
 				print(md5($oldpw.'imergou007'));
 				if(md5($oldpw.'imergou007')===$row->password){
 					$pw = md5($this->input->post('newpw').'imergou007');
-					$query = $this->db->query("UPDATE user set password='$pw' where uid='$uid'");
+					$query = $this->uc->update_pw($pw,$uid);
 					if($query){
-						$this->load->view('include/header',array('res'=>$res,'success'=>'success'));
+						$this->load->view('include/header',array('res'=>$res,'success'=>'密码更新成功'));
 						$this->load->view('usercenter/normal_user');
 						$this->load->view('include/footer');
 					}else{
 						show_error('服务器错误，请重试');
 					}
 				}else{
-					$this->load->view('include/header',array('res'=>$res,'error'=>'旧密码不正确'));
+					$this->load->view('include/header',array('res'=>$query->row(),'error'=>'旧密码不正确'));
 					$this->load->view('usercenter/normal_user');
 					$this->load->view('include/footer');
 				}
@@ -61,24 +59,21 @@ class Usercenter extends CI_Controller {
 			}
 		}
 	}
-	public function set_avatar(){
-		  $config['upload_path'] = './uploads/avatar/';
-		  $config['allowed_types'] = 'gif|jpg|png';
-		  $config['max_size'] = '100';
-		  $config['max_width']  = '1024';
-		  $config['max_height']  = '768';
-		  
-		  $this->load->library('upload', $config);
-		 
-		  if (!$this->upload->do_upload())
-		  {
-		   $error = array('error' => $this->upload->display_errors());
-		   $this->load->view('upload_form', $error);
-		  } 
-		  else
-		  {
-		   $data = array('upload_data' => $this->upload->data());
-		   $this->load->view('upload_success', $data);
+	public function set_profile(){
+		  $this->form_validation->set_rules('profile','个人签名','required');
+		  if($this->form_validation->run()==false){
+		  		self::user_set();
+		  }else{
+		  		$profile = $this->input->post('profile',true);
+		  		$uid = $this->session->userdata('uid');
+		  		$query = $this->uc->update_profile($profile,$uid);
+		  		if($query){
+					$this->load->view('include/header',array('res'=>$res,'success'=>'个人签名更新成功'));
+					$this->load->view('usercenter/normal_user');
+					$this->load->view('include/footer');
+				}else{
+					show_error('服务器错误，请重试');
+				}
 		  }
 	}
 	public function brand_page(){

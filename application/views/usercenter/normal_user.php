@@ -1,7 +1,20 @@
 <div class="border-gray">
 	<h1>账户设置</h1>
+	<?php if(validation_errors()): ?>
+		<div class="alert">
+			<?=validation_errors(); ?>
+		</div>
+	  <?php endif; ?>
+	  <?php 
+	  if(isset($success)){
+	  	echo $success;
+	  }
+	  if(isset($error)){
+	  	echo $error;
+	  }
+	?>
 	<div class="account">
-		<?php echo form_open('usercenter/set_avatar',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-avatar'));?>
+		<?php echo form_open('usercenter/set_profile',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-avatar'));?>
 		  <legend>修改资料</legend>
 		  <div class="control-group">
 		    <label class="control-label" for="inputEmail">邮件地址</label>
@@ -12,7 +25,7 @@
 		  <div class="control-group">
 		    <label class="control-label" for="profile">个人签名</label>
 		    <div class="controls">
-		      <input type="text" name='avadar' id="profile" placeholder="say something">
+		      <input type="text" name='avadar' id="profile" placeholder="say something" value="<?=$res->profile?>">
 		    </div>
 		  </div>
 		  <div class="control-group">
@@ -24,19 +37,7 @@
 		<hr>
 		<?php echo form_open('usercenter/setpw',array('enctype'=>'multipart/form-data','class'=>'form-horizontal'));?>
 		  <legend>修改密码</legend>
-		  <?php if(validation_errors()): ?>
-			<div class="alert alert-error">
-				  <?=validation_errors(); ?>
-			</div>
-		  <?php endif; ?>
-		  <?php 
-		  if(isset($success)){
-		  	echo '密码更新成功';
-		  }
-		  if(isset($error)){
-		  	echo $error;
-		  }
-		  ?>
+		  
 		  <div class="control-group">
 		    <label class="control-label" for="oldPassword">旧密码</label>
 		    <div class="controls">
