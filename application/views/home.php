@@ -1,7 +1,7 @@
 <!-- Main hero unit for a primary marketing message or call to action -->
 <?php foreach ($cates as $cate): ?>
 <div class="da-thumbs-bg">
-    <h1><?=$cate->cate_name?></h1>
+    <h1><a href="<?=site_url('allbrand')?>"><?=$cate->cate_name?></a></h1>
     <ul id="da-thumbs" class="da-thumbs clearfix">
         <?php $cate_id = $cate->id; 
         foreach($brand as $row): 

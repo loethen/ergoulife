@@ -143,17 +143,23 @@ h3.form-heading{
 	position: absolute;
 	width: 16px;
 	left: -36px;
-	font-size: 16px;
 	background: #999;
 	padding: 10px;
-	color: #fff;
-	border-radius: 8px 0 0 8px;
+	border-radius: 3px 0 0 3px;
 	top: 10px;
-	font-weight: 100;
+	line-height: 26px;
 	cursor: pointer;
 }
+.da-thumbs-bg h1 a{
+	font-size: 16px;
+	color: #fff;
+	font-weight: 100;
+}
+.da-thumbs-bg h1 a:hover{
+	text-decoration: none;
+}
 .da-thumbs-bg h1:hover{
-	opacity: .8;
+	opacity: .9;
 }
 .da-thumbs {
 	list-style: none;
