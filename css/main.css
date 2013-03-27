@@ -13,6 +13,10 @@
 	max-width: 700px;
 	margin: 0 auto;
 }
+.navbar a.logo{
+	background: url(../img/logo.png) no-repeat 0 0;
+	padding-left: 40px;
+}
 .fix{
 	position: fixed;
 
@@ -127,7 +131,9 @@ h3.form-heading{
 .btn-margin10{
 	margin:10px 0; 
 }
-
+blockquote p{
+	font-size: 12px;
+}
 /* ==============
 	首页缩略图
    ================*/
@@ -310,6 +316,7 @@ h3.form-heading{
 .star5{
 	background-position: 0 0;
 }
+
 /* =================================================================================
     账户设置.
 ====================================================================================*/
@@ -388,6 +395,9 @@ blockquote small a{
 }
 .border-red{
 	border:1px solid #c3c3c3;
+}
+.accordion-inner a{
+	margin-right: 15px;
 }
 /* =================================================================================
     ColorBox Core Style:
