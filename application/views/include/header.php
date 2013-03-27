@@ -10,6 +10,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/todc-bootstrap.css'); ?>">
+
         <!-- <link rel="stylesheet" href="<?php echo base_url('css/flat-ui.css'); ?>"> -->
 
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap-responsive.min.css'); ?>">
@@ -33,10 +35,13 @@
     </div>
     <div id="wrap">
         <div class="container-narrow">
-            <div class="navbar navbar-fixed-top" style="margin: -1px -1px 0;">
+            <div class="navbar navbar-fixed-top navbar-googlenav" style="margin: -1px -1px 0;">
               <div class="navbar-inner">
                 <div class="container">
                   <a class="brand" href="<?=site_url() ?>">Ergoulife</a>
+                  <ul class="nav">
+                    <li class="<?=$this->uri->segment(1)=='allbrand'?'active':''?>"><a href="<?=site_url('allbrand') ?>">所有品牌</a></li>
+                  </ul>
                   <ul class="nav pull-right">
                     <?php if($this->session->userdata('log_in')): ?>
                     <li class='dropdown'>

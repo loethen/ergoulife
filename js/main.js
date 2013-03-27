@@ -28,6 +28,12 @@
 				})
 
 	/*===================
+	所有品牌页
+	===================*/			
+	$('#allbrand .accordion-group').hover(function(){
+		$(this).toggleClass('border-red');
+	})
+	/*===================
 	品牌详情页 评分计算
 	===================*/
 	$('.star').raty({
