@@ -8,13 +8,11 @@
             <div id="ergou"></div>
           </div>
     </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="<?php echo base_url('js/vendor/jquery-1.8.3.min.js'); ?>"><\/script>')</script>
 
-    <script src="<?php echo base_url('js/vendor/bootstrap.min.js')?>"></script>
-    <script src="<?php echo base_url('js/plugins.js')?>"></script>
-    <script src="<?php echo base_url('js/jquery.Jcrop.js')?>"></script>
-    <script src="<?php echo base_url('js/jquery.spritely.js')?>"></script>
-    <script src="<?php echo base_url('js/main.js')?>"></script>
+    <script src="<?=base_url('js/seajs/sea.js')?>"
+            data-config="<?=base_url('js/config')?>"
+            data-main="<?=base_url('js/main')?>"
+    >
+    </script>
     </body>
 </html>
