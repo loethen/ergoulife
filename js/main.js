@@ -1,6 +1,55 @@
-define(function(require,exports,module){
-	var $ = require('jquery')
+define(function(require){
+	var router = require('./router.js')
+	var r = new router();
 
+	require('bootstrap')
+	require('./mouse')
+	
+	var util = require('./util')
+
+	r.route(/(ergoulife|index\.php)$/g,function(){
+		require.async('hoverdir',function(){
+			$(' #da-thumbs > li ').each( function() { 
+				$(this).hoverdir(); 
+			});
+		})
+	})
+
+	r.route(/subject/g,function(){
+		//vote 
+		require('./rate')
+		require('./rate-caculate')
+
+		$('.star img').tooltip();
+	
+		$("a[data-toggle=popover]").popover();
+		/*===================
+			评论
+		===================*/
+		$('#iwantcomment').click(function(){
+			require.async('./util',function(util){
+				util.quickSign();
+			})
+			
+		})
+		$('#comment-form').submit(function(){
+			if(($('#comment-content').val() == '')){
+				$('#comment-content').addClass('error-border');
+				return false;
+			}
+			return true;
+		})
+		$('.comment-page blockquote').hover(function(){
+			$(this).css('background-color','#dfeeff');
+		},function(){
+			$(this).css('background-color','#fff')
+		});
+	})
+
+	r.route(/usercenter/g,function(){
+		
+	})
+	
 })
 // (function($){
 // 	/*============

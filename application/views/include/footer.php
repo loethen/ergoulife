@@ -10,9 +10,7 @@
     </div>
 
     <script src="<?=base_url('js/seajs/sea.js')?>"
-            data-config="<?=base_url('js/config')?>"
-            data-main="<?=base_url('js/main')?>"
-    >
-    </script>
+            data-config="config.js"
+            data-main="main.js"></script>
     </body>
 </html>
