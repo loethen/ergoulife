@@ -23,6 +23,7 @@ define(function(require){
 		$('.star img').tooltip();
 	
 		$("a[data-toggle=popover]").popover();
+
 		/*===================
 			评论
 		===================*/
@@ -46,6 +47,12 @@ define(function(require){
 		});
 	})
 
+	r.route(/allbrand/g,function(){
+		$('#allbrand .accordion-group').hover(function(){
+			$(this).toggleClass('border-red');
+		})
+	})
+	
 	r.route(/admin/g,function(){
 		require('./imagecrop')
 		require('./admin-option')

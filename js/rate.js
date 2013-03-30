@@ -12,12 +12,12 @@ define(function(require){
 						var arr = href.split('/');
 						var id = arr.pop();
 						$.post(site_url+'/rate/update_rate',{id:id,score:score},function(data){
-							console.log(data)
 							if(!!data){
-								tipAutoHide('投票成功!',function(){
-									location.href = location.href;
-								});
-								
+								require.async('./util',function(util){
+									util.tipAutoHide('投票成功!',function(){
+										location.href = location.href;
+									})
+								})
 							}else{
 								alert(data)
 							}

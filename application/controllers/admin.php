@@ -17,8 +17,8 @@ class Admin extends CI_Controller {
 	public function brand_page(){
 		$res = $this->uc->cate_query();
 		$this->load->view('include/header',array('res'=>$res));
-		$this->load->view('usercenter/top_menu');
-		$this->load->view('usercenter/index');
+		$this->load->view('admin/top_menu');
+		$this->load->view('admin/index');
 		$this->load->view('include/footer');
 	}
 	public function add_brand(){
@@ -37,7 +37,7 @@ class Admin extends CI_Controller {
 			$this->load->helper('string');
 			$desc = quotes_to_entities($desc);
 			$result = $this->uc->brand_insert($cnname,$img,$area,$desc,'',$catid);
-			redirect('usercenter');
+			redirect('admin');
 		}
 	}
 	public function manage_brand($page=0){
@@ -47,7 +47,7 @@ class Admin extends CI_Controller {
 		$page_output = null;
 		if($page_nums>1){
 			$this->load->library('pagination');
-			$config['base_url'] = $url.'/usercenter/manage_brand/';
+			$config['base_url'] = $url.'/admin/manage_brand/';
 			$config['total_rows'] = $page_nums;
 			$config['per_page'] = 10; 
 			$config['full_tag_open'] = "<ul>";
@@ -68,8 +68,8 @@ class Admin extends CI_Controller {
 		$res = $this->uc->brand_query($page,$per_page);
 		if($this->session->userdata('admin')==true){
 			$this->load->view('include/header',array('res'=>$res,'page_output'=>$page_output));
-			$this->load->view('usercenter/top_menu');
-			$this->load->view('usercenter/manage_brand');
+			$this->load->view('admin/top_menu');
+			$this->load->view('admin/manage_brand');
 			$this->load->view('include/footer');
 		}else{
 			redirect('sign/signin');
@@ -83,8 +83,8 @@ class Admin extends CI_Controller {
 	public function product_page(){
 		$arr = $this->uc->product_query();
 		$this->load->view('include/header',array('res'=>$arr));
-		$this->load->view('usercenter/top_menu');
-		$this->load->view('usercenter/add_product');
+		$this->load->view('admin/top_menu');
+		$this->load->view('admin/add_product');
 		$this->load->view('include/footer');
 	}
 	public function add_product(){
@@ -106,14 +106,14 @@ class Admin extends CI_Controller {
 				$error = array('error'=>'该产品已经存在');
 				self::product_page($error);
 			}else{
-				redirect('usercenter/product_page');
+				redirect('admin/product_page');
 			}
 		}
 	}
 	public function category_page(){
 		$this->load->view('include/header');
-		$this->load->view('usercenter/top_menu');
-		$this->load->view('usercenter/add_category');
+		$this->load->view('admin/top_menu');
+		$this->load->view('admin/add_category');
 		$this->load->view('include/footer');		
 	}
 	public function add_category(){
@@ -138,7 +138,7 @@ class Admin extends CI_Controller {
 		$page_output = null;
 		if($page_nums>1){
 			$this->load->library('pagination');
-			$config['base_url'] = $url.'/usercenter/category_manage/';
+			$config['base_url'] = $url.'/admin/category_manage/';
 			$config['total_rows'] = $page_nums;
 			$config['per_page'] = 10; 
 			$config['full_tag_open'] = "<ul>";
@@ -159,8 +159,8 @@ class Admin extends CI_Controller {
 		$res = $this->uc->cate_query($page,$per_page);
 		if($this->session->userdata('admin')==true){
 			$this->load->view('include/header',array('res'=>$res,'page_output'=>$page_output));
-			$this->load->view('usercenter/top_menu');
-			$this->load->view('usercenter/category_manage');
+			$this->load->view('admin/top_menu');
+			$this->load->view('admin/category_manage');
 			$this->load->view('include/footer');
 		}else{
 			redirect('sign/signin');

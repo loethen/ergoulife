@@ -40,14 +40,14 @@ define(function(require,exports,module){
 			$('#toptip').find('span').html(msg)
 						.end().show();
 			$('#tipclose').click(function(){
-				tipClose();
+				this.tipClose();
 			})
 		},
 		tipClose: function (){
 			$('#toptip').hide();
 		},
 		tipAutoHide: function (msg,cb){
-			tip(msg);
+			this.tip(msg);
 			setTimeout(function(){
 				$('#toptip').fadeOut(function(){
 					cb && cb();
