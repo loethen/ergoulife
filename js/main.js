@@ -7,7 +7,7 @@ define(function(require){
 	
 	var util = require('./util')
 
-	r.route(/(ergoulife|index\.php)$/g,function(){
+	r.route(/(ergoulife|index\.php|home)$/g,function(){
 		require.async('hoverdir',function(){
 			$(' #da-thumbs > li ').each( function() { 
 				$(this).hoverdir(); 
@@ -46,8 +46,9 @@ define(function(require){
 		});
 	})
 
-	r.route(/usercenter/g,function(){
-		
+	r.route(/admin/g,function(){
+		require('./imagecrop')
+		require('./admin-option')
 	})
 	
 })

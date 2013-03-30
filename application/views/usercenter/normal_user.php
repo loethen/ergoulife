@@ -16,6 +16,22 @@
 	?>
 	</div>
 	<div class="account">
+		<?php echo form_open('usercenter/set_avater',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-avatar'));?>
+		  <legend>修改头像</legend>
+		  <div class="control-group">
+		    <label class="control-label" for="inputEmail">上传头像</label>
+		    <div class="controls">
+		      <input type="file" name='avatar' id="avatar">
+		    </div>
+		  </div>
+		  <div class="control-group">
+		      <div class="controls">
+		      		<button type="submit" class="btn btn-primary">保存</button>
+		      		<small>修改完头像记得保存</small>
+		      </div>
+		  </div>
+		</form>	
+		<hr>
 		<?php echo form_open('usercenter/set_profile',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-avatar'));?>
 		  <legend>修改资料</legend>
 		  <div class="control-group">

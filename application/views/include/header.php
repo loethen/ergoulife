@@ -50,7 +50,11 @@
                             <span class="caret"></span>
                         </a>
                         <ul class='dropdown-menu'>
+                        <?php if($this->session->userdata('admin')==true): ?>
+                            <li><a href="<?=site_url('admin'); ?>">设置</a></li>
+                        <?php else: ?>
                             <li><a href="<?=site_url('usercenter'); ?>">设置</a></li>
+                        <?php endif; ?>
                             <li class="divider"></li>
                             <li><a href="<?=site_url('sign/logout'); ?>">登出</a></li>
                         </ul>
