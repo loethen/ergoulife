@@ -72,5 +72,4 @@ class Usercenter extends CI_Controller {
 				}
 		  }
 	}
-	
 }

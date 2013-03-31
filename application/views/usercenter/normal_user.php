@@ -16,7 +16,7 @@
 	?>
 	</div>
 	<div class="account">
-		<?php echo form_open('usercenter/set_avater',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-avatar'));?>
+		<?php echo form_open('avatar/upload',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-avatar'));?>
 		  <legend>修改头像</legend>
 		  <div class="control-group">
 		    <label class="control-label" for="inputEmail">上传头像</label>
@@ -32,7 +32,7 @@
 		  </div>
 		</form>	
 		<hr>
-		<?php echo form_open('usercenter/set_profile',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-avatar'));?>
+		<?php echo form_open('usercenter/set_profile',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-info'));?>
 		  <legend>修改资料</legend>
 		  <div class="control-group">
 		    <label class="control-label" for="inputEmail">邮件地址</label>

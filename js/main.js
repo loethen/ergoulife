@@ -59,7 +59,14 @@ define(function(require){
 	})
 	
 	r.route(/sign/g,function(){
-		$('input[name=email]').focus();
+		
 	})
 	
+	r.route(/usercenter/g,function(){
+		require('./avatar')
+	})
+
+	r.route(/avatar/g,function(){
+		require('./avatar-crop')
+	})
 })

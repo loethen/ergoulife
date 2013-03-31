@@ -400,6 +400,20 @@ blockquote small a{
 	margin-right: 15px;
 }
 /* =================================================================================
+    用户头像
+====================================================================================*/
+.crop_preview {
+    height: 48px;
+    left: 200px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 48px;
+}
+.crop_preview img{
+	max-width: none;
+}
+/* =================================================================================
     ColorBox Core Style:
     The following CSS is consistent between example themes and should not be altered.
 ====================================================================================*/
