@@ -12,7 +12,7 @@ class Usercenter extends CI_Controller {
 		}
 	}
 	public function index(){
-			self::user_set();
+		self::user_set();
 	}
 	public function user_set(){
 		$uid = $this->session->userdata('uid');

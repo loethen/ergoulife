@@ -11,7 +11,7 @@
 </div>
 <?php endif; ?>
 
-<?php echo form_open('usercenter/add_category',array('enctype'=>'multipart/form-data','class'=>'form-horizontal'));?>
+<?php echo form_open('admin/add_category',array('enctype'=>'multipart/form-data','class'=>'form-horizontal'));?>
   <div class="control-group">
     <label class="control-label" for="inputEnBrand">分类名称</label>
     <div class="controls">

@@ -41,6 +41,7 @@
                   <a class="brand logo" href="<?=site_url() ?>">Ergoulife</a>
                   <ul class="nav">
                     <li class="<?=$this->uri->segment(1)=='allbrand'?'active':''?>"><a href="<?=site_url('allbrand') ?>">所有品牌</a></li>
+                    <li class="<?=$this->uri->segment(1)=='meowtown'?'active':''?>"><a href="<?=site_url('meowtown') ?>">喵小镇</a></li>
                   </ul>
                   <ul class="nav pull-right">
                     <?php if($this->session->userdata('log_in')): ?>
