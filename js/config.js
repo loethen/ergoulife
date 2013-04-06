@@ -28,6 +28,10 @@ seajs.config({
 		'colorbox':{
 			src : 'vendor/colorbox.js',
 			deps : ['jquery']
+		},
+		'ueditor':{
+			src : 'ueditor/editor_all.js',
+			exports : 'UE'
 		}
 	}
 })

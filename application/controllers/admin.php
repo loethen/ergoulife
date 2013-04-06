@@ -22,21 +22,22 @@ class Admin extends CI_Controller {
 		$this->load->view('include/footer');
 	}
 	public function add_brand(){
-		$this->form_validation->set_rules('cnbrand','品牌名称','required|is_unique[brand.cnname]');
+		$this->form_validation->set_rules('brandname','品牌名称','required|is_unique[brand.brandname]');
 		$this->form_validation->set_rules('area','产地','required');
 		$this->form_validation->set_rules('description','品牌描述','required');
+		$this->form_validation->set_rules('category','所属分类','required');
 		if($this->form_validation->run()==false){
 			self::index();
 		}else{
-			$cnname = $this->input->post('cnbrand',true);
-			$catid = $this->input->post('category',true);
+			$brandname = $this->input->post('brandname',true);
+			$cateid = $this->input->post('category',true);
 			$img = $this->input->post('path',true);
 			$area = $this->input->post('area',true);
 			$desc = $this->input->post('description',true);
 
 			$this->load->helper('string');
 			$desc = quotes_to_entities($desc);
-			$result = $this->uc->brand_insert($cnname,$img,$area,$desc,'',$catid);
+			$result = $this->uc->brand_insert($brandname,$img,$area,$desc,$cateid);
 			redirect('admin');
 		}
 	}
@@ -80,35 +81,40 @@ class Admin extends CI_Controller {
 		$this->uc->brand_delete($id);
 		echo 'success';
 	}
-	public function product_page(){
-		$arr = $this->uc->product_query();
-		$this->load->view('include/header',array('res'=>$arr));
+	public function product_page($msg=null){
+		$brand = $this->uc->brand_list();
+		$this->load->view('include/header',array('res'=>$brand,'status'=>$msg));
 		$this->load->view('admin/top_menu');
 		$this->load->view('admin/add_product');
 		$this->load->view('include/footer');
 	}
 	public function add_product(){
-		$this->form_validation->set_rules('pname','产品名称','required');
+		$this->form_validation->set_rules('title','标题','required');
+		$this->form_validation->set_rules('price','价格','required');
+		$this->form_validation->set_rules('link','直达链接','required');
 		$this->form_validation->set_rules('owner','所属品牌','required');
 		$this->form_validation->set_rules('description','品牌描述','required');
-		$this->form_validation->set_rules('path','图片','required');
+
 		if($this->form_validation->run()==false){
 			self::product_page();
 		}else{
-			$pname = $this->input->post('pname',true);
+			$author = $this->session->userdata('uid');
+			$title = $this->input->post('title',true);
 			$owner = $this->input->post('owner',true);
-			$img = $this->input->post('path',true);
+			$price = $this->input->post('price',true);
+			$link = $this->input->post('link',true);
 			$desc = $this->input->post('description',true);
-			$this->load->helper('string');
-			$desc = quotes_to_entities($desc);
-			$result = $this->uc->brand_insert($pname,$img,'',$desc,$owner,'');
-			if(!$result){
-				$error = array('error'=>'该产品已经存在');
-				self::product_page($error);
+			$statu = $this->input->post('statu',true);
+			$result = $this->uc->post_insert($author,$title,$owner,$price,$link,$desc,$statu);
+			if($result){
+				self::product_page($msg='文章发布成功');
 			}else{
-				redirect('admin/product_page');
+				self::product_page($msg='文章发布失败');
 			}
 		}
+	}
+	public function manage_product(){
+
 	}
 	public function category_page(){
 		$this->load->view('include/header');

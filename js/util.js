@@ -2,7 +2,8 @@ define(function(require,exports,module){
 	var $ = require('jquery')
 	module.exports={
 		uploadFile: function(url,file,callback){
-			var formData = new FormData();
+			var that = this
+			var formData = new FormData()
 			if(formData){
 				formData.append('imgfile',file);
 				var xhr = new XMLHttpRequest();
@@ -12,12 +13,12 @@ define(function(require,exports,module){
 						var resp = $.parseJSON(this.response);
 						callback(resp);
 					}else{
-						tip('上传失败');
+						that.tip('上传失败');
 					}
 				}
 				xhr.send(formData);
 			}else{
-				tip('浏览器不支持,请使用chrome或者火狐');
+				this.tip('浏览器不支持,请使用chrome或者火狐');
 			}
 		},
 		quickSign: function (){

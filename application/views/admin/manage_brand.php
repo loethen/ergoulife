@@ -14,11 +14,11 @@
 	<tbody>
 		<?php foreach($res as $row): $url = base_url(); ?>
 		<tr>
-			<td><?=$row->cnname?></td>
+			<td><?=$row->brandname?></td>
 			<td><img src="<?=$url.'uploads/thumb/'.$row->img?>"></td>
-			<td><?=$row->field?></td>
+			<td><?=$row->area?></td>
 			<td><?=$row->description?></td>
-			<td><?=$row->catid?></td>
+			<td><?=$row->cateid?></td>
 			<td>
 				<a data-id="<?=$row->id?>" href="#">删</a>
 				<a href="#">改</a>

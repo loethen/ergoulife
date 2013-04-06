@@ -14,9 +14,9 @@
 <?php echo form_open('admin/add_brand',array('enctype'=>'multipart/form-data','class'=>'form-horizontal admin_form'));?>
   <input type="hidden" name='path' id="path">
   <div class="control-group">
-    <label class="control-label" for="inputBrand">品牌名称</label>
+    <label class="control-label" for="inputCnBrand">品牌名称</label>
     <div class="controls">
-      <input type="text" name="cnbrand" id="inputCnBrand" placeholder="Name" value="<?= set_value('cnbrand'); ?>">
+      <input type="text" name="brandname" id="inputCnBrand" placeholder="Name" value="<?= set_value('cnbrand'); ?>">
     </div>
   </div>
   <div class="control-group">

@@ -6,13 +6,11 @@ class Uc extends CI_Model {
 		$this->load->database();
 		$this->load->helper('string');
 	}
-	public function brand_insert($cnname,$img,$area,$desc,$owner,$catid){
-		$cnname = quotes_to_entities($cnname);
-		if(empty($owner)){
-			$sql = "INSERT INTO brand (cnname,img,field,description,catid) VALUES ('$cnname','$img','$area','$desc','$catid')";
-		}else{
-			$sql= "INSERT INTO brand (cnname,img,description,owner) VALUES ('$cnname','$img','$desc','$owner')";
-		}
+
+	public function brand_insert($brandname,$img,$area,$desc,$cateid){
+		$sql = "INSERT INTO brand (brandname,img,area,description,cateid) values (
+				'$brandname','$img','$area','$desc','$cateid'
+				)";
 		$query = $this->db->query($sql);
 		if($query){
 			return true;
@@ -20,20 +18,21 @@ class Uc extends CI_Model {
 			show_error('插入数据库出错');
 		}
 		$this->db->close();
-		
 	}
-	public function brand_query($start,$len){
-		$sql = "SELECT * from brand WHERE owner is null order by id desc limit $start,$len";
+    public function brand_query($start,$len){
+		$sql = "SELECT * from brand order by id desc limit $start,$len";
 		$query = $this->db->query($sql);
 		$result = $query->result();
 		$this->db->close();
 		return $result;
 	}
+
 	public function brand_num(){
 		$sql = "select * from brand";
 		$query = $this->db->query($sql);
 		return $query->num_rows();
 	}
+
 	public function brand_delete($id){
 		$sql = "select * from brand where id=$id";
 		$query = $this->db->query($sql);
@@ -42,13 +41,30 @@ class Uc extends CI_Model {
 			$this->db->query($sql);
 			$this->db->close();
 			return true;
+		}else{
+			show_error('品牌不存在');
 		}
 	}
-	public function product_query(){
-		$query = $this->db->query("SELECT id,cnname FROM brand where owner IS NULL");
+
+	public function post_insert($author,$title,$owner,$price,$link,$desc,$statu){
+		$sql = "INSERT INTO posts (post_author,post_content,post_title,post_status,relate_brand,price,link) values (
+				'$author','$desc','$title','$statu','$owner','$price','$link'
+				)";
+		$query = $this->db->query($sql);
+		if($query){
+			return true;
+		}else{
+			show_error('插入数据库出错');
+		}
+		$this->db->close();
+	}
+	
+	public function brand_list(){
+		$query = $this->db->query("SELECT id,brand FROM brand");
 		$this->db->close();
 		return $query->result();
 	}
+
 	public function cate_insert($cate_name){
 		$query = $this->db->query("INSERT INTO category SET cate_name='$cate_name'");
 		return $query;
@@ -79,6 +95,7 @@ class Uc extends CI_Model {
 			return true;
 		}
 	}
+
 	public function user_info($uid){
 		$sql = "SELECT * from user where uid = '$uid'";
 		$query = $this->db->query($sql);

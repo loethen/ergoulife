@@ -11,9 +11,9 @@
         <?php $cate_id = $cate->id; 
         foreach($brand as $row): 
             foreach ($row as $roow) :
-                if($cate_id == $roow->catid):
+                if($cate_id == $roow->cateid):
         ?>
-        <a href="<?=site_url('subject/'.$roow->id)?>" title="原产地：<?=$roow->field?>"><?=$roow->cnname?></a>
+        <a href="<?=site_url('subject/'.$roow->id)?>" title="原产地：<?=$roow->area?>"><?=$roow->brandname?></a>
         <?php
                 endif;
             endforeach;

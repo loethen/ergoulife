@@ -18,7 +18,12 @@
         <link rel="stylesheet" href="<?php echo base_url('css/main.css'); ?>">
 
         <script src="<?php echo base_url('js/vendor/modernizr-2.6.2-respond-1.1.0.min.js'); ?>"></script>
-        <script>var site_url = "<?=site_url()?>", base_url="<?=base_url() ;?>"</script> 
+        <script>
+        var site_url = "<?=site_url()?>", 
+            base_url="<?=base_url() ;?>";
+            window.UEDITOR_HOME_URL = "<?=base_url('ueditor') ;?>"+'/'
+            </script> 
+        
     </head>
     <body>
         <!--[if lt IE 7]>

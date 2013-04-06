@@ -11,46 +11,45 @@
 </div>
 <?php endif; ?>
 
-<?php echo form_open('admin/add_product',array('enctype'=>'multipart/form-data','class'=>'form-horizontal admin_form'));?>
+<?php if(!empty($status)): ?>
+<div class="alert">
+  <?=$status; ?>
+</div>
+<?php endif; ?>
+<?php echo form_open('admin/add_product',array('enctype'=>'multipart/form-data','class'=>'form-horizontal'));?>
   <input type="hidden" name='path' id="path">
-  <div class="control-group">
-    <label class="control-label" for="inputEnBrand">产品名称</label>
-    <div class="controls">
-      <input type="text" name="pname" id="inputProduct" placeholder="Product name" value="<?= set_value('pname'); ?>">
-    </div>
+
+  <label for="inputTitle">标题</label>
+  <input type="text" class="input-xxlarge" name="title" id="inputTitle" placeholder="Product name" value="<?= set_value('title'); ?>">
+  <hr>
+  <label for="inputArea">所属品牌</label>
+  <select name="owner" id="owner">
+    <?php foreach($res as $row): ?>
+      <option value="<?=$row->id?>"><?=$row->cnname?></option>
+    <?php endforeach; ?>
+  </select>
+  <hr>
+  <label for="inputPrice">价格</label>
+  <div class="input-prepend input-append">
+    <span class="add-on">$</span>
+    <input class="span2" name="price" id="inputPrice" type="text" value="<?= set_value('price'); ?>">
   </div>
-  <div class="control-group">
-    <label class="control-label" for="inputImage">上传图片</label>
-    <div class="controls">
-      <input type="file" name='imgfile' id="inputImage" placeholder="Upload">
-    </div>
+  <hr>
+  <label for="gotoshoping">直达链接</label>
+  <div class="input-prepend input-append">
+    <span class="add-on">http://</span>
+    <input class="span2" name="link" id="gotoshoping" type="text" value="<?= set_value('link'); ?>">
   </div>
-  <div class="control-group">
-    <label class="control-label" for="inputImage"></label>
-    <div class="controls">
-      <div id="respos"></div>
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="inputArea">所属品牌</label>
-    <div class="controls">
-      <select name="owner" id="owner">
-      <?php foreach($res as $row): ?>
-        <option value="<?=$row->id?>"><?=$row->cnname?></option>
-      <?php endforeach; ?>
-      </select>
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="inputDes">产品描述</label>
-    <div class="controls">
-      	<textarea rows="3" name="description" id='inputDes' placeholder="Product description"><?php echo set_value('description'); ?></textarea>
-    </div>
-  </div>
-  <div class="control-group">
-      <div class="controls">
-      		<button type="submit" class="btn btn-primary">确认添加</button>
-      </div>
-  </div>
+  <hr>
+  <label for="inputDes">详情</label>
+  <textarea rows="3" name="description" id='inputDes' placeholder="Product description"><?php echo set_value('description'); ?></textarea>
+  <hr>
+  <label for="statu">发布为</label>
+  <select name="statu" id="statu">
+      <option slected='true' value="publish">公开的</option>
+      <option value="publish">私人的</option>
+  </select>
+  <hr>
+  <button type="submit" class="btn btn-primary">确认添加</button>
 </form>
 <?php endif; ?>

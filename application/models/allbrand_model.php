@@ -6,7 +6,7 @@ class Allbrand_model extends CI_Model {
 		$this->load->database();
 	}
 	function brand_list($id){
-		$sql = "SELECT id,cnname,field,catid from brand where catid='$id'";
+		$sql = "SELECT id,brandname,area,cateid from brand where cateid='$id'";
 		$query =  $this->db->query($sql);
 		$result = $query->result();
 		return $result;

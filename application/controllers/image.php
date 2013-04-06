@@ -9,8 +9,8 @@ class Image extends CI_Controller {
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size'] = '200';
-		$config['max_width'] = '1024';
-		$config['max_height'] = '768';
+		$config['max_width'] = '2024';
+		$config['max_height'] = '1768';
 		$config['encrypt_name'] = TRUE;
 		$this->load->library('upload',$config); //上传图片
 		if($this->upload->do_upload('imgfile')){
