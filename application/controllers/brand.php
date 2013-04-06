@@ -7,9 +7,6 @@ class Brand extends CI_Controller {
 	}
 	public function index(){
 		$id = $this->uri->segment(2);
-		$uid = $this->session->userdata('uid');
-		$arr = array();
-
 		$brand = $this->brand_model->brand_query($id);
 		$posts = $this->brand_model->posts_query($id);
 

@@ -22,7 +22,7 @@
         var site_url = "<?=site_url()?>", 
             base_url="<?=base_url() ;?>";
             window.UEDITOR_HOME_URL = "<?=base_url('ueditor') ;?>"+'/'
-            </script> 
+        </script> 
         
     </head>
     <body>

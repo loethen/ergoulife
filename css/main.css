@@ -3,6 +3,9 @@
    Loethen's custom styles
    ========================================================================== */
 .clear{clear:both;}
+body{
+	background: url(../img/fabric.jpg) repeat;
+}
 /* ==============
 	header
    ================*/
@@ -10,7 +13,7 @@
 	padding-top: 60px;
 } 
 .container-narrow{
-	max-width: 700px;
+	max-width: 870px;
 	margin: 0 auto;
 }
 .navbar a.logo{
@@ -225,10 +228,14 @@ blockquote p{
 	padding: 10px;
 }
 .bg-gray{
-	background: #f4f4f4;
+	background: #f0f0f0;
 	margin-top: 20px;
 	padding: 15px;
 	color: #666;
+}
+.bg-white{
+	background: #fff;
+	padding: 15px;
 }
 .relate-post a{
 	display: block;
@@ -309,6 +316,14 @@ blockquote p{
 .star5{
 	background-position: 0 0;
 }
+/* =================================================================================
+    商品详情页.
+====================================================================================*/
+.bg-life{
+	padding: 15px;
+	background: #efefef;
+}
+
 
 /* =================================================================================
     账户设置.
@@ -374,6 +389,7 @@ blockquote small a{
 ====================================================================================*/
 #allbrand .accordion-group{
 	margin-bottom: 20px;
+	background: #fff;
 }
 #allbrand a.accordion-toggle{
 	padding: 8px 20px 8px;

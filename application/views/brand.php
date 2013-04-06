@@ -5,7 +5,7 @@
 </ul>
 <h1 id="brand-head" data-id="<?=$brand->id?>"><?=$brand->brandname?></h1>
 <div class='row-fluid'>
-	<div class='span6'>
+	<div class='span7'>
 		<div class='brand-show'>
 			<img src="<?=base_url().'uploads/'.$brand->img?>">
 		</div>
@@ -23,8 +23,11 @@
 		<?php endforeach; ?>
 		</div>
 	</div>
-	<div class='span5 offset1'>
-		<a href="#" class="btn-block btn btn-inverse">关注</a>
-		<span>关注以后，你将收到 [<?=$brand->brandname?>] 最新的特价信息</span>
+	<div class='span5'>
+		<div class="bg-white">
+			<a href="#" class="btn-block btn btn-primary">关注</a>
+			<span>关注以后，你将收到 [<?=$brand->brandname?>] 最新的特价信息</span>
+		</div>
+		
 	</div>
 </div>
