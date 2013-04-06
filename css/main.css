@@ -230,16 +230,9 @@ blockquote p{
 	padding: 15px;
 	color: #666;
 }
-.relate-product a{
+.relate-post a{
 	display: block;
-	text-indent: center;
-	float: left;
 	margin-bottom: 5px;
-	width: 103px;
-}
-.relate-product a img{
-	margin: 0 auto;
-	display: block;
 }
 .rate{
 	background: #dfeeff;

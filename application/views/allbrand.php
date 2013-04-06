@@ -13,7 +13,7 @@
             foreach ($row as $roow) :
                 if($cate_id == $roow->cateid):
         ?>
-        <a href="<?=site_url('subject/'.$roow->id)?>" title="原产地：<?=$roow->area?>"><?=$roow->brandname?></a>
+        <a href="<?=site_url('brand/'.$roow->id)?>" title="原产地：<?=$roow->area?>"><?=$roow->brandname?></a>
         <?php
                 endif;
             endforeach;
