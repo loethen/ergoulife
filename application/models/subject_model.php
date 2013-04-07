@@ -16,14 +16,14 @@ class Subject_model extends CI_Model {
 			show_error('抱歉，没有相关结果');
 		}
 	}
-	public function posts_query($id){
-		$sql = "SELECT * from posts where relate_brand=$id";
+	public function brand_query($id){
+		$sql = "SELECT * from brand where id=$id";
 		$query = $this->db->query($sql);
 		$this->db->close();
 		if($query->num_rows()>0){
-			return $query->result();
+			return $query->row();
 		}else{
-			return null;
+			return false;
 		}
 	}
 }

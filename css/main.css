@@ -321,7 +321,8 @@ blockquote p{
 ====================================================================================*/
 .bg-life{
 	padding: 15px;
-	background: #efefef;
+	background: #fff;
+	margin-bottom: 20px;
 }
 
 
