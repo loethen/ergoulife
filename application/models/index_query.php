@@ -6,7 +6,7 @@ class Index_query extends CI_Model {
 		$this->load->database();
 	}
 	function brand_list($id){
-		$sql = "SELECT * from brand where catid='$id'";
+		$sql = "SELECT * from brand where cateid='$id'";
 		$query =  $this->db->query($sql);
 		$result = $query->result();
 		return $result;

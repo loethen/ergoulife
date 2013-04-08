@@ -50,6 +50,8 @@
                   </ul>
                   <ul class="nav pull-right">
                     <?php if($this->session->userdata('log_in')): ?>
+                    <li><a class='clearfix' href="<?=site_url('brand/mybrands') ?>"><div class="favorite"></div>我关注的品牌</a></li>
+                    <li class="divider-vertical"></li>
                     <li class='dropdown'>
                         <a class='dropdown-toggle' href='#' data-toggle='dropdown' data-target='#'>
                             <?= $this->session->userdata('username')?>

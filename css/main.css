@@ -43,7 +43,13 @@ body{
 	display: none;
 	opacity: .5;
 }
-
+.favorite{
+	float: left;
+    height: 16px;
+    width: 16px;
+    padding: 2px;
+	background: url(../img/favorite.png) no-repeat left center;
+}
 /* ==============
 	footer
    ================*/

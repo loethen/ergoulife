@@ -25,6 +25,10 @@ seajs.config({
 			src : 'vendor/jquery.spritely.js',
 			deps : ['jquery']
 		},
+		'easing':{
+			src : 'vendor/jquery.easing.js',
+			deps : ['jquery']
+		},
 		'colorbox':{
 			src : 'vendor/colorbox.js',
 			deps : ['jquery']
