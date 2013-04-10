@@ -13,7 +13,7 @@ define(function(require,exports){
 		  .css({
 		  	'position':'fixed',
 		  	'left':offset1.left+fl,
-		  	'top':offset1.top-20,
+		  	'top':offset1.top-20-$(window).scrollTop(),
 		  	'z-index':'9999'
 		  })
 		cf.animate({

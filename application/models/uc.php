@@ -60,7 +60,7 @@ class Uc extends CI_Model {
 	}
 	
 	public function brand_list(){
-		$query = $this->db->query("SELECT id,brand FROM brand");
+		$query = $this->db->query("SELECT id,brandname FROM brand");
 		$this->db->close();
 		return $query->result();
 	}

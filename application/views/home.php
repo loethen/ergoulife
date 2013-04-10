@@ -1,23 +1,18 @@
-<!-- Main hero unit for a primary marketing message or call to action -->
-<?php foreach ($cates as $cate): ?>
-<div class="da-thumbs-bg">
-    <h1><a href="<?=site_url('allbrand')?>"><?=$cate->cate_name?></a></h1>
-    <ul id="da-thumbs" class="da-thumbs clearfix">
-        <?php $cate_id = $cate->id; 
-        foreach($brand as $row): 
-            foreach ($row as $roow) :
-                if($cate_id == $roow->catid):
-        ?>
-        <li>
-            <a href="<?=site_url('subject/'.$roow->id)?>" data-content="<?=$roow->description?>">
-                <img src="<?=base_url().'/uploads/thumb/'.$roow->img?>" />
-                <div><span><?=$roow->cnname?></span></div>
-            </a>
-        </li>
-        <?php 
-                endif;
-            endforeach;
-        endforeach; ?>    
-    </ul>
+<div class="row-fluid">
+    <div class="span8 bg-white">
+        <?php foreach ($items as $item): ?>
+        <div class="item">
+            <h3><a href="<?=site_url('subject/'.$item->id)?>"><?=$item->post_title?></a></h3>
+            <div class="item-content">
+                <?=$item->post_content?>
+            </div>
+            <div class="entry">
+                <span class="entry-date"><?=$item->post_date?></span>
+            </div>
+        </div>
+        <?php endforeach; ?>  
+    </div>
+    <div class="span4">
+        
+    </div>
 </div>
-<?php endforeach; ?>

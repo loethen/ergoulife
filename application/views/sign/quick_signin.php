@@ -1,5 +1,4 @@
-<?php echo form_open('sign/signin',array('class'=>'form-signin')); ?>
-        <h3 class="form-heading">快速登录</h3>
+<?php echo form_open('sign/signin'); ?>
         <div class="group">
         	<label>Email</label>
         	<input type="hidden" name="cur_url" value="<?=$cur_url?>">

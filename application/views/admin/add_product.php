@@ -20,12 +20,12 @@
   <input type="hidden" name='path' id="path">
 
   <label for="inputTitle">标题</label>
-  <input type="text" class="input-xxlarge" name="title" id="inputTitle" placeholder="Product name" value="<?= set_value('title'); ?>">
+  <input type="text" class="input-xxlarge" name="title" id="inputTitle" placeholder="title" value="<?= set_value('title'); ?>">
   <hr>
   <label for="inputArea">所属品牌</label>
   <select name="owner" id="owner">
     <?php foreach($res as $row): ?>
-      <option value="<?=$row->id?>"><?=$row->cnname?></option>
+      <option value="<?=$row->id?>"><?=$row->brandname?></option>
     <?php endforeach; ?>
   </select>
   <hr>

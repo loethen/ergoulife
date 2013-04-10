@@ -10,7 +10,7 @@ seajs.config({
 			deps : ['jquery']
 		},
 		'bootstrap': {
-			src : 'vendor/bootstrap.min.js',
+			src : 'vendor/bootstrap.js',
 			deps : ['jquery']
 		},
 		'jcrop': {

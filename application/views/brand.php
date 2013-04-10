@@ -26,9 +26,9 @@
 	<div class='span5'>
 		<div class="bg-white">
 			<?php if($is_focus): ?>
-			<a href="javascript:;" data-flag="unfocus" id="focus" class="btn-block btn btn-primary">取消关注</a>
+			<a href="javascript:;" data-target="#myModal" data-flag="unfocus" id="focus" class="btn-block btn btn-info">已关注</a>
 			<?php else: ?>
-			<a href="javascript:;" data-flag="focus" id="focus" class="btn-block btn btn-primary">关注</a>
+			<a href="javascript:;" data-target="#myModal"data-flag="focus" id="focus" class="btn-block btn btn-info">关注品牌</a>
 			<?php endif; ?>
 			<span>关注以后，你将收到 [<?=$brand->brandname?>] 最新的特价信息</span>
 		</div>

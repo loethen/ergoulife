@@ -22,13 +22,10 @@ define(function(require,exports,module){
 			}
 		},
 		quickSign: function (){
-			require.async('colorbox',function(){
-				$.colorbox({
-					href:site_url+'/sign/quick_sign',
-					data:{cur_url:window.location.href}
-				})
+			$("#myModal").modal({
+				remote:site_url+'/sign/quick_sign',
+				data:{cur_url:window.location.href}
 			})
-			
 		},
 		random: function (min,max){
 			return Math.floor(Math.random()*(max-min+1)+min);

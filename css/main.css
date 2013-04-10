@@ -144,8 +144,17 @@ blockquote p{
 	font-size: 12px;
 }
 /* ==============
-	首页缩略图
+	首页
    ================*/
+.item-content{
+	background: #f9f9f9;
+	border: 1px solid #f2f2f2;
+	padding: 10px;
+}
+.item{
+	border-bottom: 1px solid #f3f3f3;
+	padding:10px 0 30px 0;
+}
 .da-thumbs-bg{
 	background: #f8f8f8;
 	border-radius: 2px;

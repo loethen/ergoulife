@@ -93,7 +93,7 @@ class Sign extends CI_Controller {
     	->set_output(json_encode($arr));
 	}
 	public function quick_sign(){
-		$cur_url = $this->input->post('cur_url');
+		$cur_url = $_POST['cur_url'];
 		$this->load->view('sign/quick_signin',array('cur_url'=>$cur_url));
 	}
 }

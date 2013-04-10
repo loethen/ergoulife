@@ -25,4 +25,7 @@ class Brand extends CI_Controller {
 			echo $this->brand_model->cancel_subscribe($uid,$bid);
 		}
 	}
+	public function mybrands(){
+		$uid = $this->session->userdata('uid');
+	}
 }

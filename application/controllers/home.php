@@ -7,14 +7,8 @@ class Home extends CI_Controller {
 	}
 	public function index()
 	{
-		$res = $this->index_query->cat_query();
-		$arr = array();
-		foreach ($res as $row) {
-			$id = $row->id;
-			$brand = $this->index_query->brand_list($id);
-			$arr[$id]=$brand;
-		}
-		$this->load->view('include/header',array('cates'=>$res,'brand'=>$arr));
+		$items = $this->index_query->post_list();
+		$this->load->view('include/header',array('items'=>$items));
 		$this->load->view('home');
 		$this->load->view('include/footer');
 	}
