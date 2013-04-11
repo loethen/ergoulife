@@ -72,11 +72,7 @@ define(function(require){
 		
 	})
 	
-	r.route(/usercenter/g,function(){
+	r.route(/setting/g,function(){
 		require('./avatar')
-	})
-
-	r.route(/avatar/g,function(){
-		require('./avatar-crop')
 	})
 })

@@ -95,21 +95,4 @@ class Uc extends CI_Model {
 			return true;
 		}
 	}
-
-	public function user_info($uid){
-		$sql = "SELECT * from user where uid = '$uid'";
-		$query = $this->db->query($sql);
-		$this->db->close();
-		return $query;
-	}
-	public function update_pw($pw,$uid){
-		$query = $this->db->query("UPDATE user set password='$pw' where uid='$uid'");
-		$this->db->close();
-		return $query;
-	}
-	public function update_profile($profile,$uid){
-		$query = $this->db->query("UPDATE user set profile='$profile' where uid='$uid'");
-		$this->db->close();
-		return $query;
-	}
 }

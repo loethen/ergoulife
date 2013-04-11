@@ -155,84 +155,6 @@ blockquote p{
 	border-bottom: 1px solid #f3f3f3;
 	padding:10px 0 30px 0;
 }
-.da-thumbs-bg{
-	background: #f8f8f8;
-	border-radius: 2px;
-	box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-	position: relative;
-	border: 1px solid #d4d4d4;
-	margin-bottom: 30px;
-}
-.da-thumbs-bg h1{
-	position: absolute;
-	width: 16px;
-	left: -36px;
-	background: #999;
-	padding: 10px;
-	border-radius: 3px 0 0 3px;
-	top: 10px;
-	line-height: 26px;
-	cursor: pointer;
-}
-.da-thumbs-bg h1 a{
-	font-size: 16px;
-	color: #fff;
-	font-weight: 100;
-}
-.da-thumbs-bg h1 a:hover{
-	text-decoration: none;
-}
-.da-thumbs-bg h1:hover{
-	opacity: .9;
-}
-.da-thumbs {
-	list-style: none;
-	max-width: 700px;
-	position: relative;
-	margin: 10px auto;
-	padding: 9px;
-}
-.da-thumbs li {
-	width: 150px;
-	height: 120px;
-	overflow: hidden;
-	float: left;
-	margin: 5px;
-	background: #fff;
-	padding: 5px;
-	position: relative;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-.da-thumbs li a,
-.da-thumbs li a img {
-	display: block;
-	position: relative;
-}
-.da-thumbs li a {
-	overflow: hidden;
-}
-.da-thumbs li a div {
-	position: absolute;
-	background: #333;
-	background: rgba(75,75,75,0.5);
-	width: 100%;
-	height: 100%;
-
-}
-.da-thumbs li a div span {
-	display: block;
-	font-size: 12px;
-	text-align: center;
-	padding-top: 10px;
-	text-transform: uppercase;
-	color: rgba(255,255,255,0.9);
-	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
-	border-bottom: 1px solid rgba(255,255,255,0.5);
-	box-shadow: 0 1px 0 rgba(0,0,0,0.1), 0 -10px 0 rgba(255,255,255,0.3);
-}
-.popover-content p{
-	font-size: 12px;
-}
 
 /* ==============
 	品牌详情页
@@ -255,81 +177,6 @@ blockquote p{
 .relate-post a{
 	display: block;
 	margin-bottom: 5px;
-}
-.rate{
-	background: #dfeeff;
-	color: #444;
-	padding: 15px;
-	margin-bottom: 20px;
-}
-.rate-bar{
-	height: 20px;
-	line-height: 20px;
-}
-.rate-bar .progress{
-	width: 100px;
-	margin:3px 0 5px 0;
-	height: 10px;
-	-webkit-border-radius: 0;
-	-moz-border-radius: 0;
-	border-radius: 0;
-}
-.rate-bar em{
-	margin-left: 10px;
-	color: #999;
-}
-.rate-bar span{
-	height: 20px;
-	margin-right: 10px;
-	color: #f97855;
-	font-size: 12px;
-}
-.aver-rate{
-	color: #f97855;
-	margin-top: 4px;
-	background: #E8F6FF;
-	height: 100px;
-	width: 130px;
-	text-align: center;
-}
-.avg-text{
-	font-size: 12px;
-	color: #666;
-}
-#avg{
-	line-height: 70px;
-	display: block;
-	font-size: 32px;
-	text-align: center;
-}
-#avg em{
-	font-size: 18px;
-}
-.rate .aver-rate small{
-	color: #999;
-	display: block;
-}
-.rate small{
-	color: #f97855;
-}
-.star{
-	margin-left: -20px;
-    margin-top: -2px;
-}
-.star1{
-	background-position: 0 -56px;
-}
-.star2{
-	background-position: 0 -42px;
-}
-.star3{
-	background-position: 0 -28px;
-}
-.star4{
-	background-position: 0 -14px;
-}
-.star5{
-	background-position: 0 0;
 }
 /* =================================================================================
     商品详情页.
@@ -377,29 +224,9 @@ blockquote p{
 /* =================================================================================
     评论模块.
 ====================================================================================*/
-.label-comment{
-	cursor: pointer;
-}
-#comment-content{
-	width: 323px;
-}
-.comment h4{
-	font-size: 14px;
-	font-weight: 100;
-}
-.error-border{
-	border: 1px solid red;
-	box-shadow: red 0px 0px 3px;
-}
-.comment-page{
-	padding: 15px;
-}
-.comment-page p{
-	color:#444;
-}
-blockquote small a{
-	margin-right: 8px;
-}
+
+
+
 /* =================================================================================
     所有品牌页面
 ====================================================================================*/
@@ -427,16 +254,20 @@ blockquote small a{
 /* =================================================================================
     用户头像
 ====================================================================================*/
-.crop_preview {
-    height: 48px;
-    left: 200px;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    width: 48px;
+#avatar{
+	position: absolute;
+	right: 0;
+	top: 0;
+	opacity: 0;
 }
-.crop_preview img{
-	max-width: none;
+.w80{
+	width: 80px;
+}
+.form-avatar .progress{
+	margin-top: 5px;
+	width: 300px;
+	visibility: hidden;
+	margin: 3px 0;
 }
 /* =================================================================================
     ColorBox Core Style:

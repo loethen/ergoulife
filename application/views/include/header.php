@@ -50,7 +50,11 @@
                   </ul>
                   <ul class="nav pull-right">
                     <?php if($this->session->userdata('log_in')): ?>
-                    <li><a class='clearfix' href="<?=site_url('brand/mybrands') ?>"><div class="favorite"></div>我关注的品牌</a></li>
+                    <li>
+                        <a href="<?=site_url('brand/mybrands') ?>">
+                            <div class="favorite"></div>我关注的品牌
+                        </a>
+                    </li>
                     <li class="divider-vertical"></li>
                     <li class='dropdown'>
                         <a class='dropdown-toggle' href='#' data-toggle='dropdown' data-target='#'>
@@ -59,10 +63,9 @@
                         </a>
                         <ul class='dropdown-menu'>
                         <?php if($this->session->userdata('admin')==true): ?>
-                            <li><a href="<?=site_url('admin'); ?>">设置</a></li>
-                        <?php else: ?>
-                            <li><a href="<?=site_url('usercenter'); ?>">设置</a></li>
+                            <li><a href="<?=site_url('admin'); ?>">管理员</a></li>
                         <?php endif; ?>
+                            <li><a href="<?=site_url('setting'); ?>">设置</a></li>
                             <li class="divider"></li>
                             <li><a href="<?=site_url('sign/logout'); ?>">登出</a></li>
                         </ul>

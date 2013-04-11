@@ -33,6 +33,10 @@ seajs.config({
 			src : 'vendor/colorbox.js',
 			deps : ['jquery']
 		},
+		'ajaxform':{
+			src : 'vendor/jquery.form.js',
+			deps : ['jquery']
+		},
 		'ueditor':{
 			src : 'ueditor/editor_all.js',
 			exports : 'UE'

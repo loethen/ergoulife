@@ -19,20 +19,29 @@
 		<?php echo form_open('avatar/upload',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-avatar'));?>
 		  <legend>修改头像</legend>
 		  <div class="control-group">
-		    <label class="control-label" for="inputEmail">上传头像</label>
+		    <label class="control-label">
+		    <?php if(!isset($res->avatar)): ?>
+		    	<img data-src="holder.js/140x140" class="img-rounded img-avatar" alt="头像" style="width: 48px; height: 48px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMCAYAAACuwEE+AAADHklEQVR4Xu3XQU7qYABGUR2xMZbNmpgz0mDSiKTQXi2VkvOG8kl99z9p4f14PH68+afAzALvwMwsZfZVABgQUgFgUi5jYBhIBYBJuYyBYSAVACblMgaGgVQAmJTLGBgGUgFgUi5jYBhIBYBJuYyBYSAVACblMgaGgVQAmJTLGBgGUgFgUi5jYBhIBYBJuYyBYSAVACblMgaGgVQAmJTLGBgGUgFgUi5jYBhIBYBJuYyBYSAVACblMgaGgVQAmJTLGBgGUgFgUi5jYBhIBYBJuYyBYSAVACblMgaGgVQAmJTLGBgGUgFgUi5jYBhIBYBJuYyBYSAVACblMgaGgVQAmJTLGBgGUgFgUi5jYBhIBYBJuYyBYSAVACblMgaGgVQAmJTLGBgGUgFgUi5jYBhIBYBJuYyBYSAVACblMgaGgVQAmJTLePNgDofD1ynu9/vR0xx7ffjZ8Au3fnfsDde+3rMR3TSYy4MfO/Sx168PfArA5YGtfb1nw3L+ezYN5vwfuHXg55/vdru30+n04w70FzD/cb1nQwPMxSNtwHQJ7fpxtzZQYBYucO8zyvkxNXVHGXt97M40/NlLX2/hHA9/u5e+w1zXmwPo3mNn6pH02+s9/JQXvMDLgrl1R5hzx6l3mLEPxsOH8KnrLXiWq7zVpsHM+Xp875vS9dfqqc8wS19vlRNe+CKbBrNwC283owAwMyKZfBcAhoZUAJiUyxgYBlIBYFIuY2AYSAWASbmMgWEgFQAm5TIGhoFUAJiUyxgYBlIBYFIuY2AYSAWASbmMgWEgFQAm5TIGhoFUAJiUyxgYBlIBYFIuY2AYSAWASbmMgWEgFQAm5TIGhoFUAJiUyxgYBlIBYFIuY2AYSAWASbmMgWEgFQAm5TIGhoFUAJiUyxgYBlIBYFIuY2AYSAWASbmMgWEgFQAm5TIGhoFUAJiUyxgYBlIBYFIuY2AYSAWASbmMgWEgFQAm5TIGhoFUAJiUyxgYBlIBYFIuY2AYSAWASbmMgWEgFQAm5TIGhoFUAJiUyxgYBlIBYFIuY2AYSAWASbmMgWEgFQAm5TL+BPn285fsB0YAAAAAAElFTkSuQmCC">
+		    <?php else: ?>
+				<img src="<?=base_url('uploads/avatar/'.$res->avatar)?>" alt="头像" class="img-rounded img-avatar" style="width: 48px; height: 48px;">
+		    <?php endif; ?>
+		    </label>
 		    <div class="controls">
-		      <input type="file" name='avatar' id="avatar">
+		    	<div class='w80 pos-relate'>
+		    		<a href="javascript:;">选择图片</a>
+		      		<input type="file" name='avatar' id="avatar">
+		    	</div>
+		    	<span class='filename'></span>
+		      	<div class="progress progress-striped active">
+				  <div class="bar" style="width: 0%;"></div>
+				</div>
+			    <button type="submit" class="btn btn-primary">上传头像</button>
+			    <small>支持 gif | jpg | png 格式图片，不超过2M</small>
 		    </div>
-		  </div>
-		  <div class="control-group">
-		      <div class="controls">
-		      		<button type="submit" class="btn btn-primary">保存</button>
-		      		<small>修改完头像记得保存</small>
-		      </div>
 		  </div>
 		</form>	
 		<hr>
-		<?php echo form_open('usercenter/set_profile',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-info'));?>
+		<?php echo form_open('setting/set_profile',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-info'));?>
 		  <legend>修改资料</legend>
 		  <div class="control-group">
 		    <label class="control-label" for="inputEmail">邮件地址</label>
@@ -53,7 +62,7 @@
 		  </div>
 		</form>	
 		<hr>
-		<?php echo form_open('usercenter/setpw',array('enctype'=>'multipart/form-data','class'=>'form-horizontal'));?>
+		<?php echo form_open('setting/setpw',array('enctype'=>'multipart/form-data','class'=>'form-horizontal'));?>
 		  <legend>修改密码</legend>
 		  
 		  <div class="control-group">
