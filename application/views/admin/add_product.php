@@ -46,8 +46,9 @@
   <hr>
   <label for="inputTag">标签</label>
   <input type="text" id="tag">
+  <input type="hidden" name="tagsid" id="tagsid">
   <a id="addtag" class="btn">添加标签</a>
-  <div class="tags"></div>
+  <ul class="tags clearfix"></ul>
   <hr>
   <label for="statu">发布为</label>
   <select name="statu" id="statu">

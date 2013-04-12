@@ -105,7 +105,8 @@ class Admin extends CI_Controller {
 			$link = $this->input->post('link',true);
 			$desc = $this->input->post('description',true);
 			$statu = $this->input->post('statu',true);
-			$result = $this->uc->post_insert($author,$title,$owner,$price,$link,$desc,$statu);
+			$tagsid = $this->input->post('tagsid');
+			$result = $this->uc->post_insert($author,$title,$owner,$price,$link,$desc,$statu,$tagsid);
 			if($result){
 				self::product_page($msg='文章发布成功');
 			}else{

@@ -67,6 +67,7 @@ define(function(require){
 			})
 		})
 		require('./addtag')
+		require('./rmtag')
 	})
 
 	r.route(/sign/g,function(){

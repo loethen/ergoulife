@@ -270,6 +270,42 @@ blockquote p{
 	margin: 3px 0;
 }
 /* =================================================================================
+    admin
+====================================================================================*/
+.tags{
+	margin: 15px 0 0 0;
+	padding: 15px 5px;
+}
+.tags li{
+	position: relative;
+	list-style: none;
+	background-color: #444;
+	color: #fff;
+	padding: 0 19px 0 5px;
+	float: left;
+	margin-right: 5px;
+	border-radius: 3px;
+}
+.tags li div{
+	line-height: 23px;
+}
+.tags li a{
+	display: block;
+	position: absolute;
+	right: 3px;
+	top: 4px;
+	width: 12px;
+	height: 13px;
+	font-size: 17px;
+	line-height: 16px;
+	color: #eee;
+	font-weight: 700;
+	font-family: Arial;
+	text-decoration: none;
+}
+
+
+/* =================================================================================
     ColorBox Core Style:
     The following CSS is consistent between example themes and should not be altered.
 ====================================================================================*/

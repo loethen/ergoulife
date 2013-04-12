@@ -46,12 +46,27 @@ class Uc extends CI_Model {
 		}
 	}
 
-	public function post_insert($author,$title,$owner,$price,$link,$desc,$statu){
+	public function post_insert($author,$title,$owner,$price,$link,$desc,$statu,$tagsid){
 		$sql = "INSERT INTO posts (post_author,post_content,post_title,post_status,relate_brand,price,link) values (
 				'$author','$desc','$title','$statu','$owner','$price','$link'
 				)";
 		$query = $this->db->query($sql);
+		
 		if($query){
+			if(!is_null($tagsid)){
+				$sql = "SELECT id from posts order by id desc limit 0,1";
+				$query = $this->db->query($sql);
+				$id = $query->row()->id;
+
+				$arr = explode(",",$tagsid);
+
+				$sql = "INSERT INTO post_tag (post_id,tag_id) values ('$id',?)"; 
+
+				for($i=0;$i<count($arr);$i++){
+					$this->db->query($sql,array($arr[$i]));
+				}
+				return true;
+			}
 			return true;
 		}else{
 			show_error('插入数据库出错');
