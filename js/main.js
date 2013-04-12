@@ -66,6 +66,7 @@ define(function(require){
 				initialFrameWidth:700
 			})
 		})
+		require('./addtag')
 	})
 
 	r.route(/sign/g,function(){

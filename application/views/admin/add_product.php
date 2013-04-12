@@ -44,6 +44,11 @@
   <label for="inputDes">详情</label>
   <textarea rows="3" name="description" id='inputDes' placeholder="Product description"><?php echo set_value('description'); ?></textarea>
   <hr>
+  <label for="inputTag">标签</label>
+  <input type="text" id="tag">
+  <a id="addtag" class="btn">添加标签</a>
+  <div class="tags"></div>
+  <hr>
   <label for="statu">发布为</label>
   <select name="statu" id="statu">
       <option slected='true' value="publish">公开的</option>

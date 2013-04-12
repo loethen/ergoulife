@@ -17,7 +17,7 @@
 	</div>
 	<div class="account">
 		<?php echo form_open('avatar/upload',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-avatar'));?>
-		  <legend>修改头像</legend>
+		  <legend>更换头像</legend>
 		  <div class="control-group">
 		    <label class="control-label">
 		    <?php if(!isset($res->avatar)): ?>
@@ -42,7 +42,7 @@
 		</form>	
 		<hr>
 		<?php echo form_open('setting/set_profile',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-info'));?>
-		  <legend>修改资料</legend>
+		  <legend>个人资料</legend>
 		  <div class="control-group">
 		    <label class="control-label" for="inputEmail">邮件地址</label>
 		    <div class="controls">
