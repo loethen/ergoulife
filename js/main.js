@@ -9,9 +9,7 @@ define(function(require){
 
 	r.route(/(ergoulife|index\.php|home)(\/)*$/g,function(){
 		require.async('hoverdir',function(){
-			$(' #da-thumbs > li ').each( function() { 
-				$(this).hoverdir(); 
-			});
+			$('a').tooltip()
 		})
 	})
 
