@@ -6,7 +6,12 @@ define(function(require){
 		if(tag=='') return
 
 		$.post(site_url+'/tags/addtag',{tag:tag},function(data){
-			data = $.parseJSON(data);
+			data = $.parseJSON(data)
+			var t = $('#tagsid').val()
+			if(t.indexOf(data.tag_id)!='-1'){
+				$('#tag').val('')
+				return false;
+			}
 			var el = $('<li data-id="'+data.tag_id+'"><div>'+data.tag_name+'</div><a class="tagclose" href="#">x</a></li>')
 			$('.tags').append(el)
 			$('#tag').val('')
