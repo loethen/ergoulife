@@ -12,7 +12,7 @@ class Home extends CI_Controller {
 		foreach ($items as $item) {
 			$post_id = $item->id;
 			$res = $this->index_query->tag_list($post_id);
-			$arr[] = $res;
+			$arr[$post_id] = $res;
 		}
 		$this->load->view('include/header',array('items'=>$items,'tags'=>$arr));
 		$this->load->view('home');

@@ -22,7 +22,14 @@ body{
 	-moz-border-radius:3px;
 	border: 1px solid #d7d7d7;
 }
-
+.bg-rx{
+	background: #f8f8f8;
+	border: 1px solid #d7d7d7;
+	color: #555;
+	border-radius: 3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+}
 /* ==============
 	header
    ================*/
@@ -163,9 +170,6 @@ blockquote p{
 /* ==============
 	首页
    ================*/
-.item-content{
-
-}
 .item-content p{
 	line-height: 1.7em;
 	margin:10px 0;
@@ -176,6 +180,20 @@ blockquote p{
 }
 .item{
 	margin-bottom: 20px;
+}
+.entry-top{
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+}
+.entry-top{
+	color: #999;
+}
+.entry-top a{
+	color: #999;
+	text-decoration: none;
+}
+.entry-top a i{
+	opacity: .2;
 }
 .item h1{
 	padding: 12px 19px 8px;
@@ -223,6 +241,29 @@ blockquote p{
 	border-left: 1px solid #ddd;
 	padding: 10px;
 	line-height: 23px;
+}
+.arival-link{
+	color: #dd4b39;
+}
+.arival-link i{
+	opacity: .3;
+	margin-left: 5px;
+}
+.bs-docs-sidenav .icon-chevron-right {
+	float: right;
+	margin-top: 2px;
+	margin-right: -6px;
+	opacity: .25;
+}
+.bs-docs-sidenav li a {
+	display: block;
+	padding: 8px 14px;
+	border-top: 1px solid #e5e5e5;
+	background: #fff;
+}
+.bs-docs-sidenav h2{
+	font-size: 18px;
+	margin: 0
 }
 /* ==============
 	品牌详情页
