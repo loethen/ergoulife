@@ -59,7 +59,7 @@ class Uc extends CI_Model {
 				$id = $query->row()->id;
 
 				$arr = explode(",",$tagsid);
-
+				
 				$sql = "INSERT INTO post_tag (post_id,tag_id) values ('$id',?)"; 
 
 				for($i=0;$i<count($arr);$i++){

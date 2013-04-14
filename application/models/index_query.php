@@ -5,8 +5,20 @@ class Index_query extends CI_Model {
 		parent::__construct();
 		$this->load->database();
 	}
-	function post_list(){
-		$sql = "SELECT * from posts where post_status='publish' order by post_date desc";
+	public function post_list(){
+		$sql = "SELECT * 
+				from posts 
+				where post_status='publish'
+				order by post_date desc";
+		$query =  $this->db->query($sql);
+		$result = $query->result();
+		return $result;
+	}
+	public function tag_list($post_id){
+		$sql = "SELECT pt.post_id,t.*
+				from posts as p,tags as t,post_tag as pt 
+				where p.id = '$post_id'
+				and pt.tag_id = t.tag_id";
 		$query =  $this->db->query($sql);
 		$result = $query->result();
 		return $result;

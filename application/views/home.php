@@ -2,6 +2,19 @@
     <div class="span8">
         <?php foreach ($items as $item): ?>
         <div class="item bg-white">
+            <div class="">
+                <?php $id = $item->id;
+                foreach ($tags as $tag):
+                        foreach ($tag as $row):
+                             if($row->post_id == $id):
+                ?>
+                <a href=""><?=$row->tag_name?></a>
+                <?php 
+                            endif;
+                        endforeach;
+                endforeach;
+                ?>
+            </div>
             <h1><a href="<?=site_url('subject/'.$item->id)?>"><?=$item->post_title?></a></h1>
             <div class="item-content">
                 <?=$item->post_content?>
