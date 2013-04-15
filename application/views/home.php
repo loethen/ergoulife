@@ -60,6 +60,7 @@ function _time($time){
                 <div class="pull-left ep clearfix">
                     <a class="like" href="javascipt:;" data-toggle="tooltip" title="喜欢+1"></a>
                     <a class="share" href="javascipt:;" data-toggle="tooltip" title="分享到新浪微博"></a>
+                    <a class="comment" href="javascipt:;" data-toggle="tooltip" title="点击发表评论"></a>
                 </div>
                 <div class="pull-right lb">
                     <a href="<?=$item->link?>" class="arival-link">直达链接<i class="icon-chevron-right"></i></a>

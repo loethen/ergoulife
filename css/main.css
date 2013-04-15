@@ -217,25 +217,28 @@ blockquote p{
 	-moz-box-shadow: 1px 1px 3px rgba(0,0,0,.2);
 }
 .ep{
-	padding: 10px 0;
+	padding: 14px 0;
 }
-.like, .share{
+.like, .share, .comment{
 	background-image: url(../img/like.png);
 	background-repeat: no-repeat;
+	float: left;
+	margin-left: 15px;
 }
 .like{
-	width: 50px;
-	height: 22px;
-	margin-left:5px;
-	background-position: 0 0;
-	float: left;
+	width: 14px;
+	height: 15px;
+	background-position: 0 -14px;
 }
 .share{
-	float: left;
-	width: 23px;
-	height: 23px;
-	margin-left:8px;
-	background-position: -54px 0;
+	width: 14px;
+	height: 14px;
+	background-position: -28px 0;
+}
+.comment{
+	width: 14px;
+	height: 14px;
+	background-position: -14px 2px;
 }
 .lb{
 	border-left: 1px solid #ddd;
