@@ -60,7 +60,7 @@ function _time($time){
                 <div class="pull-left ep clearfix">
                     <a class="like" href="javascript:;" data-toggle="tooltip" title="喜欢+1"></a>
                     <a class="share" href="javascript:;" data-toggle="tooltip" title="分享到新浪微博"></a>
-                    <a class="comment" href="javascript:;" data-toggle="tooltip" title="点击发表评论"></a>
+                    <a class="comment" href="javascript:;" data-toggle="tooltip" title="点击发表评论<?php $c = $item->comment_count; echo $c>0 ? ",已有".$c."条评论" : ""?>"></a>
                 </div>
                 <div class="pull-right lb">
                     <a href="<?=$item->link?>" class="arival-link">直达链接<i class="icon-chevron-right"></i></a>
@@ -75,7 +75,8 @@ function _time($time){
                     <p>需要 <a href="<?=site_url('sign/signin_form')?>">登录</a> 才能评论</p>
                     <?php endif; ?>    
                 </div>  
-                <div class="comment-list"></div>
+                <ul class="comment-list media-list">
+                </ul>
                 <i class="comment-arr"></i>
             </div>
         </div>

@@ -12,8 +12,11 @@ class Comments_model extends CI_Model{
 		$query = $this->db->query($sql);
 		return $query;
 	}
-	public function show_comment($s_id){
-		$sql = "SELECT * FROM comments where subject_id='$s_id' LIMIT 0,10";
+	public function show_comment($pid){
+		$sql = "SELECT c.*,u.avatar FROM comments as c,user as u 
+				where c.post_id='$pid' 
+				and c.user_id = u.uid
+				order by created desc";
 		$query = $this->db->query($sql);
 		if($query->num_rows()>0){
 			return $query->result();
@@ -21,5 +24,11 @@ class Comments_model extends CI_Model{
 			return FALSE;
 		}
 	}
-
+	public function updateCount($pid){
+		$sql = "UPDATE posts set comment_count=comment_count+1 where id='$pid'";
+		$query = $this->db->query($sql);
+		if($query){
+			return true;
+		}
+	}
 }

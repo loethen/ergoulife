@@ -11,5 +11,13 @@ class Comments extends CI_Controller {
 		if(empty($data['replyid'])){
 			$query = $this->comments_model->add_comment('',$data['pid'],$this->uid,$data['content']);
 		}
+		if($query){
+			$this->comments_model->updateCount($data['pid']);
+		}
+	}
+	public function show_comment(){
+		$pid = $this->input->post('pid',true);
+		$res = $this->comments_model->show_comment($pid);
+		echo json_encode($res);
 	}
 }

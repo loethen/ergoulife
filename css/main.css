@@ -217,7 +217,7 @@ blockquote p{
 	-moz-box-shadow: 1px 1px 3px rgba(0,0,0,.2);
 }
 .ep{
-	padding: 14px 0;
+	padding: 13px 0;
 }
 .like, .share, .comment{
 	background-image: url(../img/like.png);
@@ -289,6 +289,11 @@ blockquote p{
 .comments input{
 	margin: 0;
 }
+.comment-list{
+	margin-top: 15px;
+}
+.comment-list .media{margin: 0;}
+.comment-list .media p{color: #888;}
 /* ==============
 	品牌详情页
    ================*/
