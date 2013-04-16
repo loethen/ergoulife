@@ -8,9 +8,8 @@ define(function(require){
 	var util = require('./util')
 
 	r.route(/(ergoulife|index\.php|home)(\/)*$/g,function(){
-		require.async('hoverdir',function(){
-			$('a').tooltip()
-		})
+		$('a').tooltip()
+		require('./comment')
 	})
 
 	r.route(/subject/g,function(){
@@ -18,9 +17,9 @@ define(function(require){
 		require('./rate')
 		require('./rate-caculate')
 
-		$('.star img').tooltip();
+		$('.star img').tooltip()
 	
-		$("a[data-toggle=popover]").popover();
+		$("a[data-toggle=popover]").popover()
 
 		/*===================
 			评论

@@ -24,7 +24,7 @@ function _time($time){
 <div class="row-fluid">
     <div class="span8">
         <?php foreach ($items as $item): ?>
-        <div class="item bg-white">
+        <div class="item bg-white" data-postid="<?=$item->id?>">
             <div class="entry-top clearfix">
                 <div class="pull-left">
                     <?php $id = $item->id;
@@ -58,15 +58,28 @@ function _time($time){
             </div>
             <div class="entry-misc clearfix">
                 <div class="pull-left ep clearfix">
-                    <a class="like" href="javascipt:;" data-toggle="tooltip" title="喜欢+1"></a>
-                    <a class="share" href="javascipt:;" data-toggle="tooltip" title="分享到新浪微博"></a>
-                    <a class="comment" href="javascipt:;" data-toggle="tooltip" title="点击发表评论"></a>
+                    <a class="like" href="javascript:;" data-toggle="tooltip" title="喜欢+1"></a>
+                    <a class="share" href="javascript:;" data-toggle="tooltip" title="分享到新浪微博"></a>
+                    <a class="comment" href="javascript:;" data-toggle="tooltip" title="点击发表评论"></a>
                 </div>
                 <div class="pull-right lb">
                     <a href="<?=$item->link?>" class="arival-link">直达链接<i class="icon-chevron-right"></i></a>
                 </div>
             </div>
+            <div class="comments">
+                <div class="comment-form">
+                    <?php if($this->session->userdata('log_in')): ?>
+                    <input type="text" class="span8" placeholder='发表评论...'>
+                    <button type="submit" class="btn do-comment">发布评论</button>
+                    <?php else: ?>
+                    <p>需要 <a href="<?=site_url('sign/signin_form')?>">登录</a> 才能评论</p>
+                    <?php endif; ?>    
+                </div>  
+                <div class="comment-list"></div>
+                <i class="comment-arr"></i>
+            </div>
         </div>
+        
         <?php endforeach; ?>  
     </div>
     <div class="span4 bg-rx">

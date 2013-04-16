@@ -226,19 +226,19 @@ blockquote p{
 	margin-left: 15px;
 }
 .like{
-	width: 14px;
+	width: 15px;
 	height: 15px;
 	background-position: 0 -14px;
 }
 .share{
-	width: 14px;
-	height: 14px;
-	background-position: -28px 0;
+	width: 16px;
+	height: 17px;
+	background-position: -26px 0;
 }
 .comment{
-	width: 14px;
-	height: 14px;
-	background-position: -14px 2px;
+	width: 16px;
+	height: 16px;
+	background-position: -42px 0px;
 }
 .lb{
 	border-left: 1px solid #ddd;
@@ -267,6 +267,27 @@ blockquote p{
 .bs-docs-sidenav h2{
 	font-size: 18px;
 	margin: 0
+}
+.comments{
+	-webkit-border-radius: 0 0 3px 3px;
+	border-radius: 0 0 3px 3px;
+	-webkit-box-shadow: 0 1px 0 rgba(101,101,101,.1);
+	background-color: #fafafa;
+	padding: 10px 20px;
+	border-top: 1px solid #d5d5d5;
+	position: relative;
+	display: none;
+}
+.comment-arr{
+	position: absolute;
+	top: -7px;
+	left: 76px;
+	background: url(../img/like.png) no-repeat 0 -44px;
+	width: 13px;
+	height: 8px;
+}
+.comments input{
+	margin: 0;
 }
 /* ==============
 	品牌详情页
