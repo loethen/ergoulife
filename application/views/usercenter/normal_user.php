@@ -44,6 +44,12 @@
 		<?php echo form_open('setting/set_profile',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-info'));?>
 		  <legend>个人资料</legend>
 		  <div class="control-group">
+		    <label class="control-label" for="inputEmail">昵称</label>
+		    <div class="controls">
+		      <span class="input uneditable-input"><?=$res->name?></span>
+		    </div>
+		  </div>
+		  <div class="control-group">
 		    <label class="control-label" for="inputEmail">邮件地址</label>
 		    <div class="controls">
 		      <span class="input uneditable-input"><?=$res->email?></span>

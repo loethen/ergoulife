@@ -19,16 +19,16 @@ class Sign extends CI_Controller {
 	}
 	public function signup(){
 		$this->load->database();
-		$this->form_validation->set_rules('email','Email','trim|required|valid_emai|is_unique[user.email]');
-		$this->form_validation->set_rules('password','密码','trim|required|matches[repassword]');
-		$this->form_validation->set_rules('repassword','确认密码','required');
+		$this->form_validation->set_rules('name','昵称','required');
+		$this->form_validation->set_rules('email','邮件地址','trim|required|valid_emai|is_unique[user.email]');
+		$this->form_validation->set_rules('password','密码','trim|required');
 		if($this->form_validation->run()==FALSE){
 			self::signup_form();
 		}else{
-			$email = $this->input->post('email');
-			$password = md5($this->input->post('password').'imergou007');
+			$post = $this->input->post(NULL,TRUE);
+			$password = md5($post['password'].'imergou007');
 			$this->load->model('user');
-			$this->user->user_insert($email,$password);
+			$this->user->user_insert($post['name'],$post['email'],$post['password']);
 			$this->load->view('include/header');
 			$this->load->view('notice',array('message'=>'welcome<br />恭喜你注册成功，快去登录吧！'));
 			$this->load->view('include/footer');

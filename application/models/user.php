@@ -9,8 +9,8 @@ class User extends CI_Model {
 	static private function get_uid(){
 		return $this->uid = $this->session->userdata('uid');
 	}
-	public function user_insert($email,$password){
-		$sql = "insert into user (email,password) VALUES ('$email','$password')";
+	public function user_insert($name,$email,$password){
+		$sql = "insert into user (name,email,password) VALUES ('$name','$email','$password')";
 		$this->db->query($sql);
 	}
 

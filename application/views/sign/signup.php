@@ -7,12 +7,12 @@
 <?php echo form_open('sign/signup',array('class'=>'form-signup')); ?>
         <h3 class="form-heading">请注册</h3>
         <div class="group">
-        	<label>Email</label>
+        	<label>昵称</label>
+        	<input name='nickname' type="text" class="input-block-level" placeholder="Name" value="<?=set_value('name'); ?>">
+        	<label>邮件地址</label>
         	<input name='email' type="text" class="input-block-level" placeholder="Email address" value="<?=set_value('email'); ?>">
 	        <label>密码</label>
 	        <input name='password' type="password" class="input-block-level" placeholder="Password">
-	        <label>确认一次密码</label>
-	        <input name='repassword' type="password" class="input-block-level" placeholder="Repassword">
 	        <button class="btn btn-block btn-margin10 btn-primary" type="submit">注册</button>
         </div>
         
