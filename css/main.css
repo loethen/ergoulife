@@ -4,7 +4,7 @@
    ========================================================================== */
 .clear{clear:both;}
 body{
-	background:#eee;
+	
 }
 /* ==============
 	bg-color
@@ -34,15 +34,16 @@ body{
 	header
    ================*/
 #wrap > .container-narrow {
-	padding-top: 60px;
+
 } 
 .container-narrow{
 	max-width: 870px;
 	margin: 0 auto;
 }
 .navbar a.logo{
-	background: url(../img/logo.png) no-repeat 0 0;
-	padding-left: 40px;
+	background: url(../img/ergoulogo.png) no-repeat 0 0;
+	width: 134px;
+	height: 34px;
 }
 .fix{
 	position: fixed;

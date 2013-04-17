@@ -39,11 +39,10 @@
         </div>
     </div>
     <div id="wrap">
-        <div class="container-narrow">
-            <div class="navbar navbar-fixed-top navbar-googlenav" style="margin: -1px -1px 0;">
+        <div class="navbar navbar-googlenav">
               <div class="navbar-inner">
                 <div class="container">
-                  <a class="brand logo" href="<?=site_url() ?>">Ergoulife</a>
+                  <a class="pull-left logo" href="<?=site_url() ?>"></a>
                   <ul class="nav">
                     <li class="<?=$this->uri->segment(1)=='allbrand'?'active':''?>"><a href="<?=site_url('allbrand') ?>">所有品牌</a></li>
                     <li class="<?=$this->uri->segment(1)=='meowtown'?'active':''?>"><a href="<?=site_url('meowtown') ?>">喵小镇</a></li>
@@ -78,5 +77,7 @@
                   </ul>
                 </div>
               </div>
-            </div>
+        </div>
+        <div class="container-narrow">
+            
             <div class="container-narrow container-margin">
