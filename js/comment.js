@@ -7,20 +7,9 @@ define(function(require){
 			commentlist = item.find('.comment-list'),
 			comments = item.find('.comments')
 		if(comments.is(':hidden')){
-			$.post(site_url+'/comments/show_comment',{pid:pid},function(data){
-				data = $.parseJSON(data)
-				if(!data){
-					commentlist.html("<li><p>还没有人评论</p></li>")
-				}else{
-					commentlist.html('');
-					for(var i=0;i<data.length;i++){
-						var obj = data[i],
-							str = '<a class="pull-left" href="#"><img width="20px" class="media-object" src="'+base_url+'/uploads/avatar/'+obj.avatar+'"></a><div class="media-body"><p>'+obj.content+'</p></div>';
-						$("<li/>").attr('class','media').html(str).appendTo(commentlist)
-					}
-				}
+			get_comment(pid,commentlist,function(){
 				comments.slideDown();
-			})	
+			})
 		}else{
 			comments.slideUp();
 		}
@@ -40,20 +29,25 @@ define(function(require){
 				$.post(site_url+'/comments/do_comment',{ pid:pid , content:cv , replyid:replyid },
 					function(){
 						c.val('');
-						$.post(site_url+'/comments/show_comment',{pid:pid},function(data){
-							data = $.parseJSON(data)
-							if(!data){
-								commentlist.html("<li><p>评论失败</p></li>")
-							}else{
-								commentlist.html('');
-								for(var i=0;i<data.length;i++){
-									var obj = data[i],
-										str = '<a class="pull-left" href="#"><img width="20px" class="media-object" src="'+base_url+'/uploads/avatar/'+obj.avatar+'"></a><div class="media-body"><p>'+obj.content+'</p></div>';
-									$("<li/>").attr('class','media').html(str).appendTo(commentlist)
-								}
-							}
-						})
+						get_comment(pid,commentlist);
 					})
 			}
 	})
+
+	function get_comment(pid,commentlist,cb){
+		$.post(site_url+'/comments/show_comment',{pid:pid},function(data){
+			data = $.parseJSON(data)
+			if(!data){
+				commentlist.html("<li><p>评论失败</p></li>")
+			}else{
+				commentlist.html('');
+				for(var i=0;i<data.length;i++){
+					var obj = data[i],
+						str = '<a class="pull-left" href="#"><img width="34px" class="media-object img-rounded" src="'+base_url+'/uploads/avatar/'+obj.avatar+'"></a><div class="media-body"><h4 class="media-heading">'+obj.name+'  '+obj.created+'</h4><p>'+obj.content+'</p></div>';
+					$("<li/>").attr('class','media').html(str).appendTo(commentlist)
+				}
+			}
+			cb && cb();
+		})
+	}
 })

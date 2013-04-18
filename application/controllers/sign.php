@@ -28,20 +28,23 @@ class Sign extends CI_Controller {
 			$post = $this->input->post(NULL,TRUE);
 			$password = md5($post['password'].'imergou007');
 			$this->load->model('user');
-			$this->user->user_insert($post['name'],$post['email'],$post['password']);
-			$this->load->view('include/header');
-			$this->load->view('notice',array('message'=>'welcome<br />恭喜你注册成功，快去登录吧！'));
-			$this->load->view('include/footer');
+			$query = $this->user->user_insert($post['name'],$post['email'],$password);
+			if($query){
+				self::signin($post['email'],$post['password']);
+			}
+			// $this->load->view('include/header');
+			// $this->load->view('notice',array('message'=>'welcome<br />恭喜你注册成功，快去登录吧！'));
+			// $this->load->view('include/footer');
 		}
 	}
-	public function signin(){
+	public function signin($e=null,$p=null){
 		$this->form_validation->set_rules('email','Email','trim|required|valid_email');
 		$this->form_validation->set_rules('password','密码','trim|required');
 		if($this->form_validation->run()==false){
 			self::signin_form();
 		}else{
-			$email = $this->input->post('email',true);
-			$password = $this->input->post('password',true);
+			$email = is_null($e) ? $this->input->post('email',true) : $e;
+			$password = is_null($p) ? $this->input->post('password',true) : $p;
 			$this->load->model('user');
 			$query = $this->user->login($email,$password);
 			if($query->num_rows()>0){
@@ -51,9 +54,9 @@ class Sign extends CI_Controller {
 				if($row->password === $password){
 					$uid = $row->uid;
 					$email = $row->email;
-					$arr = explode('@', $email);
+					$name = $row->name;
 					$ergousess = array(
-							'username' => $arr[0],
+							'username' => $name,
 							'email' => $email,
 							'uid' => $uid,
 							'log_in' => true 

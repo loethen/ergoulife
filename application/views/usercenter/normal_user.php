@@ -46,13 +46,13 @@
 		  <div class="control-group">
 		    <label class="control-label" for="inputEmail">昵称</label>
 		    <div class="controls">
-		      <span class="input uneditable-input"><?=$res->name?></span>
+		      <input type="text" name='name' value="<?=$res->name?>">
 		    </div>
 		  </div>
 		  <div class="control-group">
 		    <label class="control-label" for="inputEmail">邮件地址</label>
 		    <div class="controls">
-		      <span class="input uneditable-input"><?=$res->email?></span>
+		      <span class="input uneditable-input"><?=$res->email?></span><small>  不可更改，如要更改，请联系管理员</small>
 		    </div>
 		  </div>
 		  <div class="control-group">

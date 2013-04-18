@@ -8,7 +8,7 @@
         <h3 class="form-heading">请注册</h3>
         <div class="group">
         	<label>昵称</label>
-        	<input name='nickname' type="text" class="input-block-level" placeholder="Name" value="<?=set_value('name'); ?>">
+        	<input name='name' type="text" class="input-block-level" placeholder="Name" value="<?=set_value('name'); ?>">
         	<label>邮件地址</label>
         	<input name='email' type="text" class="input-block-level" placeholder="Email address" value="<?=set_value('email'); ?>">
 	        <label>密码</label>

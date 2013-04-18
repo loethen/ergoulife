@@ -64,15 +64,17 @@ class Setting extends CI_Controller {
 	}
 	public function set_profile(){
 		  $this->form_validation->set_rules('profile','个人签名','required');
+		  $this->form_validation->set_rules('name','用户名','required');
 		  if($this->form_validation->run()==false){
 		  		self::user_set();
 		  }else{
 		  		$profile = $this->input->post('profile',true);
+		  		$name = $this->input->post('name',true);
 		  		$uid = $this->session->userdata('uid');
-		  		$query = $this->user->update_profile($profile,$uid);
+		  		$query = $this->user->update_profile($name,$profile,$uid);
 		  		if($query){
 		  			$query = $this->user->user_info($uid);
-					$this->load->view('include/header',array('res'=>$query->row(),'success'=>'个人签名更新成功'));
+					$this->load->view('include/header',array('res'=>$query->row(),'success'=>'个人信息更新成功'));
 					$this->load->view('usercenter/normal_user');
 					$this->load->view('include/footer');
 				}else{

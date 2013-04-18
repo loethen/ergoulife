@@ -11,7 +11,7 @@ class User extends CI_Model {
 	}
 	public function user_insert($name,$email,$password){
 		$sql = "insert into user (name,email,password) VALUES ('$name','$email','$password')";
-		$this->db->query($sql);
+		return $this->db->query($sql);
 	}
 
 	public function login($email,$password){
@@ -29,8 +29,8 @@ class User extends CI_Model {
 		$this->db->close();
 		return $query;
 	}
-	public function update_profile($profile,$uid){
-		$query = $this->db->query("UPDATE user set profile='$profile' where uid='$uid'");
+	public function update_profile($name,$profile,$uid){
+		$query = $this->db->query("UPDATE user set name='$name', profile='$profile' where uid='$uid'");
 		$this->db->close();
 		return $query;
 	}
