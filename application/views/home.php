@@ -83,35 +83,17 @@ function _time($time){
         
         <?php endforeach; ?>  
     </div>
-    <div class="span4 bg-rx">
-        <ul class="nav nav-list bs-docs-sidenav">
-            <li>
-                <h2>分类 Categroy</h2>
-            </li>
-            <li>
-                <a href="">
-                    <i class="icon-chevron-right"></i>
-                    宠物玩具
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <i class="icon-chevron-right"></i>
-                    医药
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <i class="icon-chevron-right"></i>
-                    保健品
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <i class="icon-chevron-right"></i>
-                    母婴
-                </a>
-            </li>
-        </ul>
+    <div class="span4 RX">
+        <div class="Ym">
+            <h3 class="tx hp">
+                <span>你感兴趣的标签</span>
+            </h3>
+            <a class="qu" href="#">查看全部</a>
+        </div>
+        <div class="cloudtag">
+            <?php foreach ($cloudtag as $cloud): ?>
+            <a href="<?=site_url('tags/'.$cloud->tag_name)?>"><?=$cloud->tag_name?></a> <span class="divider">/</span>
+            <?php endforeach; ?>
+        </div>
     </div>
 </div>

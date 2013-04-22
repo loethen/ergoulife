@@ -30,6 +30,7 @@ body{
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
 }
+
 /* ==============
 	header
    ================*/
@@ -175,29 +176,30 @@ blockquote p{
 	line-height: 1.7em;
 	margin:10px 0;
 	font-size: 14px;
-/*	padding:0 19px 0;*/
+	padding:0 19px 0;
 	color: #888;
 	word-wrap:break-word;
 }
 .item{
 	margin-bottom: 40px;
+	border: 1px solid #d7d7d7;
 }
 .entry-top{
-	/*padding: 10px;*/
+	padding: 10px;
 	/*border-bottom: 1px solid #ddd;*/
 }
 .entry-top{
-	color: #999;
+	color: #d4d4d4;
 }
 .entry-top a{
-	color: #999;
+	color: #c2c2c2;
 	text-decoration: none;
 }
 .entry-top a i{
 	opacity: .2;
 }
 .item h1{
-	padding: 12px 0 8px;
+	padding: 8px 16px 8px;
 	font-size: 16px;
 	font-weight: 550;
 	line-height: 1.2em;
@@ -206,7 +208,7 @@ blockquote p{
 	color: #666;
 }
 .fg{
-	background: #f5f5f5;
+	background: #f5f5f5 url(../img/p5.png) repeat;
 	line-height: 0;
 	border-top: 1px solid #d7d7d7;
 	border-bottom: 1px solid #d7d7d7;
@@ -297,10 +299,60 @@ blockquote p{
 .comment-list .media p{color: #666; padding-left: 3px;}
 .comment-list .media .media-heading{
 	font-size: 12px;
-	background: #f2fbf2;
+	background: #f8f8f8;
 	font-weight: normal;
 	padding-left: 3px;
 	color: #888;
+	box-shadow: 1px 1px #ddd;
+}
+/* ==============
+	首页右侧
+   ================*/
+.Ym {
+	border-bottom: 1px solid #e9e9e9;
+	color: #777;
+	font: bold 12px arial,sans-serif;
+	margin-bottom: 10px;
+	margin-top: -7px;
+	position: relative;
+}
+.tx {
+	display: inline-block;
+	font: bold 12px arial,sans-serif;
+	margin: 0;
+	max-width: 256px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+.hp {
+	padding-right: 10px;
+	position: relative;
+	text-transform: uppercase;
+	background-color: #fff;
+	bottom: -7px;
+}
+.qu {
+	background-color: #fff;
+	bottom: -7px;
+	padding-left: 10px;
+	position: absolute;
+	right: 0;
+}
+.RX{
+	padding-left: 10px;
+}
+.cloudtag{
+	margin-top: 15px;
+}
+.cloudtag a{
+	font-size: 14px;
+	color: #888;
+}
+.divider {
+	padding: 0 5px;
+	color: #ccc;
 }
 /* ==============
 	品牌详情页
@@ -331,6 +383,11 @@ blockquote p{
 	background: #fff;
 	margin-bottom: 20px;
 }
+.sc .item-content p{
+	font-size: 16px;
+	padding: 0;
+	text-indent: 2em;
+}
 .talk{
 	margin-top: 20px;
 }
@@ -339,6 +396,9 @@ blockquote p{
 }
 .talk button{
 	float: right;
+}
+.reply{
+	padding-right: 5px;
 }
 /* =================================================================================
     账户设置.

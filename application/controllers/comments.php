@@ -21,6 +21,7 @@ class Comments extends CI_Controller {
 				$query = $this->comments_model->add_comment('',$data['id'],$uid,$data['content']);
 			}
 			if($query){
+				$this->comments_model->updateCount($data['id']);
 				redirect('subject/'.$data['id'].'#talk');
 			}
 		}

@@ -13,7 +13,7 @@ class Comments_model extends CI_Model{
 		return $query;
 	}
 	public function show_comment($pid){
-		$sql = "SELECT c.*,u.avatar,u.name FROM comments as c,user as u 
+		$sql = "SELECT c.*,u.avatar,u.name,u.uid FROM comments as c,user as u 
 				where c.post_id='$pid' 
 				and c.user_id = u.uid
 				order by created desc";

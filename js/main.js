@@ -6,42 +6,26 @@ define(function(require){
 	require('./mouse')
 	
 	var util = require('./util')
-
+	$('a[data-toggle=tooltip]').tooltip()
+	
 	r.route(/(ergoulife|index\.php|home)(\/)*$/g,function(){
-		$('a').tooltip()
 		require('./comment')
+		require('./sinashare')
 	})
 
 	r.route(/subject/g,function(){
 		//vote 
-		require('./rate')
-		require('./rate-caculate')
+		// require('./rate')
+		// require('./rate-caculate')
 
-		$('.star img').tooltip()
+		// $('.star img').tooltip()
 	
-		$("a[data-toggle=popover]").popover()
+		// $("a[data-toggle=popover]").popover()
 
 		/*===================
 			评论
 		===================*/
-		$('#iwantcomment').click(function(){
-			require.async('./util',function(util){
-				util.quickSign();
-			})
-			
-		})
-		$('#comment-form').submit(function(){
-			if(($('#comment-content').val() == '')){
-				$('#comment-content').addClass('error-border');
-				return false;
-			}
-			return true;
-		})
-		$('.comment-page blockquote').hover(function(){
-			$(this).css('background-color','#dfeeff');
-		},function(){
-			$(this).css('background-color','#fff')
-		});
+		require('./reply')
 	})
 
 	r.route(/allbrand/g,function(){

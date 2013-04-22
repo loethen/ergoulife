@@ -1,10 +1,10 @@
 	<h1 class="sj-title"><?=$post->post_title?></h1>
 <div class="row-fluid">
-	<div class="span8">
+	<div class="span8 sc">
 		<div class="bg-white item-content">
 			<?=$post->post_content?>
 		</div>
-		<div id="#talk" class="talk">
+		<div id="talk" class="talk">
 			<h4 class='teal'><?php $c = $post->comment_count; echo $c>0 ? "".$c." 条评论" : "还没有评论"?></h4>
             <ul class="comment-list media-list">
             <?php foreach ($comments as $comment): ?>
@@ -13,14 +13,17 @@
             			<img width="34px" class="media-object img-rounded" src="<?=base_url('/uploads/avatar/'.$comment->avatar)?>">
             		</a>
             		<div class="media-body">
-            			<h4 class="media-heading"><?=$comment->name?>&nbsp;<?=$comment->created?></h4>
+            			<h4 class="media-heading clearfix">
+                            <div class="pull-left"><a href="#"><?=$comment->name?></a>&nbsp;<?=$comment->created?></div>
+                            <a href="javascript:;" data-id="<?=$comment->uid?>" data-name="<?=$comment->name?>" class="pull-right reply">回复</a>
+                        </h4>
             			<p><?=$comment->content?></p>
             		</div>
             	</li>
             <?php endforeach; ?>
             </ul>
             <div class="comment-form clearfix">
-            	<h4 class="teal">添加新的评论······</h4>
+            	<h4 class="teal">添加新的评论······<small id="tiperr"></small></h4>
                 <?php if($this->session->userdata('log_in')): ?>
                 <form action="<?=site_url('comments/do_comment')?>" method='post'>
                 	<input type="hidden" name='id' value="<?=$post->id?>">

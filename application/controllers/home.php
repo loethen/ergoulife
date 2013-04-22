@@ -14,7 +14,8 @@ class Home extends CI_Controller {
 			$res = $this->index_query->tag_list($post_id);
 			$arr[$post_id] = $res;
 		}
-		$this->load->view('include/header',array('items'=>$items,'tags'=>$arr));
+		$cloudtag = $this->index_query->cloud_tag();
+		$this->load->view('include/header',array('items'=>$items,'tags'=>$arr,'cloudtag'=>$cloudtag));
 		$this->load->view('home');
 		$this->load->view('include/footer');
 	}

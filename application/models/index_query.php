@@ -23,4 +23,11 @@ class Index_query extends CI_Model {
 		$result = $query->result();
 		return $result;
 	}
+	public function cloud_tag(){
+		$sql = "SELECT *
+				from tags limit 0,10";
+		$query =  $this->db->query($sql);
+		$result = $query->result();
+		return $result;
+	}
 }
