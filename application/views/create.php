@@ -30,12 +30,11 @@
 					<a href="javascript:;" id="othersite" class="btn btn-xlarge btn-info">其他网站</a>	
 				</div>
 				<div class="tb">
-					<form action="<?=site_url('taobao/info')?>" method="post" id="new-entity-form" enable="false">
-						<div class="input-append btn-margin10">
-  							<input class="span8" name="url" id="appendedInputButton" placeholder="粘贴商品链接" type="text">
-						  	<button class="btn" id="loaditem" type="submit">载入商品</button>
-						</div>
-					</form>	
+					<div class="input-append btn-margin10">
+						<input class="span8" name="url" id="p-link" placeholder="粘贴商品链接" type="text">
+					  	<button class="btn" id="loaditem" type="submit">载入商品</button>
+					</div>
+					<div id="tb-container"></div>
 				</div>
 				<div class="other">
 					<form action="/entity/taobao/info" method="post" id="new-entity-form" enable="false">
