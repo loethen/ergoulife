@@ -7,12 +7,14 @@ define(function(require){
 	
 	var util = require('./util')
 	$('a[data-toggle=tooltip]').tooltip()
-	
+
+	//首页
 	r.route(/(ergoulife|index\.php|home)(\/)*$/g,function(){
 		require('./comment')
 		require('./sinashare')
 	})
 
+	//商品详情页
 	r.route(/subject/g,function(){
 		//vote 
 		// require('./rate')
@@ -28,14 +30,33 @@ define(function(require){
 		require('./reply')
 	})
 
+	//所有品牌页
 	r.route(/allbrand/g,function(){
 		$('#allbrand .accordion-group').hover(function(){
 			$(this).toggleClass('border-red')
 		})
 	})
+
+	//品牌详情页
 	r.route(/brand\/\d+/g,function(){
 		require('./subscribe');
 	})
+
+	//商品添加页
+	r.route(/creat/g,function(){
+		require('./create.js')
+	})
+	//登录注册验证
+	r.route(/sign/g,function(){
+		
+	})
+
+	//用户中心
+	r.route(/setting/g,function(){
+		require('./avatar')
+	})
+
+	//管理员
 	r.route(/admin/g,function(){
 		require('./imagecrop')
 		require('./admin-option')
@@ -51,11 +72,4 @@ define(function(require){
 		require('./rmtag')
 	})
 
-	r.route(/sign/g,function(){
-		
-	})
-	
-	r.route(/setting/g,function(){
-		require('./avatar')
-	})
 })

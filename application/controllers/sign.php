@@ -7,15 +7,15 @@ class Sign extends CI_Controller {
 	}
 	public function signup_form()
 	{
-		$this->load->view('include/header');
+		$this->load->view('include/sign-header');
 		$this->load->view('sign/signup');
-		$this->load->view('include/footer');
+		$this->load->view('include/sign-footer');
 	}
 
 	public function signin_form(){
-		$this->load->view('include/header');
+		$this->load->view('include/sign-header');
 		$this->load->view('sign/signin');
-		$this->load->view('include/footer');
+		$this->load->view('include/sign-footer');
 	}
 	public function signup(){
 		$this->load->database();

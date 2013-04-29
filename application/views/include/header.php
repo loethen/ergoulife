@@ -45,7 +45,9 @@
                   <a class="pull-left logo" href="<?=site_url() ?>"></a>
                   <ul class="nav">
                     <li class="<?=$this->uri->segment(1)=='allbrand'?'active':''?>"><a href="<?=site_url('allbrand') ?>">所有品牌</a></li>
-                    <li class="<?=$this->uri->segment(1)=='meowtown'?'active':''?>"><a href="<?=site_url('meowtown') ?>">喵小镇</a></li>
+                    <li class="<?=$this->uri->segment(1)=='meowtown'?'active':''?>"><a href="<?=site_url('meowtown') ?>">精选</a></li>
+                    <li class="<?=$this->uri->segment(1)=='meowtown'?'active':''?>"><a href="<?=site_url('meowtown') ?>">发现</a></li>
+                    <li class="<?=$this->uri->segment(1)=='create'?'active':''?>"><a href="<?=site_url('create') ?>">添加</a></li>
                   </ul>
                   <ul class="nav pull-right">
                     <?php if($this->session->userdata('log_in')): ?>
