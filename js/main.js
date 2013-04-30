@@ -44,6 +44,7 @@ define(function(require){
 
 	//商品添加页
 	r.route(/creat/g,function(){
+		require('tmpl')
 		require('./create.js')
 	})
 	//登录注册验证

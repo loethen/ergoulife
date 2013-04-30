@@ -419,7 +419,7 @@ blockquote p{
 }
 .breadguid li span {
 	font-size:16px;
-    padding: 8px 12px;
+    padding: 6px 10px;
     border-radius: 13px;
 }
 .guid-wrap{
@@ -440,6 +440,27 @@ blockquote p{
 	left: 80px;
 }
 .tb, .other{display: none;}
+.loe-unit{
+	text-align: left;
+	padding:30px 5px;
+}
+.loe-unit .span6{
+	margin: 20px 0 0 0;
+}
+.w40{width: 40px;}
+.thumb-min{
+	margin: 10px;
+}
+.thumb-min a{
+	float: left;
+	margin-right: 15px;
+}
+.help-inline{
+	color: #ddd;
+}
+.text-left{
+	text-align: left;
+}
 /* ==============
 	品牌详情页
    ================*/

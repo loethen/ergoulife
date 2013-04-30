@@ -7,7 +7,7 @@ define(function(require){
 	}
 
 	var gc = $('.guid-wrap')
-
+	var lock = false
 	gc.coffee({
 		'click':{
 			'#taobao':function(){
@@ -28,16 +28,40 @@ define(function(require){
 				alert('fuck')
 			},
 			'#loaditem':function(){
-				var ac = site_url+'/taobao/info',
-					url = $(this).prev().val()
+				if(!lock){
+					lock = true;
+					var ac = site_url+'/taobao/info',
+						url = $(this).prev().val(),
+						that = $(this)
 
-				$.post(ac,{url:url},function(data){
-					var data = $.parseJSON(data);
-					var html = '<input type="text" class="span8" value="'+data.item.title+'">'+
-								'<img src="'+data.item.pic_url+'">'+
-								'<a href="#" class="next-step btn btn-primary">下一步</a>'
-					$('#tb-container').html(html)
-				})
+					if($.trim(url)=='') return false
+
+					$(this).html('正在载入...')	
+
+					$.post(ac,{url:url},function(data){
+						if(data=='false') {
+							alert('只支持淘宝链接')
+							return false
+						}
+						var data = $.parseJSON(data)
+						$('#tb-container').html('')
+						$('#tb-tmpl').tmpl(data)
+										.appendTo('#tb-container')
+						lock = false;
+						that.html('重新载入')
+					})	
+				}
+			}
+		}
+	})
+	var tbc = $('#tb-container')
+	tbc.coffee({
+		'click':{
+			'.thumb-min a':function(){
+				var url = $(this).attr('href')
+				tbc.find('.thumb-big')
+							.attr('src',url)
+				return false
 			}
 		}
 	})

@@ -17,7 +17,6 @@ class Taobao extends CI_Controller{
 		$str = $parse['query'];
 		parse_str($str, $output);
 		$id = $output['id'];
-
 		$req->setNumIid($id);
 		$resp = $c->execute($req, $sessionKey=null);
 		echo json_encode($resp);

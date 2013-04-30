@@ -37,6 +37,10 @@ seajs.config({
 			src : 'vendor/jquery.form.js',
 			deps : ['jquery']
 		},
+		'tmpl':{
+			src : 'vendor/jquery.tmpl.min.js',
+			deps : ['jquery']
+		},
 		'ueditor':{
 			src : 'ueditor/editor_all.js',
 			exports : 'UE'
