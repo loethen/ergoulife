@@ -39,14 +39,14 @@ define(function(require){
 					$(this).html('正在载入...')	
 
 					$.post(ac,{url:url},function(data){
-						if(data=='false') {
-							alert('只支持淘宝链接')
-							return false
+						var data = $.parseJSON(data) 
+						if(typeof data.error != 'undefined' || typeof data.code != 'undefined') {
+							$('#tb-container').html('不是有效的淘宝(天猫)商品链接')
+						}else{
+							$('#tb-container').html('')
+							$('#tb-tmpl').tmpl(data)
+											.appendTo('#tb-container')
 						}
-						var data = $.parseJSON(data)
-						$('#tb-container').html('')
-						$('#tb-tmpl').tmpl(data)
-										.appendTo('#tb-container')
 						lock = false;
 						that.html('重新载入')
 					})	

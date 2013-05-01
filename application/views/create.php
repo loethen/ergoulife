@@ -31,10 +31,10 @@
 				</div>
 				<div class="tb">
 					<!--[if lt IE 9]>
-					<span class="help-block text-left">粘贴商品链接</span>
+					<span class="help-block text-left">粘贴商品链接,支持淘宝网和天猫</span>
 					<![endif]-->
 					<div class="input-append btn-margin10">
-						<input class="span10" name="url" id="p-link" autocomplete='off' placeholder="粘贴商品链接" type="text">
+						<input class="span10" name="url" id="p-link" autocomplete='off' placeholder="粘贴商品链接,支持淘宝网和天猫" type="text">
 					  	<button class="btn" id="loaditem" type="submit">载入商品</button>
 					</div>
 					

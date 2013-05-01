@@ -13,12 +13,16 @@ class Taobao extends CI_Controller{
 		$req->setFields("detail_url,num_iid,title,nick,type,cid,seller_cids,props,input_pids,input_str,pic_url,num,valid_thru,list_time,delist_time,stuff_status,location,price,post_fee,express_fee,ems_fee,has_discount,freight_payer,has_invoice,has_warranty,has_showcase,modified,increment,approve_status,postage_id,product_id,auction_point,property_alias,item_img,prop_img,sku,video,outer_id,is_virtual");
 
 		$url = $this->input->post('url',true);
-		$parse = parse_url($url);
-		$str = $parse['query'];
-		parse_str($str, $output);
-		$id = $output['id'];
-		$req->setNumIid($id);
-		$resp = $c->execute($req, $sessionKey=null);
-		echo json_encode($resp);
+		$regexp = '/^http:\/\/(item\.taobao\.com|detail\.tmall\.com)\/item\.htm\?.*&id=([\d]+).*$/i';
+		$matches = array();
+		if(preg_match($regexp, $url, $matches)){
+			$id = $matches[2];
+			$req->setNumIid($id);
+			$resp = $c->execute($req, $sessionKey=null);
+			echo json_encode($resp);
+		}else{
+			echo json_encode(array('error'=>'不是有效的淘宝链接'));
+			exit();
+		}	
 	}
 }
