@@ -4,7 +4,7 @@ class Taobao extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 	}
-	function info(){
+	public function info(){
 		$c = new TopClient;
 		$c->appkey = "21478777";
 		$c->secretKey = "0467bacb01868e15a3b49f1279f27734";
@@ -24,5 +24,8 @@ class Taobao extends CI_Controller{
 			echo json_encode(array('error'=>'不是有效的淘宝链接'));
 			exit();
 		}	
+	}
+	public function tbnew(){
+
 	}
 }

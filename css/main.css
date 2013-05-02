@@ -461,6 +461,20 @@ blockquote p{
 .text-left{
 	text-align: left;
 }
+.tb-submit{
+	/*margin-right: 180px;*/
+}
+.shopname{
+	margin-top: 10px;
+	color: #888;
+	padding-left: 10px;
+}
+#des{
+	resize:vertical;
+}
+#des-tip{
+	display: none;
+}
 /* ==============
 	品牌详情页
    ================*/

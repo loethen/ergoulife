@@ -6,8 +6,9 @@ define(function(require){
 	      $(this).on(eName, selector, obj[eName][selector])  
 	}
 
-	var gc = $('.guid-wrap')
-	var lock = false
+	var gc = $('.guid-wrap'),
+		lock = false,
+		imgarr = []
 	gc.coffee({
 		'click':{
 			'#taobao':function(){
@@ -63,6 +64,23 @@ define(function(require){
 							.attr('src',url)
 				return false
 			}
+
+		}
+	})
+	$('#tb-form').submit(function(){
+		var arr = [];
+		$('.thumb-min a').each(function(){
+			var url = $(this).attr('href')
+			url = url.replace(/_310x310\.jpg/i,'')
+			arr.push(url)
+		})
+		var itemimgs = arr.join()
+		$('#itemimgs').val(itemimgs)
+
+		var val = $('#des').val()
+		if($.trim(val)==''){
+			$('#des-tip').show();
+			return false;
 		}
 	})
 })

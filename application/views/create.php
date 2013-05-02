@@ -15,8 +15,8 @@
 							2
 						</span>
 					</li>
-					<li>
-						推荐理由
+					<li class="guid-step3">
+						添加完成
 						<span class="badge">
 							<hr>
 							3
@@ -30,20 +30,24 @@
 					<a href="javascript:;" id="othersite" class="btn btn-xlarge btn-info">其他网站</a>	
 				</div>
 				<div class="tb">
+					<form method="post" id="tb-form" action="<?=site_url('taobao/new')?>">
 					<!--[if lt IE 9]>
 					<span class="help-block text-left">粘贴商品链接,支持淘宝网和天猫</span>
 					<![endif]-->
 					<div class="input-append btn-margin10">
 						<input class="span10" name="url" id="p-link" autocomplete='off' placeholder="粘贴商品链接,支持淘宝网和天猫" type="text">
-					  	<button class="btn" id="loaditem" type="submit">载入商品</button>
+					  	<a class="btn" id="loaditem">载入商品</a>
 					</div>
-					
+					<input type="hidden" name="itemimgs" id="itemimgs">
 					<script id="tb-tmpl" type='text/x-jquery-tmpl'>
 						<p class="text-success">商品详情.</p>
 						<div class="form-inline">
-							<input type="text" class='span8' value='${item.title}'>
+							<input type="text" name="title" class='span10' value='${item.title}'>
 							<span class="help-inline">标题可修改</span>
 						</div>
+						<p class="shopname">店铺：${item.nick} <span class='text-error'>¥${item.price}</span></p>
+						<input type="hidden" name="price" value="${item.price}">
+						<input type="hidden" name="shopname" value="${item.nick}">
 						<div class="span6">
 							<a class="thumbnail" href="#">
 								<img class="thumb-big" src="${firstElem(item.item_imgs.item_img)}" alt="">
@@ -57,8 +61,15 @@
 							</a>
 							{{/each}}
 						</div>
+
 						<div class="clear"></div>
-						<a href="" class="btn btn-primary btn-large pull-right">下一步 >></a>
+						<div id="tb-recommend" class="text-left well clearfix">
+							<p class="text-warning">推荐理由(必填)</p>
+							<textarea name="description" class="span12" id="des" rows="2"></textarea>
+							<div class="clear"></div>
+							<p class="text-error pull-left" id="des-tip">推荐理由必须填写</p>
+							<button type="submit" class="tb-submit btn btn-primary btn-large pull-right">立即添加</button>
+						</div>
 					</script>
 					<script>
 						function firstElem(arr){
@@ -68,8 +79,12 @@
 							str = str+'_'+size+'x'+size+'.jpg'
 							return str
 						}
+						function arrToStr(arr){
+							return arr.join();
+						}
 					</script>
 					<div id="tb-container" class="loe-unit clearfix"></div>
+					</form>
 				</div>
 				<div class="other">
 					<form action="/entity/taobao/info" method="post" id="new-entity-form" enable="false">
