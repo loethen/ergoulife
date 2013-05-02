@@ -12,6 +12,7 @@ define(function(require){
 	r.route(/(ergoulife|index\.php|home)(\/)*$/g,function(){
 		require('./comment')
 		require('./sinashare')
+		require('./imgtab')
 	})
 
 	//商品详情页
@@ -24,9 +25,7 @@ define(function(require){
 	
 		// $("a[data-toggle=popover]").popover()
 
-		/*===================
-			评论
-		===================*/
+		require('./imgtab')
 		require('./reply')
 	})
 

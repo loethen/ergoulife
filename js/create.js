@@ -44,6 +44,7 @@ define(function(require){
 						if(typeof data.error != 'undefined' || typeof data.code != 'undefined') {
 							$('#tb-container').html('不是有效的淘宝(天猫)商品链接')
 						}else{
+							console.log(data.num_iid)
 							$('#tb-container').html('')
 							$('#tb-tmpl').tmpl(data)
 											.appendTo('#tb-container')

@@ -30,7 +30,7 @@
 					<a href="javascript:;" id="othersite" class="btn btn-xlarge btn-info">其他网站</a>	
 				</div>
 				<div class="tb">
-					<form method="post" id="tb-form" action="<?=site_url('taobao/new')?>">
+					<form method="POST" id="tb-form" action="<?=site_url('taobao/tbnew')?>">
 					<!--[if lt IE 9]>
 					<span class="help-block text-left">粘贴商品链接,支持淘宝网和天猫</span>
 					<![endif]-->
@@ -48,6 +48,7 @@
 						<p class="shopname">店铺：${item.nick} <span class='text-error'>¥${item.price}</span></p>
 						<input type="hidden" name="price" value="${item.price}">
 						<input type="hidden" name="shopname" value="${item.nick}">
+						<input type="hidden" name="num_iid" value="${item.num_iid}">
 						<div class="span6">
 							<a class="thumbnail" href="#">
 								<img class="thumb-big" src="${firstElem(item.item_imgs.item_img)}" alt="">

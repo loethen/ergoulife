@@ -38,7 +38,7 @@ define(function(require){
 		$.post(site_url+'/comments/show_comment',{pid:pid},function(data){
 			data = $.parseJSON(data)
 			if(!data){
-				commentlist.html("<li><p>评论失败</p></li>")
+				commentlist.html("<li><p>快来发表第一条评论！</p></li>")
 			}else{
 				commentlist.html('');
 				for(var i=0;i<data.length;i++){

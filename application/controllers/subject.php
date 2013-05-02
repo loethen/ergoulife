@@ -9,9 +9,8 @@ class Subject extends CI_Controller {
 	public function index(){
 		$id = $this->uri->segment(2);
 		$post = $this->subject_model->subject_query($id);
-		$brand = $this->subject_model->brand_query($post->relate_brand);
 		$comments = $this->comments_model->show_comment($id);
-		$this->load->view('include/header',array('post'=>$post,'brand'=>$brand,'comments'=>$comments));
+		$this->load->view('include/header',array('item'=>$post,'comments'=>$comments));
 		$this->load->view('subject');
 		$this->load->view('include/footer');
 	}

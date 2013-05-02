@@ -1,12 +1,33 @@
-	<h1 class="sj-title"><?=$post->post_title?></h1>
+	<h1 class="sj-title"><?=$item->post_title?></h1>
 <div class="row-fluid">
-	<div class="span8 sc">
-		<div class="bg-white item-content">
-			<?=$post->post_content?>
+	<div class="span8 sc rxitems">
+		<div class="bg-white item-content item">
+			<p><?=$item->post_desc?></p>
+            <?php
+                $imgarr = explode(',', $item->item_imgs);
+                $first = $imgarr[0]."_400x400.jpg";
+            ?>
+            <div class="fg">
+                <div class="large-img">
+                    <a>
+                        <img src="<?=$first?>" alt="<?=$item->post_title?>"> 
+                    </a> 
+                </div>
+                <div class="mini-img clearfix">
+                <?php foreach($imgarr as $img): ?>
+                    <a class="" href="javascript:;">
+                        <img src="<?=$img.'_40x40.jpg'?>" alt="">
+                    </a>
+                <?php endforeach; ?>
+                </div>
+            </div>
 		</div>
 		<div id="talk" class="talk">
-			<h4 class='teal'><?php $c = $post->comment_count; echo $c>0 ? "".$c." 条评论" : "还没有评论"?></h4>
+			<h4 class='teal'><?php $c = $item->comment_count; echo $c>0 ? "".$c." 条评论" : "还没有评论"?></h4>
             <ul class="comment-list media-list">
+            <?php if(!$comments): ?>
+                <li>快来发表第一条评论!</li>
+            <?php else: ?>
             <?php foreach ($comments as $comment): ?>
             	<li class="media">
             		<a class="pull-left" href="#">
@@ -21,12 +42,13 @@
             		</div>
             	</li>
             <?php endforeach; ?>
+            <?php endif; ?>
             </ul>
             <div class="comment-form clearfix">
             	<h4 class="teal">添加新的评论······<small id="tiperr"></small></h4>
                 <?php if($this->session->userdata('log_in')): ?>
                 <form action="<?=site_url('comments/do_comment')?>" method='post'>
-                	<input type="hidden" name='id' value="<?=$post->id?>">
+                	<input type="hidden" name='id' value="<?=$item->id?>">
                 	<textarea rows='1' name="content" class='span12' placeholder='发表评论...'></textarea>
                 	<button type="submit" class="btn">发表评论</button>
                 </form>
@@ -38,10 +60,13 @@
 	</div>
 	<div class="span4">
 		<div class="bg-life">
-			<a class="btn btn-block btn-primary" title="<?=$post->price?>" href="<?=$post->link?>">直达链接<i class="icon-chevron-right icon-white"></i></a>
+			<a class="btn btn-block btn-primary" title="<?=$item->price?>" href="<?=$item->link?>">直达链接<i class="icon-chevron-right icon-white"></i></a>
 		</div>
+        <div class="bg-life">
+            <span>价格：</span><span class="text-price">¥ <?=$item->price?></span>
+        </div>
 		<div class="bg-life">
-			<span>所属品牌：</span><a href="<?=site_url('brand/'.$brand->id)?>"><?=$brand->brandname?></a>
+			<span>店铺：</span><?=$item->shopname?>
 		</div>
 	</div>
 </div>

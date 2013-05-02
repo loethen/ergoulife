@@ -21,7 +21,7 @@ class Comments_model extends CI_Model{
 		if($query->num_rows()>0){
 			return $query->result();
 		}else{
-			return FALSE;
+			return false;
 		}
 	}
 	public function updateCount($pid){

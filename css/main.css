@@ -211,8 +211,7 @@ blockquote p{
 	border: 1px solid #d7d7d7;
 }
 .entry-top{
-	padding: 10px;
-	/*border-bottom: 1px solid #ddd;*/
+	padding: 10px 10px 0;
 }
 .entry-top{
 	color: #d4d4d4;
@@ -239,6 +238,13 @@ blockquote p{
 	border-top: 1px solid #d7d7d7;
 	border-bottom: 1px solid #d7d7d7;
 	text-align: center;
+}
+.mini-img{
+	background: rgba(255,255,255,.6);
+	padding: 5px 0;
+}
+.mini-img a{
+	text-decoration: none;
 }
 .entry-misc{
 	box-shadow: 1px 1px 3px rgba(0,0,0,.2);
@@ -520,6 +526,10 @@ blockquote p{
 }
 .reply{
 	padding-right: 5px;
+}
+.text-price{
+	font-size: 21px;
+	color: #d14;
 }
 /* =================================================================================
     账户设置.

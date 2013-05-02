@@ -8,14 +8,8 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$items = $this->index_query->post_list();
-		$arr = array();
-		foreach ($items as $item) {
-			$post_id = $item->id;
-			$res = $this->index_query->tag_list($post_id);
-			$arr[$post_id] = $res;
-		}
 		$cloudtag = $this->index_query->cloud_tag();
-		$this->load->view('include/header',array('items'=>$items,'tags'=>$arr,'cloudtag'=>$cloudtag));
+		$this->load->view('include/header',array('items'=>$items,'cloudtag'=>$cloudtag));
 		$this->load->view('home');
 		$this->load->view('include/footer');
 	}
