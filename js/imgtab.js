@@ -10,7 +10,6 @@ define(function(require){
 			'.mini-img a':function(){
 				var src = $(this).find('img').attr('src')
 				src = src.replace(/40x40/i,'400x400')
-				console.log(src)
 				var fg = $(this).closest('.fg')
 				fg.find('.large-img>a>img').attr('src',src)
 			}

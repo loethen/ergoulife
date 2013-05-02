@@ -22,9 +22,6 @@ define(function(require){
 		// require('./rate-caculate')
 
 		// $('.star img').tooltip()
-	
-		// $("a[data-toggle=popover]").popover()
-
 		require('./imgtab')
 		require('./reply')
 	})

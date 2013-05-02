@@ -1,5 +1,12 @@
 define(function(require){
 	var $ = require('jquery')
+
+	if(!$.support.submitBubbles){
+		require.async('placeholder',function(){
+			$('input[type=text]').placeholder()	
+		})
+	}
+
 	$.fn.coffee = function(obj){  
 	  for(var eName in obj)  
 	    for(var selector in obj[eName])  
@@ -13,10 +20,10 @@ define(function(require){
 		'click':{
 			'#taobao':function(){
 				var choose = $(this).parent(),
-					w = choose.height()
+					h = choose.height()
 
 				choose.animate({
-					top:-w*2
+					top:-h*2
 				},function(){
 					choose.hide()
 					gc.find('.tb').show()
@@ -26,7 +33,18 @@ define(function(require){
 								  .find('span').addClass('badge-warning')
 			},
 			'#othersite':function(){
-				alert('fuck')
+				var choose = $(this).parent(),
+					h = choose.height()
+
+				choose.animate({
+					top:-h*2
+				},function(){
+					choose.hide()
+					gc.find('.other').show()
+				})
+
+				$('li.guid-step2').addClass('current')
+								  .find('span').addClass('badge-warning')
 			},
 			'#loaditem':function(){
 				if(!lock){
@@ -44,7 +62,6 @@ define(function(require){
 						if(typeof data.error != 'undefined' || typeof data.code != 'undefined') {
 							$('#tb-container').html('不是有效的淘宝(天猫)商品链接')
 						}else{
-							console.log(data.num_iid)
 							$('#tb-container').html('')
 							$('#tb-tmpl').tmpl(data)
 											.appendTo('#tb-container')

@@ -209,6 +209,7 @@ blockquote p{
 .item{
 	margin-bottom: 40px;
 	border: 1px solid #d7d7d7;
+	border-radius: 5px 0 0 0;
 }
 .entry-top{
 	padding: 10px 10px 0;
@@ -480,6 +481,12 @@ blockquote p{
 }
 #des-tip{
 	display: none;
+}
+.margin10{
+	margin: 10px 0;
+}
+.margin15{
+	margin: 15px 0;
 }
 /* ==============
 	品牌详情页

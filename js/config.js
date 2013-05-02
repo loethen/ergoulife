@@ -41,6 +41,10 @@ seajs.config({
 			src : 'vendor/jquery.tmpl.min.js',
 			deps : ['jquery']
 		},
+		'placeholder':{
+			src : 'vendor/jquery.placeholder.js',
+			deps : ['jquery']
+		},
 		'ueditor':{
 			src : 'ueditor/editor_all.js',
 			exports : 'UE'

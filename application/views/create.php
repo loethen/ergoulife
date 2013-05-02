@@ -26,15 +26,12 @@
 			</div>
 			<div class="guid-wrap">
 				<div class="choose">
-					<a href="javascript:;" id="taobao" class="btn btn-xlarge btn-info">来自淘宝</a>
+					<a href="javascript:;" id="taobao" class="btn btn-xlarge btn-info">淘宝(或天猫)</a>
 					<a href="javascript:;" id="othersite" class="btn btn-xlarge btn-info">其他网站</a>	
 				</div>
 				<div class="tb">
 					<form method="POST" id="tb-form" action="<?=site_url('taobao/tbnew')?>">
-					<!--[if lt IE 9]>
-					<span class="help-block text-left">粘贴商品链接,支持淘宝网和天猫</span>
-					<![endif]-->
-					<div class="input-append btn-margin10">
+					<div class="input-append btn-margin10 controls">
 						<input class="span10" name="url" id="p-link" autocomplete='off' placeholder="粘贴商品链接,支持淘宝网和天猫" type="text">
 					  	<a class="btn" id="loaditem">载入商品</a>
 					</div>
@@ -87,11 +84,31 @@
 					<div id="tb-container" class="loe-unit clearfix"></div>
 					</form>
 				</div>
-				<div class="other">
-					<form action="/entity/taobao/info" method="post" id="new-entity-form" enable="false">
-						<label>其他商品</label>
-						<br>
-						
+				<div class="other text-left">
+					<form method="POST" id="b2c-form" action="<?=site_url('b2c/new')?>">
+						<div class="form-inline">
+							<input type="text" name="title" class='span10' placeholder="粘贴商品链接">
+							<span class="help-inline">粘贴商品链接</span>
+						</div>
+						<div id="b2c-container" class="loe-unit clearfix">
+							<p class="text-success">商品详情.</p>
+							<div class="form-inline">
+								<input type="text" name="title" class='span10' placeholder="粘贴商品标题">
+								<span class="help-inline">标题可修改</span>
+							</div>
+							<div class="form-inline margin15">
+								<input type="text" class="span3" placeholder="来源">
+								<span class="help-inline">如亚马逊，京东，苏宁易购，amazon，dragstore等</span>
+							</div>	
+							<div class="form-inline margin15">
+								<select name="currency" id="" class="span2">
+									<option value="1">¥</option>
+									<option value="2">$</option>
+								</select>
+								<input type="text" class="span3" placeholder="价格">
+								<span class="help-inline">请输入商品价格</span>
+							</div>	
+						</div>
 					</form>	
 				</div>
 			</div>
