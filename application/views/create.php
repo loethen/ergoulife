@@ -31,9 +31,9 @@
 				</div>
 				<div class="tb">
 					<form method="POST" id="tb-form" action="<?=site_url('taobao/tbnew')?>">
-					<div class="input-append btn-margin10 controls">
+					<div class="input-append span12 btn-margin10">
 						<input class="span10" name="url" id="p-link" autocomplete='off' placeholder="粘贴商品链接,支持淘宝网和天猫" type="text">
-					  	<a class="btn" id="loaditem">载入商品</a>
+						<a class="btn" id="loaditem">载入商品</a>
 					</div>
 					<input type="hidden" name="itemimgs" id="itemimgs">
 					<script id="tb-tmpl" type='text/x-jquery-tmpl'>
@@ -97,32 +97,50 @@
 								<span class="help-inline">标题可修改</span>
 							</div>
 							<div class="form-inline margin15">
+								<a href="#myModal" role="button" class="btn" data-toggle="modal">
+									<img src="<?=base_url('img/pic.png')?>" alt="">
+								</a>
+								<span class="help-inline">上传商品图片</span>
+							</div>
+							<div class="form-inline margin15">
 								<input type="text" class="span3" placeholder="来源">
 								<span class="help-inline">如亚马逊，京东，苏宁易购，amazon，dragstore等</span>
 							</div>	
 							<div class="form-inline margin15">
-								<select name="currency" id="" class="span2">
-									<option value="1">¥</option>
-									<option value="2">$</option>
-								</select>
 								<input type="text" class="span3" placeholder="价格">
 								<span class="help-inline">请输入商品价格</span>
 							</div>	
 						</div>
-					</form>	
+					</form>
+					<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h3 id="myModalLabel">在线搜索商品图片</h3>
+						</div>
+						<div class="modal-body">
+							<form class="btc-form-search">
+							  	<input type="text" placeholder="商品关键字" class="input-xlarge search-query">
+							  	<button type="submit" class="btn">搜索</button>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+							<button class="btn btn-primary">Save changes</button>
+						</div>
+					</div>	
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="span4">
-        <div class="Ym">
-            <h3 class="tx hp">
-                <span>猫草种子</span>
-            </h3>
-        </div>
-        <p>
-        	成功添加一件商品可以获得一粒 “猫草种子”。你以后可以用来兑换一些我们提供的礼物。
-        	或者，你可以把它埋在土里，浇水，施肥，过几天，就能长成猫草啦。
-        </p>
+		<div class="Ym">
+			<h3 class="tx hp">
+				<span>猫草种子</span>
+			</h3>
+		</div>
+		<p>
+			成功添加一件商品可以获得一粒 “猫草种子”。你以后可以用来兑换一些我们提供的礼物。
+			或者，你可以把它埋在土里，浇水，施肥，过几天，就能长成猫草啦。
+		</p>
 	</div>
 </div>

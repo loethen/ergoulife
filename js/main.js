@@ -8,6 +8,12 @@ define(function(require){
 	var util = require('./util')
 	$('a[data-toggle=tooltip]').tooltip()
 
+	$.fn.coffee = function(obj){  
+	  for(var eName in obj)  
+	    for(var selector in obj[eName])  
+	      $(this).on(eName, selector, obj[eName][selector])  
+	}
+	
 	//首页
 	r.route(/(ergoulife|index\.php|home)(\/)*$/g,function(){
 		require('./comment')

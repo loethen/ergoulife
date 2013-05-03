@@ -9,14 +9,16 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/todc-bootstrap.css'); ?>">
-
-        <!-- <link rel="stylesheet" href="<?php echo base_url('css/flat-ui.css'); ?>"> -->
 
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap-responsive.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/main.css'); ?>">
-
+        <!--[if lte IE 8]>
+        <style>
+        .row-fluid [class*="span"] { min-height: 20px; }
+        </style>
+        <![endif]-->
         <script src="<?php echo base_url('js/vendor/modernizr-2.6.2-respond-1.1.0.min.js'); ?>"></script>
         <script>
         var site_url = "<?=site_url()?>", 
