@@ -488,6 +488,20 @@ blockquote p{
 .margin15{
 	margin: 15px 0;
 }
+#bingRes a{
+	float: left;
+	margin:0 10px 10px 0;
+}
+#bingRes a.selected{
+	border: 2px solid #999;
+	position: relative;
+}
+#bingRes a i{
+	position: absolute;
+	left: 1px;
+	top: 1px;
+	background-color: #fff;
+}
 /* ==============
 	品牌详情页
    ================*/

@@ -41,6 +41,7 @@ define(function(require){
 				$('li.guid-step2').addClass('current')
 								  .find('span').addClass('badge-warning')
 
+				require.async('./b2c')
 			}
 			
 		}

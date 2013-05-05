@@ -96,12 +96,10 @@
 								<input type="text" name="title" class='span10' placeholder="粘贴商品标题">
 								<span class="help-inline">标题可修改</span>
 							</div>
-							<div class="form-inline margin15">
-								<a href="#myModal" role="button" class="btn" data-toggle="modal">
-									<img src="<?=base_url('img/pic.png')?>" alt="">
-								</a>
-								<span class="help-inline">上传商品图片</span>
-							</div>
+							<p class="text-info margin10">商品图片</p>
+							<a href="#bingModal" role="button" data-toggle="modal">
+								<img src="<?=base_url('img/pic.png')?>" alt="">
+							</a>
 							<div class="form-inline margin15">
 								<input type="text" class="span3" placeholder="来源">
 								<span class="help-inline">如亚马逊，京东，苏宁易购，amazon，dragstore等</span>
@@ -112,20 +110,22 @@
 							</div>	
 						</div>
 					</form>
-					<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div id="bingModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 							<h3 id="myModalLabel">在线搜索商品图片</h3>
 						</div>
 						<div class="modal-body">
-							<form class="btc-form-search">
-							  	<input type="text" placeholder="商品关键字" class="input-xlarge search-query">
+							<form class="bing-form-search">
+							  	<input name="bingkey" autocomplete='off' id="bingkey" type="text" placeholder="商品关键字" class="input-xlarge search-query">
 							  	<button type="submit" class="btn">搜索</button>
 							</form>
+							<div id="bingRes"></div>
 						</div>
 						<div class="modal-footer">
+							<p class="text-error pull-left" id="imgtip"></p>
 							<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-							<button class="btn btn-primary">Save changes</button>
+							<button class="btn btn-primary">ok,选好了！</button>
 						</div>
 					</div>	
 				</div>
