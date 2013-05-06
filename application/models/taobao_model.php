@@ -13,4 +13,10 @@ class Taobao_model extends CI_Model {
 		$query = $this->db->query($sql);
 		return $query ? true : false;
 	}
+	public function tb_exist($num_iid){
+		$sql = "SELECT * FROM posts where num_iid='$num_iid'";
+		if($this->db->query($sql)->num_rows()>0){
+			return true;
+		}
+	}
 }

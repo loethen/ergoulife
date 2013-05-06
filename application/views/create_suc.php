@@ -25,7 +25,7 @@
 				</ul>		
 			</div>
 			<div class="guid-wrap">
-				<p class="text-success">商品添加成功！<a href="#"></a></p>
+				<p class="text-success">商品添加成功！正在后台等待审核。<a class="btn" href="#">去首页看看</a></p>
 			</div>
 		</div>
 	</div>

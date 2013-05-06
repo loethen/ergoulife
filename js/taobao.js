@@ -20,7 +20,7 @@ define(function(require){
 					$.post(ac,{url:url},function(data){
 						var data = $.parseJSON(data) 
 						if(typeof data.error != 'undefined' || typeof data.code != 'undefined') {
-							$('#tb-container').html('不是有效的淘宝(天猫)商品链接')
+							$('#tb-container').html(data.error)
 						}else{
 							$('#tb-container').html('')
 							$('#tb-tmpl').tmpl(data)

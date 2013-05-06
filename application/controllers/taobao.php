@@ -17,12 +17,17 @@ class Taobao extends CI_Controller{
 		$matches = array();
 		if(preg_match($regexp, $url, $matches)){
 			$id = $matches[2];
-			$req->setNumIid($id);
-			$resp = $c->execute($req, $sessionKey=null);
-			echo json_encode($resp);
+			$this->load->model('taobao_model');
+			$ishave = $this->taobao_model->tb_exist($id);
+			if($ishave){
+				echo json_encode(array('error'=>'商品已经存在'));
+			}else{
+				$req->setNumIid($id);
+				$resp = $c->execute($req, $sessionKey=null);
+				echo json_encode($resp);
+			}
 		}else{
 			echo json_encode(array('error'=>'不是有效的淘宝链接'));
-			exit();
 		}	
 	}
 	public function tbnew(){

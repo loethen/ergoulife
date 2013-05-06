@@ -26,8 +26,8 @@
 			</div>
 			<div class="guid-wrap">
 				<div class="choose">
-					<a href="javascript:;" id="taobao" class="btn btn-xlarge btn-info">淘宝(或天猫)</a>
-					<a href="javascript:;" id="othersite" class="btn btn-xlarge btn-info">其他网站</a>	
+					<a href="javascript:;" id="taobao" class="btn btn-xlarge btn-warning">淘宝(或天猫)</a>
+					<a href="javascript:;" id="othersite" class="btn btn-xlarge btn-info">其他网上商城</a>	
 				</div>
 				<div class="tb">
 					<form method="POST" id="tb-form" action="<?=site_url('taobao/tbnew')?>">
