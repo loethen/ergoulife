@@ -20,7 +20,11 @@ $this->load->helper('my');
                 <p><?=$item->post_desc?></p>
                 <?php
                     $imgarr = explode(',', $item->item_imgs);
-                    $first = $imgarr[0]."_400x400.jpg";
+                    if($item->wherefrom=='taobao'){
+                        $first = $imgarr[0]."_400x400.jpg";
+                    }else{
+                        $first = $imgarr[0]."&w=400&h=400";
+                    }
                 ?>
                 <div class="fg">
                     <div class="large-img">
@@ -31,7 +35,11 @@ $this->load->helper('my');
                     <div class="mini-img clearfix">
                     <?php foreach($imgarr as $img): ?>
                         <a class="" href="javascript:;">
+                        <?php if($item->wherefrom=='taobao'): ?>
                             <img src="<?=$img.'_40x40.jpg'?>" alt="">
+                        <?php else: ?>
+                            <img src="<?=$img.'&w=40&h=40'?>" alt="">
+                        <?php endif; ?>
                         </a>
                     <?php endforeach; ?>
                     </div>

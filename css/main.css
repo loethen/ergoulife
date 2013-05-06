@@ -491,9 +491,10 @@ blockquote p{
 #bingRes a{
 	float: left;
 	margin:0 10px 10px 0;
+	border:2px solid #fff;
 }
 #bingRes a.selected{
-	border: 2px solid #999;
+	border-color:#999;
 	position: relative;
 }
 #bingRes a i{
@@ -501,6 +502,8 @@ blockquote p{
 	left: 1px;
 	top: 1px;
 	background-color: #fff;
+}
+#bingRes a img{
 }
 /* ==============
 	品牌详情页

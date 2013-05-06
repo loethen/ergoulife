@@ -63,7 +63,7 @@
 						<div class="clear"></div>
 						<div id="tb-recommend" class="text-left well clearfix">
 							<p class="text-warning">推荐理由(必填)</p>
-							<textarea name="description" class="span12" id="des" rows="2"></textarea>
+							<textarea name="description" class="span12" id="des" rows="3"></textarea>
 							<div class="clear"></div>
 							<p class="text-error pull-left" id="des-tip">推荐理由必须填写</p>
 							<button type="submit" class="tb-submit btn btn-primary btn-large pull-right">立即添加</button>
@@ -85,9 +85,10 @@
 					</form>
 				</div>
 				<div class="other text-left">
-					<form method="POST" id="b2c-form" action="<?=site_url('b2c/new')?>">
+					<form method="POST" id="b2c-form" action="<?=site_url('taobao/b2cnew')?>">
+						<input type="hidden" id="bing-imgs" name="itemimgs">
 						<div class="form-inline">
-							<input type="text" name="title" class='span10' placeholder="粘贴商品链接">
+							<input type="text" name="url" class='span10' placeholder="粘贴商品链接">
 							<span class="help-inline">粘贴商品链接</span>
 						</div>
 						<div id="b2c-container" class="loe-unit clearfix">
@@ -96,19 +97,51 @@
 								<input type="text" name="title" class='span10' placeholder="粘贴商品标题">
 								<span class="help-inline">标题可修改</span>
 							</div>
-							<p class="text-info margin10">商品图片</p>
-							<a href="#bingModal" role="button" data-toggle="modal">
-								<img src="<?=base_url('img/pic.png')?>" alt="">
-							</a>
 							<div class="form-inline margin15">
-								<input type="text" class="span3" placeholder="来源">
+								<input type="text" class="input-small" name="shopname" placeholder="来自哪个网站？">
+  								<input type="text" class="input-small" name="price" placeholder="价格:">
 								<span class="help-inline">如亚马逊，京东，苏宁易购，amazon，dragstore等</span>
-							</div>	
-							<div class="form-inline margin15">
-								<input type="text" class="span3" placeholder="价格">
-								<span class="help-inline">请输入商品价格</span>
-							</div>	
+							</div>
+							<div>
+								<a href="#bingModal" role="button" class="btn btn-warning" data-toggle="modal">
+									在线选择商品图片
+								</a>
+							</div>
+							<div id="bing-wrap"></div>
 						</div>
+						<script id="bing-tmpl" type='text/x-jquery-tmpl'>
+						<div class="span6">
+							<a class="thumbnail" href="#">
+								<img class="thumb-big" src="${bingFirst(itemimg)}" alt="">
+							</a>
+						</div>
+						<div class="clear"></div>
+						<div class="thumb-min clearfix">
+							{{each itemimg}}
+							<a href="javascript:;" class="thumbnail w40">
+								<img src="${bingSize($value,40)}" alt="">
+							</a>
+							{{/each}}
+						</div>
+
+						<div class="clear"></div>
+						<div id="tb-recommend" class="text-left well clearfix">
+							<p class="text-warning">推荐理由(必填)</p>
+							<textarea name="description" class="span12" id="des" rows="3"></textarea>
+							<div class="clear"></div>
+							<p class="text-error pull-left" id="des-tip">推荐理由必须填写</p>
+							<button type="submit" class="tb-submit btn btn-primary btn-large pull-right">立即添加</button>
+						</div>
+						</script>
+						<script>
+						function bingSize(str,size){
+							str = str+'&w='+size+'&h='+size
+							return str
+						}
+						function bingFirst(arr){
+							return bingSize(arr[0],310)
+						}
+						</script>
 					</form>
 					<div id="bingModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-header">
@@ -125,7 +158,7 @@
 						<div class="modal-footer">
 							<p class="text-error pull-left" id="imgtip"></p>
 							<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-							<button class="btn btn-primary">ok,选好了！</button>
+							<button id="chooseOk" class="btn btn-warning">ok,选好了！</button>
 						</div>
 					</div>	
 				</div>

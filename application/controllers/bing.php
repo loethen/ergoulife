@@ -8,7 +8,7 @@ class Bing extends CI_Controller{
 		$rootUri = 'https://api.datamarket.azure.com/Bing/Search/v1';
 		$key = $_GET['query'];
 		$query = urlencode($key);
-		$requestUri = "$rootUri/Image?\$format=json&Query=%27$query%27";
+		$requestUri = "$rootUri/Image?\$format=json&\$top=30&Query=%27$query%27";
 		$auth = base64_encode("$acctKey:$acctKey"); 
 
 		$data = array(

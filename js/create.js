@@ -1,12 +1,11 @@
 define(function(require){
 	var $ = require('jquery')
 
-	if(!$.support.submitBubbles){
+	if($('html').hasClass('no-textshadow')){
 		require.async('placeholder',function(){
 			$('input[type=text]').placeholder()	
 		})
 	}
-
 	var gc = $('.guid-wrap'),
 		lock = false
 	gc.coffee({

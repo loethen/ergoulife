@@ -9,7 +9,11 @@ define(function(require){
 		'click':{
 			'.mini-img a':function(){
 				var src = $(this).find('img').attr('src')
-				src = src.replace(/40x40/i,'400x400')
+				if(src.indexOf('w=40')!=-1){
+					src = src.replace(/w=40\&h=40/i,'w=400&h=400')
+				}else{
+					src = src.replace(/40x40/i,'400x400')
+				}
 				var fg = $(this).closest('.fg')
 				fg.find('.large-img>a>img').attr('src',src)
 			}

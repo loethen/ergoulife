@@ -65,12 +65,12 @@ define(function(require){
 		require('./admin-option')
 	})
 	r.route(/admin\/product_page/g,function(){
-		require.async('../ueditor/editor_config',function(){
-			var UE = require('./uedit')
-			UE.getEditor('inputDes',{
-				initialFrameWidth:700
-			})
-		})
+		// require.async('../ueditor/editor_config',function(){
+		// 	var UE = require('./uedit')
+		// 	UE.getEditor('inputDes',{
+		// 		initialFrameWidth:700
+		// 	})
+		// })
 		require('./addtag')
 		require('./rmtag')
 	})

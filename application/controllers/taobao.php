@@ -36,9 +36,30 @@ class Taobao extends CI_Controller{
 		$item_imgs = $data['itemimgs'];
 		$desc = $data['description'];
 		$num_iid = $data['num_iid'];
+		$from = 'taobao';
 
 		$this->load->model('taobao_model');
-		$result = $this->taobao_model->tb_add($num_iid,$author,$desc,$title,$shopname,$price,$link,$item_imgs);
+		$result = $this->taobao_model->tb_add($num_iid,$author,$desc,$title,$shopname,$price,$link,$item_imgs,$from);
+		if($result){
+			$this->load->view('include/header');
+			$this->load->view('create_suc');
+			$this->load->view('include/footer');
+		}
+	}
+	public function b2cnew(){
+		$data = $this->input->post(null,true);
+
+		$author = $this->session->userdata('uid');
+		$title = $data['title'];
+		$shopname = $data['shopname'];
+		$price = $data['price'];
+		$link = $data['url'];
+		$item_imgs = $data['itemimgs'];
+		$desc = $data['description'];
+		$from = 'b2c';
+
+		$this->load->model('taobao_model');
+		$result = $this->taobao_model->tb_add('',$author,$desc,$title,$shopname,$price,$link,$item_imgs,$from);
 		if($result){
 			$this->load->view('include/header');
 			$this->load->view('create_suc');
