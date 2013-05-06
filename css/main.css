@@ -240,6 +240,16 @@ blockquote p{
 	border-bottom: 1px solid #d7d7d7;
 	text-align: center;
 }
+.large-img a{
+	height: 400px;
+	width: 400px;
+	display: block;
+	margin: 0 auto;
+	line-height: 400px;
+}
+.large-img a img{
+	vertical-align: middle;
+}
 .mini-img{
 	background: rgba(255,255,255,.6);
 	padding: 5px 0;
@@ -536,7 +546,7 @@ blockquote p{
 }
 .sc .item-content p{
 	font-size: 16px;
-	padding: 0;
+	padding: 10px;
 	text-indent: 2em;
 }
 .talk{

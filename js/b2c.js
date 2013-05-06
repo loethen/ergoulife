@@ -53,7 +53,11 @@ define(function(require){
 				var src = $(this).find('img').attr('src'),
 				url = src.replace(/w=40\&h=40/i,'w=400&h=400'),
 				large = bwrap.find('.thumb-big')
-				large.attr('src',url)
+				var loading = base_url+'img/loading.gif'
+				large.attr('src',loading)
+				$('<img>').attr('src',url).load(function(){
+					large.attr('src',url)
+				})
 			}
 		}
 	})
@@ -103,7 +107,7 @@ define(function(require){
 
 		var i = document.createElement('img');
 		i.src = item.Thumbnail.MediaUrl;
-		
+		i.style.height = '200px';
 	// Make the object that the user clicks the thumbnail image.
 		$(a).append(i);
 	// Append the anchor tag and paragraph with the title to the results div.
