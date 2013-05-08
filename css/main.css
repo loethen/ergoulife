@@ -241,11 +241,11 @@ blockquote p{
 	text-align: center;
 }
 .large-img a{
-	height: 400px;
-	width: 400px;
+	height: 310px;
+	width: 310px;
 	display: block;
 	margin: 0 auto;
-	line-height: 400px;
+	line-height: 310px;
 }
 .large-img a img{
 	vertical-align: middle;
@@ -473,7 +473,7 @@ blockquote p{
 	margin-right: 15px;
 }
 .help-inline{
-	color: #ddd;
+	color: #a9a3a3;
 }
 .text-left{
 	text-align: left;
@@ -498,22 +498,23 @@ blockquote p{
 .margin15{
 	margin: 15px 0;
 }
-#bingRes a{
+#bingRes a, #handRes a{
 	float: left;
 	margin:0 10px 10px 0;
 	border:2px solid #fff;
 }
-#bingRes a.selected{
+#bingRes a.selected, #handRes a.selected{
 	border-color:#999;
 	position: relative;
 }
-#bingRes a i{
+#bingRes a i, #handRes a i{
 	position: absolute;
 	left: 1px;
 	top: 1px;
 	background-color: #fff;
 }
-#bingRes a img{
+#pdimg{
+
 }
 /* ==============
 	品牌详情页

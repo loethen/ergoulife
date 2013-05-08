@@ -21,9 +21,9 @@ $this->load->helper('my');
                 <?php
                     $imgarr = explode(',', $item->item_imgs);
                     if($item->wherefrom=='taobao'){
-                        $first = $imgarr[0]."_400x400.jpg";
+                        $first = $imgarr[0]."_310x310.jpg";
                     }else{
-                        $first = $imgarr[0]."&w=400&h=400";
+                        $first = $imgarr[0]."&w=310&h=310";
                     }
                 ?>
                 <div class="fg">

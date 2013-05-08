@@ -87,15 +87,16 @@
 				<div class="other text-left">
 					<form method="POST" id="b2c-form" action="<?=site_url('taobao/b2cnew')?>">
 						<input type="hidden" id="bing-imgs" name="itemimgs">
+						<p class="text-success">商品标题.</p>
 						<div class="form-inline">
-							<input type="text" name="url" class='span10' placeholder="粘贴商品链接">
-							<span class="help-inline">粘贴商品链接</span>
+							<input type="text" name="title" class='span10' placeholder="粘贴商品标题">
+							<span class="help-inline">标题可修改</span>
 						</div>
 						<div id="b2c-container" class="loe-unit clearfix">
-							<p class="text-success">商品详情.</p>
+							<p class="text-success">商品链接.</p>
 							<div class="form-inline">
-								<input type="text" name="title" class='span10' placeholder="粘贴商品标题">
-								<span class="help-inline">标题可修改</span>
+								<input type="text" name="url" class='span10' placeholder="粘贴商品链接">
+								<span class="help-inline">粘贴商品链接</span>
 							</div>
 							<div class="form-inline margin15">
 								<input type="text" class="input-small" name="shopname" placeholder="来自哪个网站？">
@@ -104,7 +105,7 @@
 							</div>
 							<div>
 								<a href="#bingModal" role="button" class="btn btn-warning" data-toggle="modal">
-									在线选择商品图片
+									为商品选择配图
 								</a>
 							</div>
 							<div id="bing-wrap"></div>
@@ -134,8 +135,13 @@
 						</div>
 						</script>
 						<script>
-						function bingSize(str,size){
-							str = str+'&w='+size+'&h='+size
+						function bingSize(obj,size){
+							var str
+							if(obj.by=='b2c'){
+								str = obj.src+'_'+size
+							}else{
+								str = str+'&w='+size+'&h='+size
+							}
 							return str
 						}
 						function bingFirst(arr){
@@ -149,11 +155,30 @@
 							<h3 id="myModalLabel">在线搜索商品图片</h3>
 						</div>
 						<div class="modal-body">
-							<form class="bing-form-search">
-							  	<input name="bingkey" autocomplete='off' id="bingkey" type="text" placeholder="商品关键字" class="input-xlarge search-query">
-							  	<button type="submit" class="btn">搜索</button>
-							</form>
-							<div id="bingRes"></div>
+							<ul class="nav nav-tabs" id="loeTab">
+							  <li class="active"><a href="#handuplaod">上传商品图片</a></li>
+							  <li><a href="#bingsearch">在线搜索</a></li>
+							</ul>
+							<div class="tab-content">
+							  <div class="tab-pane active" id="handuplaod">
+							  	<?php echo form_open('bing/pd_upload',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-pd'));?>
+									<div class="w80 pos-relate span12">
+							    		<a href="javascript:;">选择图片</a>
+							      		<input type="file" name="pdimg" id="pdimg">
+							      		<input class="btn btn-info" type="submit" value="上传">
+							    	</div>
+							    </form>
+							    <div id="handRes"></div>
+							  </div>
+							  <div class="tab-pane" id="bingsearch">
+									<form class="bing-form-search">
+								  		<input name="bingkey" autocomplete='off' id="bingkey" type="text" placeholder="商品关键字" class="input-xlarge search-query">
+								  		<button type="submit" class="btn">搜索</button>
+									</form>
+									<div id="bingRes"></div>
+							  </div>
+							</div>
+							
 						</div>
 						<div class="modal-footer">
 							<p class="text-error pull-left" id="imgtip"></p>

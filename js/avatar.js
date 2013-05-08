@@ -19,6 +19,12 @@ define(function(require,exports){
 	        bar.width(percentVal)
 	    },
 	    success: function(data) {
+	    	if(!data.state){
+	    		progress.css('visibility','hidden')
+	    		bar.width(0);
+	    		alert('上传失败，请重试')
+	    		return false
+	    	}
 	    	progress.css('visibility','hidden')
 	    	$('.img-avatar').attr('src',base_url+'/uploads/avatar/'+data.filename)
 	    	$.post(site_url+'/setting/user_avatar',{filename:data.filename},function(res){

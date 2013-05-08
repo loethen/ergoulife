@@ -3,7 +3,12 @@ define(function(require){
 	var $ = require('jquery'),
 		b = $('.bing-form-search'),
 		lock = false
-
+		
+	$('#loeTab a').click(function (e) {
+  		e.preventDefault();
+  		$(this).tab('show');
+	})
+	/**====  在线搜索  =====**/
 	$('#bingkey').val('')
 
 	b.submit(function(){
@@ -20,38 +25,24 @@ define(function(require){
 	$('#bingRes').coffee({
 		'click':{
 			'a':function(){
-				var html = $("<i class='icon-ok'></i>")
-				var add
-
-				if($('#bingRes a.selected').length>=5){
-					$('#imgtip').html('最多选择五张图片')
-					add = false
-				}else{
-					$('#imgtip').html('')
-				}
-
-				$(this).toggleClass('selected',add);
-
-				if($(this).hasClass('selected')){
-					if($(this).find('i').length<=0){
-						$(this).append(html)
-					}
-				}else{
-					if($(this).find('i').length>0){
-						$(this).find('i').remove();
-					}
-				}
-
-				return false;
+				chooseimgs($(this))
+				return false
 			}
 		}
 	})
+	
+	//大小图切换
 	var bwrap = $('#bing-wrap')
 	bwrap.coffee({
 		'click':{
 			'.thumb-min a':function(){
 				var src = $(this).find('img').attr('src'),
-				url = src.replace(/w=40\&h=40/i,'w=400&h=400'),
+					url = ''
+				if(src.indexOf('&')!=-1){
+					url = src.replace(/w=40\&h=40/i,'w=310&h=310')
+				}else{
+					url = src.replace(/_40/i,'_310')
+				}
 				large = bwrap.find('.thumb-big')
 				var loading = base_url+'img/loading.gif'
 				large.attr('src',loading)
@@ -66,13 +57,14 @@ define(function(require){
 				itemimg:[]
 			},
 			that = $(this)
-		if($('#bingRes a.selected').length<=0){
+		if($('#bingRes a.selected,#handRes a.selected').length<=0){
 			$('#imgtip').html('您一张图片都没选')
 			return false
 		}
-		$('#bingRes a.selected').each(function(){
-			var src = $(this).find('img').attr('src')
-			item.itemimg.push(src)
+		$('#bingRes a.selected,#handRes a.selected').each(function(){
+			var src = $(this).find('img').attr('src'),
+				by = $(this).find('img').attr('class')
+			item.itemimg.push({src:src,by:by})
 		})
 
 		$('#bingModal').modal('hide')
@@ -80,7 +72,7 @@ define(function(require){
 		$('#bing-wrap').empty()
 		$('#bing-tmpl').tmpl(item)
 						.appendTo('#bing-wrap')
-		var str = item.itemimg.join()
+		var str = item.itemimg.src.join()
 		$('#bing-imgs').val(str)
 	})
 	function search(query){
@@ -107,10 +99,73 @@ define(function(require){
 
 		var i = document.createElement('img');
 		i.src = item.Thumbnail.MediaUrl;
+		i.className = "frombing"
 		i.style.height = '200px';
 	// Make the object that the user clicks the thumbnail image.
 		$(a).append(i);
 	// Append the anchor tag and paragraph with the title to the results div.
 		$('#bingRes').append(a);
 	}
+	function chooseimgs(target){
+		var html = $("<i class='icon-ok'></i>")
+		var add
+
+		if($('.tab-content a.selected').length>=5){
+			$('#imgtip').html('最多选择五张图片')
+			add = false
+		}else{
+			$('#imgtip').html('')
+		}
+
+		target.toggleClass('selected',add);
+
+		if(target.hasClass('selected')){
+			if(target.find('i').length<=0){
+				target.append(html)
+			}
+		}else{
+			if(target.find('i').length>0){
+				target.find('i').remove();
+			}
+		}
+	}
+	/**=====  手动上传   =====**/
+	$('#pdimg').change(function(){
+		var elem = $('<span>正在上传...</span>')
+		require.async('ajaxform',function(){
+			$('.form-pd').ajaxForm({
+				dataType:'json',
+				beforeSend: function() {
+			        $('.w80').append(elem)
+			    },
+				success:function(data){
+					elem.remove()
+					if(!data.state){
+			    		alert("上传失败，请重试")
+			    		if(typeof data.msg!="undefined"){
+			    			alert(data.msg)
+			    		}
+			    		return false
+			    	}
+			    	var a = document.createElement('a');
+						a.href = '#';
+						var i = document.createElement('img');
+						i.src = 'http://im007.b0.upaiyun.com/b2c/'+data.filename;
+						i.style.height = '200px';
+						i.className = 'b2c'
+			    	$(a).append(i)
+			    	$('#handRes').append(a)
+				}
+			})
+			return false;	
+		})
+	})
+	$('#handRes').coffee({
+		'click':{
+			'a':function(){
+				chooseimgs($(this))
+				return false
+			}
+		}
+	})
 })
