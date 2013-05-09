@@ -8,7 +8,11 @@
                 if($item->wherefrom=='taobao'){
                     $first = $imgarr[0]."_400x400.jpg";
                 }else{
-                    $first = $imgarr[0]."&w=400&h=400";
+                    if(preg_match('/^http:\/\/im007\.b0\.upaiyun\.com/i', $imgarr[0])){
+                        $first = $imgarr[0]."_310";
+                    }else{
+                        $first = $imgarr[0]."&w=310&h=310";
+                    }
                 }
             ?>
             <div class="fg">
@@ -23,7 +27,11 @@
                     <?php if($item->wherefrom=='taobao'): ?>
                         <img src="<?=$img.'_40x40.jpg'?>" alt="">
                     <?php else: ?>
-                        <img src="<?=$img.'&w=40&h=40'?>" alt="">
+                        <?php if(preg_match('/^http:\/\/im007\.b0\.upaiyun\.com/i', $img)): ?>
+                        <img src="<?=$img.'_40'?>">
+                        <?php else: ?>
+                        <img src="<?=$img.'&w=40&h=40'?>">
+                        <?php endif; ?>
                     <?php endif; ?>
                     </a>
                 <?php endforeach; ?>

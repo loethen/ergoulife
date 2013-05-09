@@ -140,7 +140,7 @@
 							if(obj.by=='b2c'){
 								str = obj.src+'_'+size
 							}else{
-								str = str+'&w='+size+'&h='+size
+								str = obj.src+'&w='+size+'&h='+size
 							}
 							return str
 						}
@@ -161,6 +161,7 @@
 							</ul>
 							<div class="tab-content">
 							  <div class="tab-pane active" id="handuplaod">
+							  	<p class='text-warning'>每次只能上传一张，如有多张图片，可分多次上传</p>
 							  	<?php echo form_open('bing/pd_upload',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-pd'));?>
 									<div class="w80 pos-relate span12">
 							    		<a href="javascript:;">选择图片</a>
@@ -168,7 +169,7 @@
 							      		<input class="btn btn-info" type="submit" value="上传">
 							    	</div>
 							    </form>
-							    <div id="handRes"></div>
+							    <div id="handRes" class="margin10"></div>
 							  </div>
 							  <div class="tab-pane" id="bingsearch">
 									<form class="bing-form-search">

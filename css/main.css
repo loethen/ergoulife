@@ -245,13 +245,13 @@ blockquote p{
 	width: 310px;
 	display: block;
 	margin: 0 auto;
-	line-height: 310px;
+	line-height: 306px;
 }
 .large-img a img{
 	vertical-align: middle;
 }
 .mini-img{
-	background: rgba(255,255,255,.6);
+	background: rgba(0,0,0,.6);
 	padding: 5px 0;
 }
 .mini-img a{

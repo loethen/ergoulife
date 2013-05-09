@@ -23,7 +23,11 @@ $this->load->helper('my');
                     if($item->wherefrom=='taobao'){
                         $first = $imgarr[0]."_310x310.jpg";
                     }else{
-                        $first = $imgarr[0]."&w=310&h=310";
+                        if(preg_match('/^http:\/\/im007\.b0\.upaiyun\.com/i', $imgarr[0])){
+                            $first = $imgarr[0]."_310";
+                        }else{
+                            $first = $imgarr[0]."&w=310&h=310";
+                        }
                     }
                 ?>
                 <div class="fg">
@@ -36,9 +40,13 @@ $this->load->helper('my');
                     <?php foreach($imgarr as $img): ?>
                         <a class="" href="javascript:;">
                         <?php if($item->wherefrom=='taobao'): ?>
-                            <img src="<?=$img.'_40x40.jpg'?>" alt="">
+                            <img src="<?=$img.'_40x40.jpg'?>">
                         <?php else: ?>
-                            <img src="<?=$img.'&w=40&h=40'?>" alt="">
+                            <?php if(preg_match('/^http:\/\/im007\.b0\.upaiyun\.com/i', $img)): ?>
+                            <img src="<?=$img.'_40'?>">
+                            <?php else: ?>
+                            <img src="<?=$img.'&w=40&h=40'?>">
+                            <?php endif; ?>
                         <?php endif; ?>
                         </a>
                     <?php endforeach; ?>
@@ -55,7 +63,18 @@ $this->load->helper('my');
                     <a href="<?=$item->link?>" target="_blank" class="arival-link">直达链接<i class="icon-chevron-right"></i></a>
                 </div>
                 <div class="pull-right lb">
-                    <a href="<?=$item->link?>" target="_blank">价格：¥ <?=$item->price?></a>
+                    <span class='text-info'>价格：¥ <?=$item->price?></span>
+                </div>
+                <div class="pull-right lb">
+                    <span class='text-info'>
+                    商家：
+                    <?php   if($item->wherefrom=='taobao'){
+                                echo $item->shopname."  淘宝(天猫)";
+                            }else{
+                                echo $item->shopname;
+                            }
+                    ?>
+                    </span>
                 </div>
             </div>
             <div class="comments">

@@ -72,7 +72,12 @@ define(function(require){
 		$('#bing-wrap').empty()
 		$('#bing-tmpl').tmpl(item)
 						.appendTo('#bing-wrap')
-		var str = item.itemimg.src.join()
+		var tmparr=[]
+		for(var i=0;i<item.itemimg.length;i++){
+			tmparr.push(item.itemimg[i].src)
+		}
+		console.log(tmparr)
+		var str = tmparr.join()
 		$('#bing-imgs').val(str)
 	})
 	function search(query){
@@ -131,7 +136,8 @@ define(function(require){
 	}
 	/**=====  手动上传   =====**/
 	$('#pdimg').change(function(){
-		var elem = $('<span>正在上传...</span>')
+		var elem = $('<span>正在上传...</span>'),
+			pdimg = $(this)
 		require.async('ajaxform',function(){
 			$('.form-pd').ajaxForm({
 				dataType:'json',
@@ -140,6 +146,7 @@ define(function(require){
 			    },
 				success:function(data){
 					elem.remove()
+					pdimg.val('')
 					if(!data.state){
 			    		alert("上传失败，请重试")
 			    		if(typeof data.msg!="undefined"){
