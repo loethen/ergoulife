@@ -2,7 +2,7 @@
 	<div class="span8">
 		<div class="item">
 			<div class="bg-guide">
-				<h1>添加一件商品</h1>
+				<h1>分享一件商品，为二狗生活添砖加瓦</h1>
 				<ul class="breadguid clearfix">
 					<li class="current">
 						商品来源
@@ -98,6 +98,7 @@
 								<input type="text" name="url" class='span10' placeholder="粘贴商品链接">
 								<span class="help-inline">粘贴商品链接</span>
 							</div>
+							<p class="text-success margin15">再多填一些信息.</p>
 							<div class="form-inline margin15">
 								<input type="text" class="input-small" name="shopname" placeholder="来自哪个网站？">
   								<input type="text" class="input-small" name="price" placeholder="价格:">

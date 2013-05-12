@@ -82,4 +82,31 @@ class Setting extends CI_Controller {
 				}
 		  }
 	}
+	public function active_email(){
+		$name = $this->session->userdata('username');
+		$email = $this->session->userdata('email');
+		$this->load->library('encrypt');
+		$token = $this->encrypt->encode($email);
+
+		$this->load->library('email');
+		$this->email->from('im@ergoulife.com', 'ergou');
+		$this->email->to($email); 
+		$this->email->subject('激活你在ergoulife的邮件账户');
+
+		$url = site_url('setting/active/'.$token);
+		$html = "hi,'$name'<br>这是一封来自ergoulife.com的激活邮件<br>点击以下链接完成激活<br>"."<a href='$url'>".$url."</a><br>感谢您的注册，二狗敬上";
+		$this->email->message($html); 
+		$this->email->send();
+
+		echo $this->email->print_debugger();
+	}
+	public function active(){
+		$encrypt = $this->uri->segment(3);
+		$this->load->library('encrypt');
+		$email = $this->encrypt->decode($email);
+
+		$user = $this->user->get_user($email);
+
+		$this->user->add_user_meta($user->uid,'active','true');
+	}
 }

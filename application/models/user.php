@@ -13,9 +13,12 @@ class User extends CI_Model {
 		$sql = "insert into user (name,email,password) VALUES ('$name','$email','$password')";
 		return $this->db->query($sql);
 	}
-
 	public function login($email,$password){
 		$query = $this->db->query("select * from user where email='$email'");
+		return $query;
+	}
+	public function get_user($email){
+		$query = $this->db->query("SELECT * from user where email='$email'");
 		return $query;
 	}
 	public function user_info($uid){
@@ -38,5 +41,15 @@ class User extends CI_Model {
 		$query = $this->db->query("UPDATE user set avatar='$avatar' where uid='$uid'");
 		$this->db->close();
 		return $query;
+	}
+	public function add_user_meta($uid,$key,$value){
+		$query = $this->db->query("INSERT INTO usermeta 
+									(user_id,meta_key,meta_value)
+									VALUES
+									('$uid','$key','$value')
+								  ")
+		if($query){
+
+		}
 	}
 }

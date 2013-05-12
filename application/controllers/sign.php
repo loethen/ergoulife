@@ -32,9 +32,6 @@ class Sign extends CI_Controller {
 			if($query){
 				self::signin($post['email'],$post['password']);
 			}
-			// $this->load->view('include/header');
-			// $this->load->view('notice',array('message'=>'welcome<br />恭喜你注册成功，快去登录吧！'));
-			// $this->load->view('include/footer');
 		}
 	}
 	public function signin($e=null,$p=null){
