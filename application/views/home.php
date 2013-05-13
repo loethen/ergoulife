@@ -17,7 +17,6 @@ $this->load->helper('my');
             </div>
             <h1><a href="<?=site_url('subject/'.$item->id)?>"><?=$item->post_title?></a></h1>
             <div class="item-content">
-                <p><?=$item->post_desc?></p>
                 <?php
                     $imgarr = explode(',', $item->item_imgs);
                     if($item->wherefrom=='taobao'){
@@ -52,6 +51,7 @@ $this->load->helper('my');
                     <?php endforeach; ?>
                     </div>
                 </div>
+                <p><?=$item->post_desc?></p>
             </div>
             <div class="entry-misc clearfix">
                 <div class="pull-left ep clearfix">

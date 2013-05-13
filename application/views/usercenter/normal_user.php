@@ -44,7 +44,11 @@
 		<?php echo form_open('setting/set_profile',array('enctype'=>'multipart/form-data','class'=>'form-horizontal form-info'));?>
 		  <legend>个人资料</legend>
 		  <div class="control-group">
-		  	<p class='controls'>邮件还没激活，<a href="<?=site_url('setting/active_email')?>">点击发送激活邮件</a></p>
+		  	<?php if($active=='true'):?>
+		  	<p class='controls'>账号还没激活，<a id="sendAcEmail" href="<?=site_url('setting/active_email')?>">点击发送激活邮件</a></p>
+		  	<?php else: ?>
+		  	<p class='controls'>账号已经激活</p>
+			<?php endif;?>
 		  </div>
 		  <div class="control-group">
 		    <label class="control-label" for="inputEmail">昵称</label>

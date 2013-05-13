@@ -39,7 +39,7 @@ class Taobao extends CI_Controller{
 		$price = $data['price'];
 		$link = $data['url'];
 		$item_imgs = $data['itemimgs'];
-		$desc = $data['description'];
+		$desc = nl2br($data['description']);
 		$num_iid = $data['num_iid'];
 		$from = 'taobao';
 
@@ -60,7 +60,7 @@ class Taobao extends CI_Controller{
 		$price = $data['price'];
 		$link = $data['url'];
 		$item_imgs = $data['itemimgs'];
-		$desc = $data['description'];
+		$desc = nl2br($data['description']);
 		$from = 'b2c';
 
 		$this->load->model('taobao_model');

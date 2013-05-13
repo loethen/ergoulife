@@ -43,13 +43,28 @@ class User extends CI_Model {
 		return $query;
 	}
 	public function add_user_meta($uid,$key,$value){
-		$query = $this->db->query("INSERT INTO usermeta 
+		$sql = "SELECT * FROM usermeta where user_id='$uid' and meta_key='$key'";
+		$query = $this->db->query($sql);
+		if($query->num_rows()>0){
+			$query = $this->db->query("UPDATE usermeta set
+									meta_value='$value'
+									where 
+									user_id='$uid' 
+									and 
+									meta_key='$key'
+								  ");
+		}else{
+			$query = $this->db->query("INSERT INTO usermeta 
 									(user_id,meta_key,meta_value)
 									VALUES
 									('$uid','$key','$value')
-								  ")
-		if($query){
-
+								  ");
 		}
+		return $query ? true : false;
+	}
+	public function is_active($uid){
+		$sql = "SELECT * FROM usermeta where user_id='$uid' and meta_key='active' and meta_value='true'";
+		$query = $this->db->query($sql);
+		return $query->num_rows>0 ? false : true;
 	}
 }

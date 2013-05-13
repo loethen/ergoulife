@@ -17,7 +17,8 @@ class Setting extends CI_Controller {
 	public function user_set(){
 		$uid = $this->session->userdata('uid');
 		$query = $this->user->user_info($uid);
-		$this->load->view('include/header',array('res'=>$query->row()));
+		$active = $this->user->is_active($uid);
+		$this->load->view('include/header',array('res'=>$query->row(),'active'=>$active));
 		$this->load->view('usercenter/normal_user');
 		$this->load->view('include/footer');
 	}
@@ -87,26 +88,37 @@ class Setting extends CI_Controller {
 		$email = $this->session->userdata('email');
 		$this->load->library('encrypt');
 		$token = $this->encrypt->encode($email);
-
+		$token = urlencode($token);
 		$this->load->library('email');
 		$this->email->from('im@ergoulife.com', 'ergou');
 		$this->email->to($email); 
 		$this->email->subject('激活你在ergoulife的邮件账户');
 
 		$url = site_url('setting/active/'.$token);
-		$html = "hi,'$name'<br>这是一封来自ergoulife.com的激活邮件<br>点击以下链接完成激活<br>"."<a href='$url'>".$url."</a><br>感谢您的注册，二狗敬上";
+		$html = "hi,'$name'<br>这是一封来自ergoulife.com的激活邮件<br>请点击以下链接完成激活<br>"."<a href='$url'>".$url."</a><br>二狗团队敬上";
 		$this->email->message($html); 
 		$this->email->send();
 
-		echo $this->email->print_debugger();
+		echo 'success';
 	}
 	public function active(){
-		$encrypt = $this->uri->segment(3);
-		$this->load->library('encrypt');
-		$email = $this->encrypt->decode($email);
-
-		$user = $this->user->get_user($email);
-
-		$this->user->add_user_meta($user->uid,'active','true');
+		if($this->session->userdata('log_in')){
+			$encrypt = urldecode($this->uri->segment(3));
+			$this->load->library('encrypt');
+			$email = $this->encrypt->decode($encrypt);
+			$user = $this->user->get_user($email);
+			if($user->id = $this->session->userdata('uid')){
+				$result = $this->user->add_user_meta($user->id,'active','true');
+			}else{
+				show_error('激活不成功');
+			}
+		}
+		if($result){
+			self::index();
+		}else{
+			$this->load->view('include/header',array('message'=>'激活失败'));
+			$this->load->view('notice');
+			$this->load->view('include/footer');
+		}
 	}
 }

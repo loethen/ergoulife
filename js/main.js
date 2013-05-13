@@ -57,6 +57,7 @@ define(function(require){
 	//用户中心
 	r.route(/setting/g,function(){
 		require('./avatar')
+		require('./activeEmail')
 	})
 
 	//管理员
