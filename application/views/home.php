@@ -63,11 +63,12 @@ $this->load->helper('my');
                     <a href="<?=$item->link?>" target="_blank" class="arival-link">直达链接<i class="icon-chevron-right"></i></a>
                 </div>
                 <div class="pull-right lb">
-                    <span class='text-info'>价格：¥ <?=$item->price?></span>
+                    价格： 
+                    <span class='text-error font16'>¥  <?=$item->price?></span>
                 </div>
                 <div class="pull-right lb">
-                    <span class='text-info'>
                     商家：
+                    <span class='text-warning'>
                     <?php   if($item->wherefrom=='taobao'){
                                 echo $item->shopname."  淘宝(天猫)";
                             }else{

@@ -67,7 +67,8 @@ class Sign extends CI_Controller {
 					if(!empty($cur_url)){
 						redirect($cur_url);
 					}
-					redirect('home');
+					$session_url = $this->session->userdata('refurl');
+					header('Location:'.$session_url);
 				}else{
 					$this->load->view('include/header',array('error'=>'密码错误，请重试'));
 					$this->load->view('sign/signin');

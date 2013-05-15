@@ -2,7 +2,6 @@
 <div class="row-fluid">
 	<div class="span8 sc rxitems">
 		<div class="bg-white item-content item">
-			<p><?=$item->post_desc?></p>
             <?php
                 $imgarr = explode(',', $item->item_imgs);
                 if($item->wherefrom=='taobao'){
@@ -37,6 +36,7 @@
                 <?php endforeach; ?>
                 </div>
             </div>
+            <p><?=$item->post_desc?></p>
 		</div>
 		<div id="talk" class="talk">
 			<h4 class='teal'><?php $c = $item->comment_count; echo $c>0 ? "".$c." 条评论" : "还没有评论"?></h4>
